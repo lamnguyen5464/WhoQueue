@@ -1,7 +1,7 @@
 import React from 'react';
-import { AppNavigation } from '@navigation';
+import { AppNavigation, AppOverlay } from '@core/navigation';
 import { AppProvider } from '@context';
-import AppOverlay, { refAppOverlay } from '@navigation/AppOverlay';
+import { refAppOverlay } from '@core/navigation/AppOverlay';
 
 const App = () => {
     return (

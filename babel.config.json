@@ -9,9 +9,9 @@
                 "alias": {
                     "@components": "./src/components",
                     "@screens": "./src/screens",
-                    "@navigation": "./src/navigation",
                     "@context": "./src/context",
-                    "@utils": "./src/utils"
+                    "@utils": "./src/utils",
+                    "@core": "./src/core"
                 }
             }
         ]

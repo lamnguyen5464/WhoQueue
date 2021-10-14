@@ -2,10 +2,26 @@ import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { TestScreen2 } from '@screens';
 import { useSelector, keySelector, useDispatch, actions } from '@context';
+import axios from 'axios';
+import Http from '@core/http';
+import SingletonPromise from '@utils/SingletonPromise';
 
 const TestScreen1 = ({ navigation }) => {
     const dispatch = useDispatch();
     const testVariable = useSelector(keySelector.testVariable);
+
+    React.useEffect(() => {
+        Http.request({
+            method: Http.METHOD.GET,
+            path: '/demo/all',
+        })
+            .then(res => {
+                console.log(res.length);
+            })
+            .catch(e => {
+                console.warn(e);
+            });
+    }, []);
 
     return (
         <View
