@@ -1,26 +1,17 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-import { TestScreen2 } from '@screens';
 import { useSelector, keySelector, useDispatch, actions } from '@context';
 import axios from 'axios';
 import Http from '@core/http';
 import SingletonPromise from '@utils/SingletonPromise';
+import AppNavigator from '@core/navigation/AppNavigator';
 
-const TestScreen1 = ({ navigation }) => {
+const LoginScreen = ({ navigation }) => {
     const dispatch = useDispatch();
     const testVariable = useSelector(keySelector.testVariable);
 
     React.useEffect(() => {
-        Http.request({
-            method: Http.METHOD.GET,
-            path: '/demo/all',
-        })
-            .then(res => {
-                console.log(res.length);
-            })
-            .catch(e => {
-                console.warn(e);
-            });
+        console.log('aehaer');
     }, []);
 
     return (
@@ -34,7 +25,10 @@ const TestScreen1 = ({ navigation }) => {
         >
             <TouchableOpacity
                 onPress={() => {
-                    navigation.push('TestScreen2');
+                    // console.log(Object.keys(navigatorRef.current));
+                    // console.log(navigatorRef.current.getRootState());
+                    // navigatorRef.current?.navigate('MainAppStack');
+                    AppNavigator.activateMainApp();
                 }}
             >
                 <Text>Go to screen 2</Text>
@@ -45,10 +39,10 @@ const TestScreen1 = ({ navigation }) => {
                     actions.setTestVariable({ dispatch, payload: testVariable + 1 });
                 }}
             >
-                <Text>inc test variable</Text>
+                <Text>inc test variable INNN AUTH STACK</Text>
             </TouchableOpacity>
         </View>
     );
 };
 
-export default TestScreen1;
+export default LoginScreen;

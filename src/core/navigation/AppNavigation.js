@@ -1,25 +1,25 @@
-import * as React from 'react';
+import React, { useState, forwardRef, useImperativeHandle } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import * as SCREENS from '@screens';
+import { ROOT_STACKS_ENUM, STACKS } from './StackConstants';
 
-const Stack = createStackNavigator();
+const AppNavigation = forwardRef((props, ref) => {
+    const [stack, setStack] = useState(ROOT_STACKS_ENUM.AuthStack);
 
-const StackNavigator = () => {
-    const getStackScreens = () =>
-        Object.keys(SCREENS)?.map(key => (
-            <Stack.Screen key={`${key}Screen`} name={key} component={SCREENS?.[key]} />
-        ));
+    useImperativeHandle(ref, () => ({
+        navigate,
+    }));
 
-    return <Stack.Navigator>{getStackScreens()}</Stack.Navigator>;
-};
+    const navigate = (_stack = ROOT_STACKS_ENUM.AuthStack) => {
+        setStack(_stack);
+    };
 
-const AppNavigation = () => {
+    const CurrentStack = STACKS?.[stack] || STACKS.AuthStack;
+
     return (
         <NavigationContainer>
-            <StackNavigator />
+            <CurrentStack />
         </NavigationContainer>
     );
-};
+});
 
 export default AppNavigation;

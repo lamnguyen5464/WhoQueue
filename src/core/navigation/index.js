@@ -1,4 +1,5 @@
 import AppNavigation from './AppNavigation';
 import AppOverlay from './AppOverlay';
+import AppNavigator from './AppNavigator';
 
-export { AppNavigation, AppOverlay };
+export { AppNavigation, AppOverlay, AppNavigator };
