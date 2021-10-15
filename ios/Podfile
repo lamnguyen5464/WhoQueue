@@ -4,6 +4,11 @@ require_relative '../node_modules/@react-native-community/cli-platform-ios/nativ
 platform :ios, '10.0'
 
 target 'WhoQueue' do
+    # Facebook SDK
+    pod 'FBSDKCoreKit', "11.1.0"
+    pod 'FBSDKLoginKit'
+    pod 'FBSDKShareKit'
+    
   config = use_native_modules!
 
   use_react_native!(
