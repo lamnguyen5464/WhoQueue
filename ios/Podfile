@@ -3,9 +3,9 @@ require_relative '../node_modules/@react-native-community/cli-platform-ios/nativ
 
 platform :ios, '10.0'
 
-target 'WhoQueue' do
+target 'onLineUp' do
     # Facebook SDK
-    pod 'FBSDKCoreKit', "11.1.0"
+    pod 'FBSDKCoreKit'
     pod 'FBSDKLoginKit'
     pod 'FBSDKShareKit'
     
@@ -17,7 +17,7 @@ target 'WhoQueue' do
     :hermes_enabled => false
   )
 
-  target 'WhoQueueTests' do
+  target 'onLineUpTests' do
     inherit! :complete
     # Pods for testing
   end
