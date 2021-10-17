@@ -1,10 +1,10 @@
 const types = {
-    SET_TEST_VARIABLE: 'SET_TEST_VARIABLE',
+    SET_LOCALIZATION: 'SET_LOCALIZATION',
 };
 
 const actions = {
-    setTestVariable: ({ dispatch, payload }) => {
-        dispatch({ type: types.SET_TEST_VARIABLE, payload });
+    setLocalization: ({ dispatch, payload }) => {
+        dispatch({ type: types.SET_LOCALIZATION, payload });
     },
 };
 

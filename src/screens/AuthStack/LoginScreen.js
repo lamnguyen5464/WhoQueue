@@ -5,10 +5,13 @@ import axios from 'axios';
 import Http from '@core/http';
 import SingletonPromise from '@utils/SingletonPromise';
 import AppNavigator from '@core/navigation/AppNavigator';
+import useLocalization from '@core/localization';
 
 const LoginScreen = ({ navigation }) => {
     const dispatch = useDispatch();
     const testVariable = useSelector(keySelector.testVariable);
+
+    const { LOCALIZATION_ENUMS, LOCALIZED_CONTENT, setLocalization } = useLocalization();
 
     React.useEffect(() => {
         console.log('aehaer');
@@ -31,15 +34,19 @@ const LoginScreen = ({ navigation }) => {
                     AppNavigator.activateMainApp();
                 }}
             >
-                <Text>Go to screen 2</Text>
+                <Text>{LOCALIZED_CONTENT.test}</Text>
             </TouchableOpacity>
             <Text>{testVariable}</Text>
             <TouchableOpacity
                 onPress={() => {
-                    actions.setTestVariable({ dispatch, payload: testVariable + 1 });
+                    setLocalization(
+                        LOCALIZED_CONTENT.test === 'Tieng Anh'
+                            ? LOCALIZATION_ENUMS.vi
+                            : LOCALIZATION_ENUMS.en
+                    );
                 }}
             >
-                <Text>inc test variable INNN AUTH STACK</Text>
+                <Text>Change localize</Text>
             </TouchableOpacity>
         </View>
     );

@@ -2,6 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const KEY_STORAGE = {
     ONBOARDING_SHOW: 'ONBOARDING_SHOW',
+    LOCALIZATION: 'LOCALIZATION',
 };
 
 export const setItem = async (key, value) => {

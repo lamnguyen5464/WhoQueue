@@ -10,4 +10,4 @@ const AppProvider = ({ children }) => (
     </StateProvider>
 );
 
-export { AppProvider, StateProvider, useDispatch, actions, useSelector, keySelector };
+export { AppProvider, useDispatch, actions, useSelector, keySelector };
