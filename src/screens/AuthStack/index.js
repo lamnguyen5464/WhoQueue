@@ -1,9 +1,11 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import LoginScreen from './LoginScreen';
+import AuthHome from './auth-home';
+import AuthSignIn from './auth-sign-in';
 
 const SCREENS = {
-    LoginScreen,
+    AuthHome,
+    AuthSignIn,
 };
 
 const Stack = createStackNavigator();
@@ -14,7 +16,11 @@ const StackNavigator = () => {
             <Stack.Screen key={`AuthStack_${key}`} name={key} component={component} />
         ));
 
-    return <Stack.Navigator>{getStackScreens()}</Stack.Navigator>;
+    return (
+        <Stack.Navigator screenOptions={{ animationEnabled: false }}>
+            {getStackScreens()}
+        </Stack.Navigator>
+    );
 };
 
 export const AUTH_STACKS_ENUMS = Object.keys(SCREENS).reduce((previousValue = {}, currentValue) => {

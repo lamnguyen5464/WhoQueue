@@ -13,30 +13,33 @@ const CustomizedText = ({ type = null, textStyle = {}, children, size = null }) 
 };
 
 const styles = StyleSheet.create({
-    giant: {
-        fontWeight: 'bold',
-        fontSize: TextSize.H0,
-        color: Colors.base_5,
-        backgroundColor: Colors.base_3,
-    },
-    header: {
-        fontWeight: 'bold',
-        fontSize: TextSize.H3,
-    },
     title: {
+        fontSize: TextSize.H3,
+        color: Colors.white,
         fontWeight: 'bold',
-        fontSize: TextSize.H4,
-        color: Colors.dark,
     },
-    item: {
-        fontWeight: 'bold',
-        fontSize: TextSize.title,
+    subtitle: {
+        fontSize: TextSize.Title,
         color: Colors.white,
     },
-    place_holder: {
+    title_dark: {
+        fontSize: TextSize.H3,
+        color: Colors.black_15,
         fontWeight: 'bold',
-        fontSize: TextSize.title,
-        color: Colors.black_10,
+    },
+    subtitle_dark: {
+        fontSize: TextSize.Title,
+        color: Colors.black_15,
+    },
+    primary: {
+        fontSize: TextSize.H4,
+        color: Colors.white,
+        fontWeight: 'bold',
+    },
+    secondary: {
+        fontSize: TextSize.H4,
+        color: Colors.blue_fund_2,
+        fontWeight: 'bold',
     },
 });
 

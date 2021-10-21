@@ -10,6 +10,7 @@
                     "@components": "./src/components",
                     "@screens": "./src/screens",
                     "@context": "./src/context",
+                    "@assets": "./src/assets",
                     "@utils": "./src/utils",
                     "@core": "./src/core"
                 }
