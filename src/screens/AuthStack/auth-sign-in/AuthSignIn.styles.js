@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { DefaultSize } from '@utils/Constants';
+import { DefaultSize, TextSize } from '@utils/Constants';
 import Colors from '@utils/Colors';
 
 const styles = StyleSheet.create({
@@ -25,11 +25,17 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         marginTop: DefaultSize.XL,
     },
-    bt_sign_in: {
-        marginTop: DefaultSize.XL,
+    cta_confirm: {
+        marginTop: DefaultSize.M,
     },
-    bt_sign_up: {
-        marginTop: DefaultSize.S,
+    text_or: {
+        marginVertical: DefaultSize.M,
+        fontWeight: 'bold',
+    },
+    container_social: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        paddingVertical: DefaultSize.XS,
     },
 });
 

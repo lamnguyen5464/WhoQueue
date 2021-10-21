@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { DefaultSize } from '@utils/Constants';
-import Colors from '@utils/Colors';
 import CustomizedContainer from './CustomizedContainer';
 import CustomizedText from './CustomizedText';
 

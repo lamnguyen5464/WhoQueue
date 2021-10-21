@@ -1,9 +1,10 @@
 import React, { useRef } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, TextInput } from 'react-native';
 import {
     CustomizedContainer,
     CustomizedButton,
     AnimatedFadeDown,
+    CustomizedInput,
     CustomizedText,
     AnimatedHeader,
 } from '@components';
@@ -11,11 +12,12 @@ import useLocalization from '@core/localization';
 import styles from './AuthSignIn.styles';
 import useAuthSignIn from './useAuthSignIn';
 import { useHeaderHeight } from '@react-navigation/stack';
-import { Icon } from 'react-native-elements';
+import { SocialIcon } from 'react-native-elements';
 
 const AuthSignIn = ({ navigation }) => {
     const { LOCALIZATION_ENUMS, LOCALIZED_CONTENT, setLocalization } = useLocalization();
     const headerHeight = useRef(useHeaderHeight()).current;
+    const { refInputEmail } = useRef(null);
 
     const { onPressSignIn, onBack } = useAuthSignIn({ navigation });
 
@@ -23,21 +25,27 @@ const AuthSignIn = ({ navigation }) => {
         return (
             <AnimatedFadeDown style={styles.pos_overlay}>
                 <CustomizedContainer type={'white_overlay'}>
+                    <CustomizedInput ref={refInputEmail} />
                     <CustomizedButton
                         type={'primary'}
                         onPress={onPressSignIn}
-                        containerStyle={styles.bt_sign_in}
+                        containerStyle={styles.cta_confirm}
                     >
-                        Sign in
+                        Send otp aefraer
                     </CustomizedButton>
-                    <CustomizedButton
-                        onPress={onBack}
-                        type={'secondary'}
-                        containerStyle={styles.bt_sign_up}
-                    >
-                        back
-                    </CustomizedButton>
-                    <Icon reverse name="arrow-left" type="simple-line-icon" color={'transparent'} />
+                </CustomizedContainer>
+
+                <CustomizedText type={'subtitle_dark'} textStyle={styles.text_or}>
+                    or use
+                </CustomizedText>
+
+                <CustomizedContainer
+                    type={'white_overlay'}
+                    containerStyle={styles.container_social}
+                >
+                    <SocialIcon raised={true} type="facebook" />
+                    <SocialIcon raised={true} type="google" />
+                    <SocialIcon raised={true} type="twitter" />
                 </CustomizedContainer>
             </AnimatedFadeDown>
         );
@@ -45,13 +53,13 @@ const AuthSignIn = ({ navigation }) => {
 
     const _renderTitle = () => {
         return (
-            <AnimatedFadeDown style={[styles.pos_title, { top: headerHeight }]}>
+            <View style={[styles.pos_title, { top: headerHeight }]}>
                 <CustomizedText type={'title'}>Sign in</CustomizedText>
                 <CustomizedText type={'subtitle'}>
                     {' '}
                     aerg arg aeg aeg ag gag aerg gae e ga erga
                 </CustomizedText>
-            </AnimatedFadeDown>
+            </View>
         );
     };
 

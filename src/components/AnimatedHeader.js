@@ -31,9 +31,9 @@ const AnimatedHeader = forwardRef((props, ref) => {
         setOpacity,
     }));
 
-    const _renderIconLeft = () => (
+    const _renderIconLeft = (color = 'black') => (
         <TouchableOpacity onPress={onPressBack} style={styles.ic_left}>
-            <Icon name="arrow-back-outline" type="ionicon" color={'white'} />
+            <Icon name="arrow-back-outline" type="ionicon" color={color} />
         </TouchableOpacity>
     );
 
@@ -48,7 +48,7 @@ const AnimatedHeader = forwardRef((props, ref) => {
     return (
         <>
             <View style={[styles.transparent_container, { height: headerHeight || 0 }]}>
-                {_renderIconLeft()}
+                {_renderIconLeft('white')}
                 {_renderIconRight()}
             </View>
             <Animated.View
@@ -87,8 +87,6 @@ const styles = StyleSheet.create({
         paddingBottom: DefaultSize.M,
     },
     ic_left: {
-        width: DefaultSize.L,
-        height: DefaultSize.L,
         marginLeft: DefaultSize.XL,
     },
     ic_right: {

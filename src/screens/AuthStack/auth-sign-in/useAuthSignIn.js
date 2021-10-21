@@ -11,9 +11,7 @@ const useAuthHome = ({ navigation }) => {
     }, []);
 
     return {
-        onPressSignIn: () => {
-            console.log('ahaergae');
-        },
+        onPressSignIn: () => {},
 
         onBack: () => {
             navigation.pop();

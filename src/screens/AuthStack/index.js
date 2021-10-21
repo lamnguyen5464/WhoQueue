@@ -17,7 +17,7 @@ const StackNavigator = () => {
         ));
 
     return (
-        <Stack.Navigator screenOptions={{ animationEnabled: false }}>
+        <Stack.Navigator screenOptions={{ animationEnabled: true }}>
             {getStackScreens()}
         </Stack.Navigator>
     );
