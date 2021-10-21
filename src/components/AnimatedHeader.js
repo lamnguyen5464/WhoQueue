@@ -6,6 +6,7 @@ import { useHeaderHeight } from '@react-navigation/stack';
 import ShareStyles from '@utils/SharedStyles';
 import assets from '@assets';
 import { CustomizedText } from '@components';
+import { Icon } from 'react-native-elements';
 
 const AnimatedHeader = forwardRef((props, ref) => {
     const { navigation, title = '' } = props;
@@ -31,8 +32,8 @@ const AnimatedHeader = forwardRef((props, ref) => {
     }));
 
     const _renderIconLeft = () => (
-        <TouchableOpacity onPress={onPressBack}>
-            <Image source={assets.ic_back} style={styles.ic_left} />
+        <TouchableOpacity onPress={onPressBack} style={styles.ic_left}>
+            <Icon name="arrow-back-outline" type="ionicon" color={'white'} />
         </TouchableOpacity>
     );
 

@@ -11,6 +11,7 @@ import useLocalization from '@core/localization';
 import styles from './AuthSignIn.styles';
 import useAuthSignIn from './useAuthSignIn';
 import { useHeaderHeight } from '@react-navigation/stack';
+import { Icon } from 'react-native-elements';
 
 const AuthSignIn = ({ navigation }) => {
     const { LOCALIZATION_ENUMS, LOCALIZED_CONTENT, setLocalization } = useLocalization();
@@ -36,6 +37,7 @@ const AuthSignIn = ({ navigation }) => {
                     >
                         back
                     </CustomizedButton>
+                    <Icon reverse name="arrow-left" type="simple-line-icon" color={'transparent'} />
                 </CustomizedContainer>
             </AnimatedFadeDown>
         );
@@ -60,6 +62,7 @@ const AuthSignIn = ({ navigation }) => {
                 type={'main_theme'}
                 containerStyle={styles.foreground}
             ></CustomizedContainer>
+
             {_renderTitle()}
             {_renderMainOverlay()}
         </View>
