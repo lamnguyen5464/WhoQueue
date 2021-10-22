@@ -13,7 +13,7 @@ import useAuthHome from './useAuthHome';
 const AuthHome = ({ navigation }) => {
     const { LOCALIZATION_ENUMS, LOCALIZED_CONTENT, setLocalization } = useLocalization();
 
-    const { onPressSignIn } = useAuthHome({ navigation });
+    const { onPressSignIn, onPressSignUp } = useAuthHome({ navigation });
 
     const _renderMainOverlay = () => {
         return (
@@ -31,8 +31,12 @@ const AuthHome = ({ navigation }) => {
                     >
                         Sign in
                     </CustomizedButton>
-                    <CustomizedButton type={'secondary'} containerStyle={styles.bt_sign_up}>
-                        Sign in
+                    <CustomizedButton
+                        onPress={onPressSignUp}
+                        type={'secondary'}
+                        containerStyle={styles.bt_sign_up}
+                    >
+                        Sign up
                     </CustomizedButton>
                 </CustomizedContainer>
             </AnimatedFadeDown>

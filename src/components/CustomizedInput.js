@@ -1,4 +1,4 @@
-import React, { useState, forwardRef, useImperativeHandle } from 'react';
+import React, { memo, useState, forwardRef, useImperativeHandle } from 'react';
 import { TextInput, StyleSheet, View, Platform } from 'react-native';
 import { DefaultSize, TextSize } from '@utils/Constants';
 import Colors from '@utils/Colors';
@@ -61,4 +61,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default CustomizedInput;
+export default memo(CustomizedInput);

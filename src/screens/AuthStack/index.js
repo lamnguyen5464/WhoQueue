@@ -2,10 +2,12 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import AuthHome from './auth-home';
 import AuthSignIn from './auth-sign-in';
+import AuthEmailOTP from './auth-email-otp';
 
 const SCREENS = {
     AuthHome,
     AuthSignIn,
+    AuthEmailOTP,
 };
 
 const Stack = createStackNavigator();

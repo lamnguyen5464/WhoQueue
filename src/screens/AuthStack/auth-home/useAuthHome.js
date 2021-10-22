@@ -13,11 +13,13 @@ const useAuthHome = ({ navigation }) => {
     }, []);
 
     return {
-        onPressSignIn: debounce(() => {
-            navigation.push(AUTH_STACKS_ENUMS.AuthSignIn);
-        }, 500),
+        onPressSignIn: () => {
+            AppNavigator.pushScreen(navigation, AUTH_STACKS_ENUMS.AuthSignIn);
+        },
 
-        onPressSignUp: () => {},
+        onPressSignUp: () => {
+            AppNavigator.pushScreen(navigation, AUTH_STACKS_ENUMS.AuthEmailOTP);
+        },
     };
 };
 

@@ -1,5 +1,6 @@
 import { createRef } from 'react';
 import { ROOT_STACKS_ENUM } from './StackConstants';
+import debounce from 'lodash/debounce';
 
 module.exports = {
     navigatorRef: createRef(null),
@@ -29,4 +30,12 @@ module.exports = {
         // back to login
         this.getNavigator()?.navigate(ROOT_STACKS_ENUM.AuthStack);
     },
+
+    pushScreen: debounce(
+        (navigation, screen, options = {}) => {
+            navigation?.push(screen, options);
+        },
+        500,
+        { leading: true, trailing: false }
+    ),
 };

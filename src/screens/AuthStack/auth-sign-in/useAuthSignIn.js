@@ -3,7 +3,7 @@ import { useSelector, keySelector, useDispatch, actions } from '@context';
 import Http from '@core/http';
 import AppNavigator from '@core/navigation/AppNavigator';
 
-const useAuthHome = ({ navigation }) => {
+const useAuthSignIn = ({ navigation }) => {
     useLayoutEffect(() => {
         navigation.setOptions({
             headerShown: false,
@@ -19,4 +19,4 @@ const useAuthHome = ({ navigation }) => {
     };
 };
 
-export default useAuthHome;
+export default useAuthSignIn;
