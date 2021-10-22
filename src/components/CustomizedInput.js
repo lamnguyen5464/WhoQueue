@@ -1,4 +1,4 @@
-import React, { memo, useState, forwardRef, useImperativeHandle } from 'react';
+import React, { memo, useState, forwardRef, useImperativeHandle, useLayoutEffect } from 'react';
 import { TextInput, StyleSheet, View, Platform } from 'react-native';
 import { DefaultSize, TextSize } from '@utils/Constants';
 import Colors from '@utils/Colors';
@@ -11,9 +11,14 @@ const CustomizedInput = forwardRef((props, ref) => {
         placeholder = '',
         containerStyle = {},
         isPassword = false,
+        onChangeValue,
     } = props;
 
     const [value, setValue] = useState('');
+
+    useLayoutEffect(() => {
+        onChangeValue?.(value);
+    }, [value]);
 
     const getValue = () => {
         return value;

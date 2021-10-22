@@ -8,10 +8,10 @@ module.exports = {
     CURRENT_ENVIRONMENT: ENV_ENUM.DEVELOPMENT,
     CONFIG: {
         [ENV_ENUM.DEVELOPMENT]: {
-            apiDomain: 'https://spring-demo-5464.herokuapp.com',
+            apiDomain: 'https://onlineup-server.herokuapp.com',
         },
         [ENV_ENUM.PRODUCTION]: {
-            apiDomain: 'https://spring-demo-5464.herokuapp.com',
+            apiDomain: 'https://onlineup-server.herokuapp.com',
         },
     },
 

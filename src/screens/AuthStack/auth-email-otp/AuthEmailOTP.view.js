@@ -18,10 +18,17 @@ const AuthEmailOTP = ({ navigation }) => {
     const { LOCALIZATION_ENUMS, LOCALIZED_CONTENT, setLocalization } = useLocalization();
     const headerHeight = useRef(useHeaderHeight()).current;
 
-    const { onPressSendOTP, onPressConfirmOTP, isShowOTPInput, refInputEmail, refInputOTP } =
-        useAuthEmailOTP({
-            navigation,
-        });
+    const {
+        onPressConfirmOTP,
+        onPressSendOTP,
+        isShowOTPInput,
+        onChangeEmail,
+        refInputEmail,
+        refInputOTP,
+        loadingCTA,
+    } = useAuthEmailOTP({
+        navigation,
+    });
 
     const _renderMainOverlay = () => {
         return <AnimatedFadeDown style={styles.pos_overlay}>{_renderInput()}</AnimatedFadeDown>;
@@ -29,17 +36,16 @@ const AuthEmailOTP = ({ navigation }) => {
 
     const _renderInput = () => (
         <CustomizedContainer type={'white_overlay'}>
-            <CustomizedInput ref={refInputEmail} icon={'mail'} placeholder={'Email'} />
+            <CustomizedInput
+                ref={refInputEmail}
+                icon={'mail'}
+                placeholder={'Email'}
+                onChangeValue={onChangeEmail}
+            />
 
             {isShowOTPInput ? (
-                <AnimatedFadeDown style={{ marginTop: 12 }}>
-                    <CustomizedInputOTP
-                        ref={refInputOTP}
-                        icon={'lock-closed'}
-                        containerStyle={styles.container_password}
-                        placeholder={'Padffdssword'}
-                        isPassword={true}
-                    />
+                <AnimatedFadeDown style={styles.container_OTP}>
+                    <CustomizedInputOTP ref={refInputOTP} onDone={onPressConfirmOTP} />
                 </AnimatedFadeDown>
             ) : null}
 
@@ -47,8 +53,9 @@ const AuthEmailOTP = ({ navigation }) => {
                 type={'primary'}
                 onPress={!isShowOTPInput ? onPressSendOTP : onPressConfirmOTP}
                 containerStyle={styles.cta_confirm}
+                loading={loadingCTA}
             >
-                send OTP
+                {isShowOTPInput ? 'Confirm otp' : 'send OTP'}
             </CustomizedButton>
         </CustomizedContainer>
     );

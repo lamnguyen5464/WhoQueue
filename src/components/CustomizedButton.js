@@ -3,6 +3,7 @@ import { StyleSheet, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { DefaultSize } from '@utils/Constants';
 import CustomizedContainer from './CustomizedContainer';
 import CustomizedText from './CustomizedText';
+import debounce from 'lodash/debounce';
 
 const CustomizedButton = ({
     type = 'primary',
@@ -16,24 +17,26 @@ const CustomizedButton = ({
 
     const loadingContent = () => <ActivityIndicator />;
 
-    const mainContent = () => (
-        <CustomizedContainer type={type} containerStyle={[appliedComponentType, componentStyle]}>
-            {typeof children === 'string' ? (
-                <CustomizedText type={type}>{children}</CustomizedText>
-            ) : (
-                children
-            )}
-        </CustomizedContainer>
-    );
+    const mainContent = () =>
+        typeof children === 'string' ? (
+            <CustomizedText type={type}>{children}</CustomizedText>
+        ) : (
+            children
+        );
 
     return (
         <TouchableOpacity
             style={[containerStyle, containerSyle.default]}
-            onPress={onPress}
+            onPress={debounce(onPress, 300, { leading: true, trailing: false })}
             activeOpacity={0.9}
-            disabled={!onPress}
+            disabled={!onPress || loading}
         >
-            {loading ? loadingContent() : mainContent()}
+            <CustomizedContainer
+                type={type}
+                containerStyle={[appliedComponentType, componentStyle]}
+            >
+                {loading ? loadingContent() : mainContent()}
+            </CustomizedContainer>
         </TouchableOpacity>
     );
 };

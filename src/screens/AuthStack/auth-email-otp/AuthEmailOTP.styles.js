@@ -32,12 +32,8 @@ const styles = StyleSheet.create({
         marginVertical: DefaultSize.M,
         fontWeight: 'bold',
     },
-    container_password: {
-        marginTop: DefaultSize.M,
-    },
     container_OTP: {
-        justifyContent: 'center',
-        paddingVertical: DefaultSize.M,
+        marginTop: DefaultSize.M,
     },
     icon_social: {
         borderRadius: DefaultSize.XS,

@@ -6,7 +6,13 @@ import Colors from '@utils/Colors';
 const EMPTY_VALUE = '-';
 
 const CustomizedInputOTP = forwardRef((props, ref) => {
-    const { containerStyle = {}, maxLength = 6, keyboardType = 'number-pad', onDone } = props;
+    const {
+        containerStyle = {},
+        maxLength = 6,
+        keyboardType = 'number-pad',
+        onDone,
+        onChangeValue,
+    } = props;
 
     const refInput = useRef(null);
 
@@ -16,19 +22,25 @@ const CustomizedInputOTP = forwardRef((props, ref) => {
         if (value.length === maxLength) {
             onDone?.();
         }
+        onChangeValue?.(value);
     }, [value]);
 
     const getValue = () => {
         return value;
     };
 
+    const reset = () => {
+        setValue('');
+    };
+
     const focus = () => {
-        console.log(refInput.current);
+        refInput.current?.focus();
     };
 
     useImperativeHandle(ref, () => ({
         getValue,
         focus,
+        reset,
     }));
 
     const _renderCells = () => {
