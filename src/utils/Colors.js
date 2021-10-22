@@ -301,6 +301,8 @@ const Colors = {
     base_3: '#C06C84',
     base_4: '#6C5B7B',
     base_5: '#355C7D',
+    primary_1: '#6C5B7B',
+    primary_2: '#355C7D',
     // gradient
     gradient_peach: ['#F8B195', '#F67280'],
     gradient_gray: ['#ffffff', '#ffffff'],

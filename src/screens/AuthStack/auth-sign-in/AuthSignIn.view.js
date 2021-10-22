@@ -24,32 +24,54 @@ const AuthSignIn = ({ navigation }) => {
     const _renderMainOverlay = () => {
         return (
             <AnimatedFadeDown style={styles.pos_overlay}>
-                <CustomizedContainer type={'white_overlay'}>
-                    <CustomizedInput ref={refInputEmail} />
-                    <CustomizedButton
-                        type={'primary'}
-                        onPress={onPressSignIn}
-                        containerStyle={styles.cta_confirm}
-                    >
-                        Send otp aefraer
-                    </CustomizedButton>
-                </CustomizedContainer>
-
-                <CustomizedText type={'subtitle_dark'} textStyle={styles.text_or}>
-                    or use
-                </CustomizedText>
-
-                <CustomizedContainer
-                    type={'white_overlay'}
-                    containerStyle={styles.container_social}
-                >
-                    <SocialIcon raised={true} type="facebook" />
-                    <SocialIcon raised={true} type="google" />
-                    <SocialIcon raised={true} type="twitter" />
-                </CustomizedContainer>
+                {_renderInput()}
+                {_renderTextOr()}
+                {_renderSocial()}
             </AnimatedFadeDown>
         );
     };
+
+    const _renderInput = () => (
+        <CustomizedContainer type={'white_overlay'}>
+            <CustomizedInput ref={refInputEmail} icon={'mail'} placeholder={'Email'} />
+            <CustomizedInput
+                ref={refInputEmail}
+                icon={'lock-closed'}
+                containerStyle={styles.container_password}
+                placeholder={'Password'}
+                isPassword={true}
+            />
+
+            <CustomizedButton
+                type={'primary'}
+                onPress={onPressSignIn}
+                containerStyle={styles.cta_confirm}
+            >
+                Signnn in
+            </CustomizedButton>
+        </CustomizedContainer>
+    );
+
+    const _renderTextOr = () => (
+        <CustomizedText type={'subtitle_dark'} textStyle={styles.text_or}>
+            or use
+        </CustomizedText>
+    );
+
+    const _renderSocial = () => (
+        <CustomizedContainer type={'white_overlay'} containerStyle={styles.container_social}>
+            <SocialIcon raised={true} type="facebook" style={styles.icon_social} />
+            <SocialIcon raised={true} type="google" style={styles.icon_social} />
+            <SocialIcon raised={true} type="twitter" style={styles.icon_social} />
+        </CustomizedContainer>
+    );
+
+    const _renderForeground = () => (
+        <CustomizedContainer
+            type={'main_theme'}
+            containerStyle={styles.foreground}
+        ></CustomizedContainer>
+    );
 
     const _renderTitle = () => {
         return (
@@ -66,11 +88,7 @@ const AuthSignIn = ({ navigation }) => {
     return (
         <View style={styles.container}>
             <AnimatedHeader navigation={navigation} />
-            <CustomizedContainer
-                type={'main_theme'}
-                containerStyle={styles.foreground}
-            ></CustomizedContainer>
-
+            {_renderForeground()}
             {_renderTitle()}
             {_renderMainOverlay()}
         </View>

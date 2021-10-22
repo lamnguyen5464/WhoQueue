@@ -39,12 +39,16 @@ const AuthHome = ({ navigation }) => {
         );
     };
 
+    const _renderForeground = () => (
+        <CustomizedContainer
+            type={'main_theme'}
+            containerStyle={styles.foreground}
+        ></CustomizedContainer>
+    );
+
     return (
         <View style={styles.container}>
-            <CustomizedContainer
-                type={'main_theme'}
-                containerStyle={styles.foreground}
-            ></CustomizedContainer>
+            {_renderForeground()}
             {_renderMainOverlay()}
         </View>
     );

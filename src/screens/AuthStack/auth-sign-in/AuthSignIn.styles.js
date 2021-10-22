@@ -8,12 +8,12 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.black_05,
     },
     foreground: {
-        height: '30%',
+        height: '35%',
         borderBottomLeftRadius: DefaultSize.XL,
         borderBottomRightRadius: DefaultSize.XL,
     },
     pos_overlay: {
-        height: '70%',
+        height: '80%',
         width: '100%',
         justifyContent: 'center',
         alignItems: 'center',
@@ -32,10 +32,16 @@ const styles = StyleSheet.create({
         marginVertical: DefaultSize.M,
         fontWeight: 'bold',
     },
+    container_password: {
+        marginTop: DefaultSize.M,
+    },
     container_social: {
         flexDirection: 'row',
         justifyContent: 'center',
         paddingVertical: DefaultSize.XS,
+    },
+    icon_social: {
+        borderRadius: DefaultSize.XS,
     },
 });
 

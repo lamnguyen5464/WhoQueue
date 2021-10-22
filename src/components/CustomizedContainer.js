@@ -27,23 +27,24 @@ const CustomizedContainer = ({ type = null, containerStyle = {}, children, angle
 
 const styles = StyleSheet.create({
     main_theme: {
-        backgroundColor: [Colors.blue_08, Colors.blue_fund_2],
+        backgroundColor: [Colors.primary_1, Colors.primary_2],
     },
     primary: {
         width: '100%',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: [Colors.blue_fund_2, Colors.blue_fund_2],
+        backgroundColor: [Colors.primary_1, Colors.primary_1],
     },
     secondary: {
         width: '100%',
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: [Colors.white, Colors.white],
-        borderColor: Colors.blue_fund_2,
+        borderColor: Colors.primary_1,
         borderWidth: DefaultSize.XXS / 2,
     },
     white_overlay: {
+        ...SharedStyles.shadow,
         padding: DefaultSize.L,
         alignItems: 'center',
         width: '90%',

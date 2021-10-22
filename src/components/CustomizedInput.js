@@ -1,11 +1,17 @@
 import React, { useState, forwardRef, useImperativeHandle } from 'react';
-import { TextInput, StyleSheet, View } from 'react-native';
+import { TextInput, StyleSheet, View, Platform } from 'react-native';
 import { DefaultSize, TextSize } from '@utils/Constants';
 import Colors from '@utils/Colors';
 import { Icon } from 'react-native-elements';
 
 const CustomizedInput = forwardRef((props, ref) => {
-    const { tintIconColor = Colors.black_10, placeholder = 'Email' } = props;
+    const {
+        icon = '',
+        tintIconColor = Colors.black_10,
+        placeholder = '',
+        containerStyle = {},
+        isPassword = false,
+    } = props;
 
     const [value, setValue] = useState('');
 
@@ -18,16 +24,19 @@ const CustomizedInput = forwardRef((props, ref) => {
     }));
 
     return (
-        <View style={styles.container}>
-            <Icon name="mail" type="ionicon" color={tintIconColor} />
+        <View style={[styles.container, containerStyle]}>
+            <Icon name={icon} type="ionicon" color={tintIconColor} />
             <TextInput
+                editable
                 value={value}
                 numberOfLines={1}
+                autoCorrect={false}
                 autoCapitalize={'none'}
-                onChangeText={text => setValue(text)}
-                editable
                 placeholder={placeholder}
+                secureTextEntry={isPassword}
                 style={styles.container_input}
+                onChangeText={text => setValue(text)}
+                placeholderTextColor={Colors.black_10}
             />
         </View>
     );
@@ -40,7 +49,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         borderRadius: DefaultSize.S,
         backgroundColor: Colors.black_03,
-        paddingVertical: DefaultSize.S,
+        paddingVertical: Platform.OS === 'ios' ? DefaultSize.S : 0,
         paddingHorizontal: DefaultSize.M,
     },
     container_input: {

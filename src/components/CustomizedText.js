@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     },
     secondary: {
         fontSize: TextSize.H4,
-        color: Colors.blue_fund_2,
+        color: Colors.primary_1,
         fontWeight: 'bold',
     },
 });
