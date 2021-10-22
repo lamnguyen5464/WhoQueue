@@ -13,6 +13,7 @@ import useLocalization from '@core/localization';
 import styles from './AuthEmailOTP.styles';
 import useAuthEmailOTP from './useAuthEmailOTP';
 import { useHeaderHeight } from '@react-navigation/stack';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const AuthEmailOTP = ({ navigation }) => {
     const { LOCALIZATION_ENUMS, LOCALIZED_CONTENT, setLocalization } = useLocalization();
@@ -26,39 +27,72 @@ const AuthEmailOTP = ({ navigation }) => {
         refInputEmail,
         refInputOTP,
         loadingCTA,
+        errorText,
     } = useAuthEmailOTP({
         navigation,
     });
 
     const _renderMainOverlay = () => {
-        return <AnimatedFadeDown style={styles.pos_overlay}>{_renderInput()}</AnimatedFadeDown>;
+        return (
+            <AnimatedFadeDown style={styles.pos_overlay}>
+                {_renderInputComponents()}
+            </AnimatedFadeDown>
+        );
     };
 
-    const _renderInput = () => (
+    const _renderInputComponents = () => (
         <CustomizedContainer type={'white_overlay'}>
-            <CustomizedInput
-                ref={refInputEmail}
-                icon={'mail'}
-                placeholder={'Email'}
-                onChangeValue={onChangeEmail}
-            />
-
-            {isShowOTPInput ? (
-                <AnimatedFadeDown style={styles.container_OTP}>
-                    <CustomizedInputOTP ref={refInputOTP} onDone={onPressConfirmOTP} />
-                </AnimatedFadeDown>
-            ) : null}
-
-            <CustomizedButton
-                type={'primary'}
-                onPress={!isShowOTPInput ? onPressSendOTP : onPressConfirmOTP}
-                containerStyle={styles.cta_confirm}
-                loading={loadingCTA}
-            >
-                {isShowOTPInput ? 'Confirm otp' : 'send OTP'}
-            </CustomizedButton>
+            {_renderInputEmail()}
+            {_renderInputOTP()}
+            {_renderCTA()}
+            {_renderTextResend()}
+            {_renderTextError()}
         </CustomizedContainer>
     );
+
+    const _renderInputEmail = () => (
+        <CustomizedInput
+            ref={refInputEmail}
+            icon={'mail'}
+            placeholder={'Email'}
+            onChangeValue={onChangeEmail}
+        />
+    );
+
+    const _renderInputOTP = () =>
+        isShowOTPInput ? (
+            <AnimatedFadeDown style={styles.container_OTP}>
+                <CustomizedInputOTP ref={refInputOTP} onDone={onPressConfirmOTP} />
+            </AnimatedFadeDown>
+        ) : null;
+
+    const _renderCTA = () => (
+        <CustomizedButton
+            type={'primary'}
+            onPress={!isShowOTPInput ? onPressSendOTP : onPressConfirmOTP}
+            containerStyle={styles.cta_confirm}
+            loading={loadingCTA}
+        >
+            {isShowOTPInput ? 'Confirm otp' : 'send OTP'}
+        </CustomizedButton>
+    );
+
+    const _renderTextResend = () =>
+        isShowOTPInput && !errorText ? (
+            <TouchableOpacity onPress={onPressSendOTP} activeOpacity={0.8}>
+                <CustomizedText type={'subtitle_dark'} textStyle={styles.text_resend}>
+                    {'Cannot recieved OTP? '}
+                    <CustomizedText type={'secondary'}>{'Resend'}</CustomizedText>
+                </CustomizedText>
+            </TouchableOpacity>
+        ) : null;
+
+    const _renderTextError = () =>
+        errorText ? (
+            <CustomizedText type={'error'} textStyle={styles.text_resend}>
+                *{errorText}
+            </CustomizedText>
+        ) : null;
 
     const _renderForeground = () => (
         <CustomizedContainer

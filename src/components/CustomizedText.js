@@ -41,6 +41,12 @@ const styles = StyleSheet.create({
         color: Colors.primary_1,
         fontWeight: 'bold',
     },
+    error: {
+        fontSize: TextSize.SubTitle,
+        color: Colors.error,
+        fontWeight: 'bold',
+        alignSelf: 'flex-start',
+    },
 });
 
 export default React.memo(CustomizedText);

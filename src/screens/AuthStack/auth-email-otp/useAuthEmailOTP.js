@@ -13,6 +13,7 @@ const useAuthEmailOTP = ({ navigation }) => {
     };
 
     const [pageStatus, setPageStatus] = useState(PAGE_STATUS.TYPING_EMAIL);
+    const [errorText, setErrorText] = useState('');
 
     const isShowOTPInput =
         pageStatus === PAGE_STATUS.TYPING_OTP || pageStatus === PAGE_STATUS.VERYFYING_OTP;
@@ -38,6 +39,16 @@ const useAuthEmailOTP = ({ navigation }) => {
 
     const clearOTP = () => {
         refInputOTP.current?.reset();
+        setPageStatus(PAGE_STATUS.TYPING_OTP);
+    };
+
+    const clearError = () => {
+        setErrorText('');
+    };
+
+    const resetPageStatus = () => {
+        setPageStatus(PAGE_STATUS.TYPING_EMAIL);
+        clearError();
     };
 
     return {
@@ -46,17 +57,17 @@ const useAuthEmailOTP = ({ navigation }) => {
         refInputOTP,
         isShowOTPInput,
         loadingCTA,
+        errorText,
 
         onChangeEmail: debounce(() => {
-            setPageStatus(PAGE_STATUS.TYPING_EMAIL);
+            resetPageStatus();
         }, 300),
 
         onPressSendOTP: () => {
-            const email = refInputEmail.current?.getValue() || 'ntlam19@apcs.fitus.edu.vn';
+            const email = refInputEmail.current?.getValue();
             setPageStatus(PAGE_STATUS.SENDING_EMAIL);
             ApiHelper.requestOTP({ email })
                 .then(res => {
-                    console.log('res', res);
                     setPageStatus(PAGE_STATUS.TYPING_OTP);
                 })
                 .catch(() => {
@@ -66,19 +77,16 @@ const useAuthEmailOTP = ({ navigation }) => {
         },
 
         onPressConfirmOTP: () => {
-            const email = refInputEmail.current?.getValue() || 'ntlam19@apcs.fitus.edu.vn';
+            const email = refInputEmail.current?.getValue();
             const otp = refInputOTP.current?.getValue();
 
             setPageStatus(PAGE_STATUS.VERYFYING_OTP);
             ApiHelper.verifyOTP({ email, otp })
                 .then(res => {
                     // navigate
-                    console.log('res', res);
-                    setPageStatus(PAGE_STATUS.TYPING_OTP);
+                    setErrorText(res.desc);
                 })
-                .catch(() => {
-                    setPageStatus(PAGE_STATUS.TYPING_OTP);
-                })
+                .catch(() => {})
                 .finally(() => {
                     clearOTP();
                 });

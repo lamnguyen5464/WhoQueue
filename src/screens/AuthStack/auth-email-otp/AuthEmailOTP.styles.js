@@ -38,6 +38,11 @@ const styles = StyleSheet.create({
     icon_social: {
         borderRadius: DefaultSize.XS,
     },
+    text_resend: {
+        marginVertical: DefaultSize.M,
+        alignItems: 'flex-end',
+        justifyContent: 'center',
+    },
 });
 
 export default styles;

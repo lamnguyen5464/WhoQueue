@@ -51,6 +51,9 @@ module.exports = {
             };
 
             const _successHandler = ({ data }) => {
+                if (__DEV__) {
+                    console.logg?.(data, 'green', '[RESPONSE from API]' + path);
+                }
                 if (!data) {
                     throw Error(`Cannot find response from api: ${options.url}`);
                 }
@@ -74,7 +77,7 @@ module.exports = {
             axios(options).then(_successHandler).catch(_failHandler);
 
             if (__DEV__) {
-                console.log(' >>>> [REQUEST API] >>>>\n', JSON.stringify(options, null, 2));
+                console.logg?.(data, 'blue', '>>>>>> REQUEST API ' + path);
             }
         });
     },
