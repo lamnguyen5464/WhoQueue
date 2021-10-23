@@ -66,6 +66,7 @@ const useAuthEmailOTP = ({ navigation }) => {
         onPressSendOTP: () => {
             const email = refInputEmail.current?.getValue();
             setPageStatus(PAGE_STATUS.SENDING_EMAIL);
+            clearError();
             ApiHelper.requestOTP({ email })
                 .then(res => {
                     setPageStatus(PAGE_STATUS.TYPING_OTP);

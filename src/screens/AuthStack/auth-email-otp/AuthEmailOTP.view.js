@@ -45,8 +45,8 @@ const AuthEmailOTP = ({ navigation }) => {
             {_renderInputEmail()}
             {_renderInputOTP()}
             {_renderCTA()}
-            {_renderTextResend()}
             {_renderTextError()}
+            {_renderTextResend()}
         </CustomizedContainer>
     );
 
@@ -78,7 +78,7 @@ const AuthEmailOTP = ({ navigation }) => {
     );
 
     const _renderTextResend = () =>
-        isShowOTPInput && !errorText ? (
+        isShowOTPInput ? (
             <TouchableOpacity onPress={onPressSendOTP} activeOpacity={0.8}>
                 <CustomizedText type={'subtitle_dark'} textStyle={styles.text_resend}>
                     {'Cannot recieved OTP? '}
