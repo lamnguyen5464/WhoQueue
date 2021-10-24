@@ -1,4 +1,5 @@
-import { createRef } from 'react';
+import React, { createRef } from 'react';
+import { ActivityIndicator } from 'react-native';
 import { ROOT_STACKS_ENUM } from './StackConstants';
 import debounce from 'lodash/debounce';
 
@@ -38,4 +39,15 @@ module.exports = {
         500,
         { leading: true, trailing: false }
     ),
+
+    showLoading() {
+        this.overlayRef.current.show({
+            component: <ActivityIndicator />,
+            cancelHandler: () => null,
+        });
+    },
+
+    hideLoading() {
+        this.overlayRef.current.hide();
+    },
 };

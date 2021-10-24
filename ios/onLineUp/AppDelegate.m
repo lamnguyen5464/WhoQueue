@@ -31,33 +31,33 @@
   [self.window makeKeyAndVisible];
   
   //Config Facebook
-  [[FBSDKApplicationDelegate sharedInstance] application:application
-                           didFinishLaunchingWithOptions:launchOptions];
-  
-  NSArray *permissions = @[@"public_profile", @"email"];
-  
-  FBSDKLoginManager *loginMgr = [[FBSDKLoginManager alloc] init];
-  [loginMgr logInWithPermissions:permissions fromViewController:nil handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
-    if (error) {
-      NSLog(@"@@@ error");
-      
-    }
-    
-    if (result.isCancelled || !result.token) {
-      NSLog(@"@@@ cancel");
-    }
-    
-    NSInteger expiration = [result.token.expirationDate timeIntervalSince1970];
-    NSLog(@"@@@ sucess: %@", result.token.tokenString);
-//              resolve(@{
-//                        @"type": @"success",
-//                        @"token": result.token.tokenString,
-//                        @"expires": @(expiration),
-//                        @"permissions": [result.token.permissions allObjects],
-//                        @"declinedPermissions": [result.token.declinedPermissions allObjects]
-//                        });
-  }];
-  
+//  [[FBSDKApplicationDelegate sharedInstance] application:application
+//                           didFinishLaunchingWithOptions:launchOptions];
+//
+//  NSArray *permissions = @[@"public_profile", @"email"];
+//
+//  FBSDKLoginManager *loginMgr = [[FBSDKLoginManager alloc] init];
+//  [loginMgr logInWithPermissions:permissions fromViewController:nil handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
+//    if (error) {
+//      NSLog(@"@@@ error");
+//
+//    }
+//
+//    if (result.isCancelled || !result.token) {
+//      NSLog(@"@@@ cancel");
+//    }
+//
+//    NSInteger expiration = [result.token.expirationDate timeIntervalSince1970];
+//    NSLog(@"@@@ sucess: %@", result.token.tokenString);
+////              resolve(@{
+////                        @"type": @"success",
+////                        @"token": result.token.tokenString,
+////                        @"expires": @(expiration),
+////                        @"permissions": [result.token.permissions allObjects],
+////                        @"declinedPermissions": [result.token.declinedPermissions allObjects]
+////                        });
+//  }];
+//
   return YES;
 }
 

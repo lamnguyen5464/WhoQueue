@@ -14,7 +14,7 @@ const App = () => {
             />
             <AppOverlay
                 ref={ref => {
-                    AppNavigator.getOverlay(ref);
+                    AppNavigator.setOverlay(ref);
                 }}
             />
         </AppProvider>

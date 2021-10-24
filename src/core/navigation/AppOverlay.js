@@ -10,8 +10,6 @@ import { StyleSheet, Animated, BackHandler, TouchableOpacity } from 'react-nativ
 import Colors from '@utils/Colors';
 import { deepMemo } from 'use-hook-kits';
 
-export const refAppOverlay = React.createRef(null);
-
 const DURATION = 500;
 
 const AppOverlay = forwardRef((props, ref) => {

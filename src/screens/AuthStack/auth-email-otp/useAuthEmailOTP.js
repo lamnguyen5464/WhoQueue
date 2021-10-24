@@ -95,13 +95,19 @@ const useAuthEmailOTP = ({ navigation }) => {
         },
 
         onPressFacebook: () => {
-            FacebookSDK.getToken()
-                .then(res => {
-                    console.logg?.(res);
-                })
-                .catch(e => {
-                    console.logg?.(e, 'red');
-                });
+            // FacebookSDK.getToken?.()
+            //     .then(res => {
+            //         console.logg?.(res);
+            //     })
+            //     .catch(e => {
+            //         console.logg?.(e, 'red');
+            //     });
+
+            AppNavigator.showLoading();
+
+            setTimeout(() => {
+                AppNavigator.hideLoading();
+            }, 2000);
         },
     };
 };
