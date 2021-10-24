@@ -1,3 +1,5 @@
 {
-    "test": "Tieng Anh"
+    "test": "Tieng Anh",
+    "signIn": "Sign in",
+    "register": "Register"
 }

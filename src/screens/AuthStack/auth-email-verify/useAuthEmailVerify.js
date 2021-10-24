@@ -4,8 +4,9 @@ import AppNavigator from '@core/navigation/AppNavigator';
 import ApiHelper from '@helpers/ApiHelper';
 import debounce from 'lodash/debounce';
 import FacebookSDK from '@core/nativemodule/facebooksdk';
+import { AUTH_STACKS_ENUMS } from '@screens/AuthStack';
 
-const useAuthEmailOTP = ({ navigation }) => {
+const useAuthEmailVerify = ({ navigation }) => {
     const PAGE_STATUS = {
         TYPING_EMAIL: 'TYPING_EMAIL',
         SENDING_EMAIL: 'SENDING_EMAIL',
@@ -94,22 +95,20 @@ const useAuthEmailOTP = ({ navigation }) => {
                 });
         },
 
-        onPressFacebook: () => {
-            // FacebookSDK.getToken?.()
-            //     .then(res => {
-            //         console.logg?.(res);
-            //     })
-            //     .catch(e => {
-            //         console.logg?.(e, 'red');
-            //     });
-
-            AppNavigator.showLoading();
-
-            setTimeout(() => {
+        onPressFacebook: async () => {
+            try {
+                const fbToken = await FacebookSDK.getToken?.();
+                console.log(fbToken);
+                AppNavigator.showLoading();
+                AppNavigator.pushScreen(navigation, AUTH_STACKS_ENUMS.AuthRegister, {
+                    email: 'lamnguyen5464@gmail.com',
+                });
+            } catch (e) {
+            } finally {
                 AppNavigator.hideLoading();
-            }, 2000);
+            }
         },
     };
 };
 
-export default useAuthEmailOTP;
+export default useAuthEmailVerify;

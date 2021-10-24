@@ -2,8 +2,8 @@ import { useLayoutEffect } from 'react';
 import { useSelector, keySelector, useDispatch, actions } from '@context';
 import Http from '@core/http';
 import AppNavigator from '@core/navigation/AppNavigator';
-import { AUTH_STACKS_ENUMS } from '@screens/AuthStack';
 import debounce from 'lodash/debounce';
+import { AUTH_STACKS_ENUMS } from '@screens/AuthStack';
 
 const useAuthHome = ({ navigation }) => {
     useLayoutEffect(() => {
@@ -18,7 +18,7 @@ const useAuthHome = ({ navigation }) => {
         },
 
         onPressSignUp: () => {
-            AppNavigator.pushScreen(navigation, AUTH_STACKS_ENUMS.AuthEmailOTP);
+            AppNavigator.pushScreen(navigation, AUTH_STACKS_ENUMS.AuthEmailVerify);
         },
     };
 };

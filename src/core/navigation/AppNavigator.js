@@ -1,6 +1,6 @@
 import React, { createRef } from 'react';
-import { ActivityIndicator } from 'react-native';
 import { ROOT_STACKS_ENUM } from './StackConstants';
+import { AnimatedLoading } from '@components';
 import debounce from 'lodash/debounce';
 
 module.exports = {
@@ -33,8 +33,8 @@ module.exports = {
     },
 
     pushScreen: debounce(
-        (navigation, screen, options = {}) => {
-            navigation?.push(screen, options);
+        (navigation, screen, options = {}, params = {}) => {
+            navigation?.push(screen, options, params);
         },
         500,
         { leading: true, trailing: false }
@@ -42,7 +42,7 @@ module.exports = {
 
     showLoading() {
         this.overlayRef.current.show({
-            component: <ActivityIndicator />,
+            component: <AnimatedLoading />,
             cancelHandler: () => null,
         });
     },

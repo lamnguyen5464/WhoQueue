@@ -10,13 +10,13 @@ import {
     AnimatedHeader,
 } from '@components';
 import useLocalization from '@core/localization';
-import styles from './AuthEmailOTP.styles';
-import useAuthEmailOTP from './useAuthEmailOTP';
+import styles from './AuthEmailVerify.styles';
+import useAuthEmailVerify from './useAuthEmailVerify';
 import { useHeaderHeight } from '@react-navigation/stack';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { SocialIcon } from 'react-native-elements';
 
-const AuthEmailOTP = ({ navigation }) => {
+const AuthEmailVerify = ({ navigation }) => {
     const { LOCALIZATION_ENUMS, LOCALIZED_CONTENT, setLocalization } = useLocalization();
     const headerHeight = useRef(useHeaderHeight()).current;
 
@@ -30,7 +30,7 @@ const AuthEmailOTP = ({ navigation }) => {
         refInputOTP,
         loadingCTA,
         errorText,
-    } = useAuthEmailOTP({
+    } = useAuthEmailVerify({
         navigation,
     });
 
@@ -143,4 +143,4 @@ const AuthEmailOTP = ({ navigation }) => {
     );
 };
 
-export default memo(AuthEmailOTP);
+export default memo(AuthEmailVerify);

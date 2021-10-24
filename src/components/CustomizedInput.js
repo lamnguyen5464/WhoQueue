@@ -12,6 +12,7 @@ const CustomizedInput = forwardRef((props, ref) => {
         containerStyle = {},
         isPassword = false,
         onChangeValue,
+        autoCapitalize = 'none',
     } = props;
 
     const [value, setValue] = useState('');
@@ -30,13 +31,13 @@ const CustomizedInput = forwardRef((props, ref) => {
 
     return (
         <View style={[styles.container, containerStyle]}>
-            <Icon name={icon} type="ionicon" color={tintIconColor} />
+            <Icon name={icon} type="ionicon" color={tintIconColor} style={styles.icon} />
             <TextInput
                 editable
                 value={value}
                 numberOfLines={1}
                 autoCorrect={false}
-                autoCapitalize={'none'}
+                autoCapitalize={autoCapitalize}
                 placeholder={placeholder}
                 secureTextEntry={isPassword}
                 style={styles.container_input}
@@ -54,15 +55,16 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         borderRadius: DefaultSize.S,
         backgroundColor: Colors.black_03,
-        paddingVertical: Platform.OS === 'ios' ? DefaultSize.S : 0,
         paddingHorizontal: DefaultSize.M,
     },
+    icon: {},
     container_input: {
         flex: 1,
         marginLeft: DefaultSize.M,
         fontWeight: 'bold',
         fontSize: TextSize.Title,
         color: Colors.black_15,
+        paddingVertical: Platform.OS === 'ios' ? DefaultSize.M : DefaultSize.S,
     },
 });
 

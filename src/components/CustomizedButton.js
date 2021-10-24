@@ -4,6 +4,7 @@ import { DefaultSize } from '@utils/Constants';
 import CustomizedContainer from './CustomizedContainer';
 import CustomizedText from './CustomizedText';
 import debounce from 'lodash/debounce';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 const CustomizedButton = ({
     type = 'primary',
@@ -15,7 +16,7 @@ const CustomizedButton = ({
 }) => {
     const appliedComponentType = componentStyles[type] || {};
 
-    const loadingContent = () => <ActivityIndicator />;
+    const loadingContent = () => <ActivityIndicator color={componentStyle.color || Colors.white} />;
 
     const mainContent = () =>
         typeof children === 'string' ? (

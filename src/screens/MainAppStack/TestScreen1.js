@@ -10,16 +10,16 @@ const TestScreen1 = ({ navigation }) => {
     const testVariable = useSelector(keySelector.testVariable);
 
     React.useEffect(() => {
-        Http.request({
-            method: Http.METHOD.GET,
-            path: '/demo/all',
-        })
-            .then(res => {
-                console.log(res.length);
-            })
-            .catch(e => {
-                console.warn(e);
-            });
+        // Http.request({
+        //     method: Http.METHOD.GET,
+        //     path: '/demo/all',
+        // })
+        //     .then(res => {
+        //         console.log(res.length);
+        //     })
+        //     .catch(e => {
+        //         console.warn(e);
+        //     });
     }, []);
 
     return (

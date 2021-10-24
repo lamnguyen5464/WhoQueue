@@ -45,7 +45,8 @@ const styles = StyleSheet.create({
     },
     white_overlay: {
         ...SharedStyles.shadow,
-        padding: DefaultSize.L,
+        paddingHorizontal: DefaultSize.L,
+        paddingVertical: DefaultSize.XL,
         alignItems: 'center',
         width: '90%',
         borderRadius: DefaultSize.L,

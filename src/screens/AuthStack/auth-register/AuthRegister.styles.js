@@ -42,8 +42,6 @@ const styles = StyleSheet.create({
     },
     icon_social: {
         borderRadius: DefaultSize.XS,
-        height: DefaultSize.XL * 1.7,
-        width: DefaultSize.XL * 1.7,
     },
 });
 
