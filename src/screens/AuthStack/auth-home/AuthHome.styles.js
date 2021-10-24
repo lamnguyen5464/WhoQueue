@@ -1,6 +1,7 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, StatusBar } from 'react-native';
 import { DefaultSize } from '@utils/Constants';
 import Colors from '@utils/Colors';
+import DeviceConfigs from '@utils/DeviceConfigs';
 
 const styles = StyleSheet.create({
     container: {
@@ -28,7 +29,7 @@ const styles = StyleSheet.create({
     container_locale: {
         flexDirection: 'row',
         position: 'absolute',
-        top: DefaultSize.M,
+        top: (DeviceConfigs.isIphoneX() ? DefaultSize.XL * 1.5 : 0) + DefaultSize.M,
         right: DefaultSize.M,
         backgroundColor: Colors.white,
         borderRadius: DefaultSize.S,
@@ -41,14 +42,17 @@ const styles = StyleSheet.create({
         width: '50%',
         borderRadius: DefaultSize.S,
         backgroundColor: Colors.primary_1,
+    },
+    locale_inactive: {
+        width: '50%',
+        backgroundColor: Colors.red,
+    },
+    text_locale_active: {
         color: Colors.white,
         fontWeight: 'bold',
         textAlign: 'center',
     },
-    locale_inactive: {
-        width: '50%',
-        flex: 1,
-        backgroundColor: Colors.red,
+    text_locale_inactive: {
         color: Colors.primary_1,
         fontWeight: 'bold',
         textAlign: 'center',

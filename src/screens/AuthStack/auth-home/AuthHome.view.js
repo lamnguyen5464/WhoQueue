@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from 'react';
+import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import {
     CustomizedContainer,
@@ -13,7 +13,6 @@ import useAuthHome from './useAuthHome';
 const AuthHome = ({ navigation }) => {
     const { LOCALIZATION_ENUMS, LOCALIZED_CONTENT, setLocalization, getLocalization } =
         useLocalization();
-
     const { onPressSignIn, onPressSignUp } = useAuthHome({ navigation });
 
     const _renderMainOverlay = () => {
@@ -59,14 +58,22 @@ const AuthHome = ({ navigation }) => {
                 style={styles.container_locale}
             >
                 {Object.keys(LOCALIZATION_ENUMS).map((item, index) => (
-                    <Text
-                        key={`locale_${item}_${index}_${currentLocale}`}
+                    <View
                         style={
                             currentLocale === item ? styles.locale_active : styles.locale_inactive
                         }
                     >
-                        {item}
-                    </Text>
+                        <Text
+                            key={`locale_${item}_${index}_${currentLocale}`}
+                            style={
+                                currentLocale === item
+                                    ? styles.text_locale_active
+                                    : styles.text_locale_inactive
+                            }
+                        >
+                            {item}
+                        </Text>
+                    </View>
                 ))}
             </TouchableOpacity>
         );
