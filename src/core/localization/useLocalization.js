@@ -17,6 +17,10 @@ const useLocalization = () => {
         setItem(KEY_STORAGE.LOCALIZATION, localization);
     };
 
+    const getLocalization = () => {
+        return currentLocalization;
+    };
+
     const LOCALIZED_CONTENT = CONTENT[currentLocalization] || {};
 
     return {
@@ -24,6 +28,7 @@ const useLocalization = () => {
         LOCALIZED_CONTENT,
         initLocalization,
         setLocalization,
+        getLocalization,
     };
 };
 

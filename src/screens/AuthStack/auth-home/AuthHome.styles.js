@@ -25,6 +25,34 @@ const styles = StyleSheet.create({
     bt_sign_up: {
         marginTop: DefaultSize.S,
     },
+    container_locale: {
+        flexDirection: 'row',
+        position: 'absolute',
+        top: DefaultSize.M,
+        right: DefaultSize.M,
+        backgroundColor: Colors.white,
+        borderRadius: DefaultSize.S,
+        borderColor: Colors.primary_1,
+        borderWidth: DefaultSize.XXS / 2,
+        padding: DefaultSize.XXS,
+        width: 70,
+    },
+    locale_active: {
+        width: '50%',
+        borderRadius: DefaultSize.S,
+        backgroundColor: Colors.primary_1,
+        color: Colors.white,
+        fontWeight: 'bold',
+        textAlign: 'center',
+    },
+    locale_inactive: {
+        width: '50%',
+        flex: 1,
+        backgroundColor: Colors.red,
+        color: Colors.primary_1,
+        fontWeight: 'bold',
+        textAlign: 'center',
+    },
 });
 
 export default styles;
