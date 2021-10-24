@@ -14,6 +14,7 @@ import styles from './AuthEmailOTP.styles';
 import useAuthEmailOTP from './useAuthEmailOTP';
 import { useHeaderHeight } from '@react-navigation/stack';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { SocialIcon } from 'react-native-elements';
 
 const AuthEmailOTP = ({ navigation }) => {
     const { LOCALIZATION_ENUMS, LOCALIZED_CONTENT, setLocalization } = useLocalization();
@@ -22,6 +23,7 @@ const AuthEmailOTP = ({ navigation }) => {
     const {
         onPressConfirmOTP,
         onPressSendOTP,
+        onPressFacebook,
         isShowOTPInput,
         onChangeEmail,
         refInputEmail,
@@ -36,6 +38,8 @@ const AuthEmailOTP = ({ navigation }) => {
         return (
             <AnimatedFadeDown style={styles.pos_overlay}>
                 {_renderInputComponents()}
+                {_renderTextOr()}
+                {_renderSocial()}
             </AnimatedFadeDown>
         );
     };
@@ -93,6 +97,25 @@ const AuthEmailOTP = ({ navigation }) => {
                 *{errorText}
             </CustomizedText>
         ) : null;
+
+    const _renderTextOr = () => (
+        <CustomizedText type={'subtitle_dark'} textStyle={styles.text_or}>
+            or use
+        </CustomizedText>
+    );
+
+    const _renderSocial = () => (
+        <CustomizedContainer type={'white_overlay'} containerStyle={styles.container_social}>
+            <SocialIcon
+                onPress={onPressFacebook}
+                raised={true}
+                type="facebook"
+                style={styles.icon_social}
+            />
+            <SocialIcon raised={true} type="google" style={styles.icon_social} />
+            <SocialIcon raised={true} type="twitter" style={styles.icon_social} />
+        </CustomizedContainer>
+    );
 
     const _renderForeground = () => (
         <CustomizedContainer

@@ -3,6 +3,7 @@ import { useSelector, keySelector, useDispatch, actions } from '@context';
 import AppNavigator from '@core/navigation/AppNavigator';
 import ApiHelper from '@helpers/ApiHelper';
 import debounce from 'lodash/debounce';
+import FacebookSDK from '@core/nativemodule/facebooksdk';
 
 const useAuthEmailOTP = ({ navigation }) => {
     const PAGE_STATUS = {
@@ -90,6 +91,16 @@ const useAuthEmailOTP = ({ navigation }) => {
                 .catch(() => {})
                 .finally(() => {
                     clearOTP();
+                });
+        },
+
+        onPressFacebook: () => {
+            FacebookSDK.getToken()
+                .then(res => {
+                    console.logg?.(res);
+                })
+                .catch(e => {
+                    console.logg?.(e, 'red');
                 });
         },
     };

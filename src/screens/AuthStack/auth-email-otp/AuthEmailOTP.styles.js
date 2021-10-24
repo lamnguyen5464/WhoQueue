@@ -43,6 +43,11 @@ const styles = StyleSheet.create({
         alignItems: 'flex-end',
         justifyContent: 'center',
     },
+    container_social: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        paddingVertical: DefaultSize.XS,
+    },
 });
 
 export default styles;
