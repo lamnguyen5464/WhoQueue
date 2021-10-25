@@ -54,15 +54,15 @@ module.exports = {
                 if (__DEV__) {
                     console.logg?.(data, 'green', '[RESPONSE from API]' + path);
                 }
-                if (!data) {
-                    throw Error(`Cannot find response from api: ${options.url}`);
+                if (data?.accessToken) {
+                    this.accessToken(accessToken);
                 }
                 resolve(data);
             };
 
             const _failHandler = e => {
                 if (retry < 1) {
-                    reject(e);
+                    reject(e?.response?.data);
                     return;
                 }
 

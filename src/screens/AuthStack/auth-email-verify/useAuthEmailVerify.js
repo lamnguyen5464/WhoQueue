@@ -53,6 +53,14 @@ const useAuthEmailVerify = ({ navigation }) => {
         clearError();
     };
 
+    const onRecieveVerification = (data = {}) => {
+        if (data?.email) {
+            AppNavigator.pushScreen(navigation, AUTH_STACKS_ENUMS.AuthRegister, data);
+        } else {
+            // throw new Error({ description: "Something wrong with server's response" });
+        }
+    };
+
     return {
         PAGE_STATUS,
         refInputEmail,
@@ -87,9 +95,11 @@ const useAuthEmailVerify = ({ navigation }) => {
             ApiHelper.verifyOTP({ email, otp })
                 .then(res => {
                     // navigate
-                    setErrorText(res.desc);
+                    onRecieveVerification(res);
                 })
-                .catch(() => {})
+                .catch(e => {
+                    setErrorText(e.description);
+                })
                 .finally(() => {
                     clearOTP();
                 });
@@ -100,12 +110,7 @@ const useAuthEmailVerify = ({ navigation }) => {
                 const { token } = await FacebookSDK.getToken?.();
                 AppNavigator.showLoading();
                 const res = await ApiHelper.verifyFBToken({ facebookToken: token });
-                console.log(res);
-                AppNavigator.pushScreen(
-                    navigation,
-                    AUTH_STACKS_ENUMS.AuthRegister,
-                    res?.data || {}
-                );
+                onRecieveVerification(res?.data);
             } catch (e) {
                 console.logg(e, 'red', 'ERR');
             } finally {
