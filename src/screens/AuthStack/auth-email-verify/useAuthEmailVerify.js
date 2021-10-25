@@ -94,8 +94,7 @@ const useAuthEmailVerify = ({ navigation }) => {
             setPageStatus(PAGE_STATUS.VERYFYING_OTP);
             ApiHelper.verifyOTP({ email, otp })
                 .then(res => {
-                    // navigate
-                    onRecieveVerification(res);
+                    onRecieveVerification(res?.data);
                 })
                 .catch(e => {
                     setErrorText(e.description);
