@@ -101,9 +101,11 @@ const useAuthEmailVerify = ({ navigation }) => {
                 AppNavigator.showLoading();
                 const res = await ApiHelper.verifyFBToken({ facebookToken: token });
                 console.log(res);
-                AppNavigator.pushScreen(navigation, AUTH_STACKS_ENUMS.AuthRegister, {
-                    email: 'lamnguyen5464@gmail.com',
-                });
+                AppNavigator.pushScreen(
+                    navigation,
+                    AUTH_STACKS_ENUMS.AuthRegister,
+                    res?.data || {}
+                );
             } catch (e) {
                 console.logg(e, 'red', 'ERR');
             } finally {

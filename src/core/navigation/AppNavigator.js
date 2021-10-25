@@ -44,6 +44,7 @@ module.exports = {
         this.overlayRef.current.show({
             component: <AnimatedLoading />,
             cancelHandler: () => null,
+            disableCancel: true,
         });
     },
 

@@ -25,14 +25,17 @@ const AppOverlay = forwardRef((props, ref) => {
 
     const _onBackPress = useCallback(() => {
         const isShowing = !!pageState?.component;
-        isShowing && hide();
+        if (isShowing && !pageState.disableCancel) {
+            hide();
+        }
         return isShowing; //disable back of navigation
-    }, [pageState?.component]);
+    }, [pageState]);
 
-    const show = ({ component, cancelHandler }) => {
+    const show = ({ component, cancelHandler, disableCancel = false }) => {
         setPageState({
             component,
             cancelHandler,
+            disableCancel,
         });
         Animated.spring(valueAnimated.current, {
             toValue: 1,

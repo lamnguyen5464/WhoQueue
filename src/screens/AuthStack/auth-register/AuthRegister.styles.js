@@ -43,6 +43,11 @@ const styles = StyleSheet.create({
     icon_social: {
         borderRadius: DefaultSize.XS,
     },
+    text_resend: {
+        marginTop: DefaultSize.M,
+        alignItems: 'flex-end',
+        justifyContent: 'center',
+    },
 });
 
 export default styles;

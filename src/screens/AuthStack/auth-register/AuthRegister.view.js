@@ -16,7 +16,7 @@ import { useHeaderHeight } from '@react-navigation/stack';
 const AuthRegister = props => {
     const { LOCALIZATION_ENUMS, LOCALIZED_CONTENT, setLocalization } = useLocalization();
     const headerHeight = useRef(useHeaderHeight()).current;
-    const { refInputEmail } = useRef(null);
+    const { refInputEmail, errorText } = useRef(null);
     const { navigation, route } = props;
     const { email } = route?.params || {};
 
@@ -54,6 +54,8 @@ const AuthRegister = props => {
                 isPassword={true}
             />
 
+            {_renderTextError()}
+
             <CustomizedButton
                 type={'primary'}
                 onPress={onPressRegister}
@@ -70,6 +72,13 @@ const AuthRegister = props => {
             containerStyle={styles.foreground}
         ></CustomizedContainer>
     );
+
+    const _renderTextError = () =>
+        errorText ? (
+            <CustomizedText type={'error'} textStyle={styles.text_resend}>
+                *{errorText}
+            </CustomizedText>
+        ) : null;
 
     const _renderTitle = () => {
         return (

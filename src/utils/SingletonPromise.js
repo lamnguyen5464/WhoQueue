@@ -6,8 +6,11 @@ let singletonPromises = {};
  * @param {(resolve, reject) => {}} executor
  * @returns {Promise?}
  */
+
+const ERROR = '[ERROR] Invalide params for SingletonPromise';
+
 const SingletonPromise = (key, executor) => {
-    if (!key || !executor) return new Promise((_, reject) => reject());
+    if (!key || !executor) return new Promise((_, reject) => reject(ERROR));
 
     if (!singletonPromises[key]) {
         singletonPromises[key] = new Promise(executor);
