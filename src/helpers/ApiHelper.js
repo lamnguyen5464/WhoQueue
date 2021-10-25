@@ -21,4 +21,14 @@ module.exports = {
             path: '/sign-up/verify-otp',
         });
     },
+
+    verifyFBToken({ facebookToken }) {
+        return Http.request({
+            method: Http.METHOD.POST,
+            data: {
+                facebookToken,
+            },
+            path: '/sign-up/use-facebook',
+        });
+    },
 };

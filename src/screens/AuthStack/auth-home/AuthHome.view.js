@@ -59,12 +59,12 @@ const AuthHome = ({ navigation }) => {
             >
                 {Object.keys(LOCALIZATION_ENUMS).map((item, index) => (
                     <View
+                        key={`locale_${item}_${index}_${currentLocale}`}
                         style={
                             currentLocale === item ? styles.locale_active : styles.locale_inactive
                         }
                     >
                         <Text
-                            key={`locale_${item}_${index}_${currentLocale}`}
                             style={
                                 currentLocale === item
                                     ? styles.text_locale_active
