@@ -14,17 +14,18 @@ const METHOD = {
 
 module.exports = {
     METHOD,
+    token: '',
 
     setAccessToken(token) {
-        //TODO
+        this.token = token;
     },
 
     getAccessToken() {
-        //TODO
+        return this.token;
     },
 
-    _getHeader() {
-        const headers = { Authorization: `Bearer ${this.getAccessToken()}` };
+    _getHeader(headers) {
+        headers = headers ? headers : { Authorization: `Bearer ${this.getAccessToken()}` };
         return {
             ...DEFAULT_HEADERS,
             ...headers,
@@ -39,6 +40,7 @@ module.exports = {
             requestId = new Date().getTime() + path,
             timeout = 30 * 1000, //in seconds
             retry = 0,
+            headers = {},
         } = props;
 
         return SingletonPromise(requestId, (resolve, reject) => {
@@ -46,7 +48,7 @@ module.exports = {
                 method,
                 timeout,
                 url: Environment.getApiDomain() + path,
-                headers: this._getHeader(),
+                headers: this._getHeader(headers),
                 ...(!!data ? { data } : {}), // eleminate field data when undefined
             };
 
@@ -54,8 +56,8 @@ module.exports = {
                 if (__DEV__) {
                     console.logg?.(data, 'green', '[RESPONSE from API]' + path);
                 }
-                if (data?.accessToken) {
-                    this.accessToken(accessToken);
+                if (data?.data?.accessToken) {
+                    this.setAccessToken(data?.data?.accessToken);
                 }
                 resolve(data);
             };
@@ -77,7 +79,7 @@ module.exports = {
             axios(options).then(_successHandler).catch(_failHandler);
 
             if (__DEV__) {
-                console.logg?.(data, 'blue', '>>>>>> REQUEST API ' + path);
+                console.logg?.(options, 'blue', '>>>>>> REQUEST API <<<<<<');
             }
         });
     },

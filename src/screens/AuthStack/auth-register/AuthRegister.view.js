@@ -20,11 +20,8 @@ const AuthRegister = props => {
     const { navigation, route } = props;
     const { email } = route?.params || {};
 
-    const { onPressRegister, refInputName, refInputPassword, refConfirmPassword } = useAuthRegister(
-        {
-            navigation,
-        }
-    );
+    const { onPressRegister, refInputName, refInputPassword, refConfirmPassword } =
+        useAuthRegister(props);
 
     const _renderMainOverlay = () => {
         return <AnimatedFadeDown style={styles.pos_overlay}>{_renderInput()}</AnimatedFadeDown>;

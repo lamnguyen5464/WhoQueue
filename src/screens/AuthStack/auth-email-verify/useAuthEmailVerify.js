@@ -81,7 +81,8 @@ const useAuthEmailVerify = ({ navigation }) => {
                 .then(res => {
                     setPageStatus(PAGE_STATUS.TYPING_OTP);
                 })
-                .catch(() => {
+                .catch(e => {
+                    setErrorText(e.description);
                     setPageStatus(PAGE_STATUS.TYPING_EMAIL);
                 })
                 .finally(() => {});
@@ -111,7 +112,7 @@ const useAuthEmailVerify = ({ navigation }) => {
                 const res = await ApiHelper.verifyFBToken({ facebookToken: token });
                 onRecieveVerification(res?.data);
             } catch (e) {
-                console.logg(e, 'red', 'ERR');
+                setErrorText(e.description);
             } finally {
                 AppNavigator.hideLoading();
             }

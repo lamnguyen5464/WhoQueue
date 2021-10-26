@@ -31,4 +31,19 @@ module.exports = {
             path: '/sign-up/use-facebook',
         });
     },
+
+    createNewAccount({ email, fullname, password }) {
+        return Http.request({
+            method: Http.METHOD.POST,
+            data: {
+                email,
+                fullname,
+                password,
+            },
+            path: '/sign-up/create-account',
+            headers: {
+                token_otp: Http.getAccessToken(),
+            },
+        });
+    },
 };
