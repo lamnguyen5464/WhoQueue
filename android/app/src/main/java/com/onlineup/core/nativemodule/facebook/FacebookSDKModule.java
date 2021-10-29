@@ -1,4 +1,4 @@
-package com.onlineup.nativemodule;
+package com.onlineup.core.nativemodule.facebook;
 
 import android.util.Log;
 

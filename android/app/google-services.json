@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "993108762058",
+    "project_id": "onlineup-2cd8d",
+    "storage_bucket": "onlineup-2cd8d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:993108762058:android:a3ab3b56db43fb73544333",
+        "android_client_info": {
+          "package_name": "com.onlineup"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "993108762058-r8idespe23799d9cfu95pvoofb5agcp7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHyiOvK8SNWH8aPZACVeTtowcYxcNkvu4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "993108762058-r8idespe23799d9cfu95pvoofb5agcp7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.facebook.react.ReactActivity;
-import com.onlineup.nativemodule.FacebookSDKModule;
+import com.onlineup.core.nativemodule.facebook.FacebookSDKModule;
 
 public class MainActivity extends ReactActivity {
 
