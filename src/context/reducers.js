@@ -5,6 +5,8 @@ const reducer = (state, action) => {
     switch (type) {
         case types.SET_LOCALIZATION:
             return { ...state, localization: payload };
+        case types.SET_NAVIGATION_STACK:
+            return { ...state, navigationStack: payload };
         default:
             return state;
     }

@@ -24,12 +24,12 @@ module.exports = {
     },
 
     activateMainApp() {
-        this.getNavigator()?.navigate(ROOT_STACKS_ENUM.MainAppStack);
+        this.getNavigator()?.activateMainApp();
     },
 
     deactivateMainAppStack() {
         // back to login
-        this.getNavigator()?.navigate(ROOT_STACKS_ENUM.AuthStack);
+        this.getNavigator()?.deactivateMainAppStack();
     },
 
     pushScreen: debounce(

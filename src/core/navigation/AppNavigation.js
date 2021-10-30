@@ -1,19 +1,14 @@
-import React, { useState, forwardRef, useImperativeHandle } from 'react';
+import React, { forwardRef, useImperativeHandle } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { ROOT_STACKS_ENUM, STACKS } from './StackConstants';
+import useNavigationStack from './useNavigationStack';
 
 const AppNavigation = forwardRef((props, ref) => {
-    const [stack, setStack] = useState(ROOT_STACKS_ENUM.AuthStack);
+    const { CurrentStack, activateMainApp, deactivateMainAppStack } = useNavigationStack();
 
     useImperativeHandle(ref, () => ({
-        navigate,
+        deactivateMainAppStack,
+        activateMainApp,
     }));
-
-    const navigate = (_stack = ROOT_STACKS_ENUM.AuthStack) => {
-        setStack(_stack);
-    };
-
-    const CurrentStack = STACKS?.[stack] || STACKS.AuthStack;
 
     return (
         <NavigationContainer>

@@ -11,7 +11,9 @@ const useAuthSignIn = ({ navigation }) => {
     }, []);
 
     return {
-        onPressSignIn: () => {},
+        onPressSignIn: () => {
+            AppNavigator.activateMainApp();
+        },
 
         onBack: () => {
             navigation.pop();

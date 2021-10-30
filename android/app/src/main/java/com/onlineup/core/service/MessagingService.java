@@ -5,13 +5,13 @@ import android.util.Log;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 import com.onlineup.utility.NotificationUtils;
+import com.onlineup.utility.StorageUtils;
 
 public class MessagingService extends FirebaseMessagingService {
-    private static final String TAG = "MyFirebaseService";
+    public static String FCM_TOKEN_KEY = "FCM_TOKEN_KEY";
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
-        // handle a notification payload.
         if (remoteMessage.getNotification() != null) {
             Log.d("@@ ", "Message Notification Body: " + remoteMessage.getNotification().getBody());
 
@@ -22,11 +22,13 @@ public class MessagingService extends FirebaseMessagingService {
     @Override
     public void onNewToken(String token) {
         super.onNewToken(token);
-        Log.d("@@@", "token" + token);
-        sendRegistrationToServer(token);
+        onReceiveNewToken(token);
     }
 
-    private void sendRegistrationToServer(String token) {
-        // TODO: Implement this method to send token to your app server.
+    private void onReceiveNewToken(String token) {
+//        WritableMap map = Arguments.createMap();
+//        map.putString("fcmToken",token);
+//        CoreAPIModule.emitEvent(KeyEmitter.FCM_TOKEN_EMITTER, map);
+        StorageUtils.setString(getApplicationContext(), "FCM_TOKEN_KEY", token);
     }
 }

@@ -4,6 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.facebook.react.ReactActivity;
+import com.facebook.react.bridge.Arguments;
+import com.facebook.react.bridge.WritableMap;
+import com.onlineup.core.nativemodule.coreapi.constant.KeyEmitter;
+import com.onlineup.core.nativemodule.coreapi.module.CoreAPIModule;
 import com.onlineup.core.nativemodule.facebook.FacebookSDKModule;
 
 public class MainActivity extends ReactActivity {
@@ -20,6 +24,10 @@ public class MainActivity extends ReactActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        WritableMap map = Arguments.createMap();
+        map.putString("stage", "onCreate");
+        CoreAPIModule.emitEvent(KeyEmitter.NATIVE_RESPONSE_EMITTER, map);
 
     }
 
