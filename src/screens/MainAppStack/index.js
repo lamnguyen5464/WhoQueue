@@ -2,10 +2,14 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import TestScreen1 from './TestScreen1';
 import TestScreen2 from './TestScreen2';
+import HomeScreen from './home';
+import FindQueueScreen from './findqueue';
 
 const Stack = createStackNavigator();
 
 const SCREENS = {
+    HomeScreen,
+    FindQueueScreen,
     TestScreen1,
     TestScreen2,
 };

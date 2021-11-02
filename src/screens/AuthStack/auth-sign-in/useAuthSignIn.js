@@ -23,10 +23,10 @@ const useAuthSignIn = ({ navigation }) => {
         onPressSignIn: async () => {
             AppNavigator.showLoading();
             try {
-                const response = await ApiHelper.signInByEmail({
-                    email: refInputEmail.current?.getValue(),
-                    password: refInputPassword.current?.getValue(),
-                });
+                // const response = await ApiHelper.signInByEmail({
+                //     email: refInputEmail.current?.getValue(),
+                //     password: refInputPassword.current?.getValue(),
+                // });
                 AppNavigator.activateMainApp();
             } catch (e) {
                 console.log(e);

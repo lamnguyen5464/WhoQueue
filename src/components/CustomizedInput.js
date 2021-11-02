@@ -13,6 +13,7 @@ const CustomizedInput = forwardRef((props, ref) => {
         isPassword = false,
         onChangeValue,
         autoCapitalize = 'none',
+        onFocus = () => null,
     } = props;
 
     const [value, setValue] = useState('');
@@ -35,12 +36,13 @@ const CustomizedInput = forwardRef((props, ref) => {
             <TextInput
                 editable
                 value={value}
+                onFocus={onFocus}
                 numberOfLines={1}
                 autoCorrect={false}
-                autoCapitalize={autoCapitalize}
                 placeholder={placeholder}
                 secureTextEntry={isPassword}
                 style={styles.container_input}
+                autoCapitalize={autoCapitalize}
                 onChangeText={text => setValue(text)}
                 placeholderTextColor={Colors.black_10}
             />

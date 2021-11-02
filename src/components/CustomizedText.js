@@ -13,6 +13,10 @@ const CustomizedText = ({ type = null, textStyle = {}, children, size = null }) 
 };
 
 const styles = StyleSheet.create({
+    header: {
+        fontSize: TextSize.H1,
+        fontWeight: 'bold',
+    },
     title: {
         fontSize: TextSize.H3,
         color: Colors.white,
@@ -46,6 +50,11 @@ const styles = StyleSheet.create({
         color: Colors.error,
         fontWeight: 'bold',
         alignSelf: 'flex-start',
+    },
+    simple: {
+        fontSize: TextSize.Title,
+        color: Colors.black,
+        fontWeight: 'bold',
     },
 });
 

@@ -29,6 +29,11 @@ const styles = StyleSheet.create({
     main_theme: {
         backgroundColor: [Colors.primary_1, Colors.primary_2],
     },
+    foreground: {
+        backgroundColor: [Colors.primary_2, 'white', 'white'],
+        width: '100%',
+        height: 300,
+    },
     primary: {
         width: '100%',
         justifyContent: 'center',
