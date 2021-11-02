@@ -45,6 +45,11 @@ const styles = StyleSheet.create({
         height: DefaultSize.XL * 1.7,
         width: DefaultSize.XL * 1.7,
     },
+    text_error: {
+        marginTop: DefaultSize.M,
+        alignItems: 'flex-end',
+        justifyContent: 'center',
+    },
 });
 
 export default styles;

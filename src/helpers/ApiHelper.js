@@ -46,4 +46,25 @@ module.exports = {
             },
         });
     },
+
+    signInByEmail({ email, password }) {
+        return Http.request({
+            method: Http.METHOD.POST,
+            data: {
+                email,
+                password,
+            },
+            path: '/login',
+        });
+    },
+
+    signInByFacebook({ facebookToken }) {
+        return Http.request({
+            method: Http.METHOD.POST,
+            data: {
+                facebookToken,
+            },
+            path: '/login-facebook',
+        });
+    },
 };

@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     icon_social: {
         borderRadius: DefaultSize.XS,
     },
-    text_resend: {
+    text_error: {
         marginTop: DefaultSize.M,
         alignItems: 'flex-end',
         justifyContent: 'center',

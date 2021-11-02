@@ -72,7 +72,7 @@ const AuthRegister = props => {
 
     const _renderTextError = () =>
         errorText ? (
-            <CustomizedText type={'error'} textStyle={styles.text_resend}>
+            <CustomizedText type={'error'} textStyle={styles.text_error}>
                 *{errorText}
             </CustomizedText>
         ) : null;

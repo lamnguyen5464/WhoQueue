@@ -13,7 +13,7 @@ public class MessagingService extends FirebaseMessagingService {
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
         if (remoteMessage.getNotification() != null) {
-            Log.d("@@ ", "Message Notification Body: " + remoteMessage.getNotification().getBody());
+            Log.d("@@ ", "Message Notification Body: " + remoteMessage.getNotification().toString());
 
             NotificationUtils.sendNotification(this, remoteMessage.getNotification().getBody());
         }

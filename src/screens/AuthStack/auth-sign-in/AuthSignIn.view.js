@@ -17,9 +17,11 @@ import { SocialIcon } from 'react-native-elements';
 const AuthSignIn = ({ navigation }) => {
     const { LOCALIZATION_ENUMS, LOCALIZED_CONTENT, setLocalization } = useLocalization();
     const headerHeight = useRef(useHeaderHeight()).current;
-    const { refInputEmail } = useRef(null);
 
-    const { onPressSignIn, onBack } = useAuthSignIn({ navigation });
+    const { onPressSignIn, onPressFacebook, errorText, refInputEmail, refInputPassword } =
+        useAuthSignIn({
+            navigation,
+        });
 
     const _renderMainOverlay = () => {
         return (
@@ -35,7 +37,7 @@ const AuthSignIn = ({ navigation }) => {
         <CustomizedContainer type={'white_overlay'}>
             <CustomizedInput ref={refInputEmail} icon={'mail'} placeholder={'Email'} />
             <CustomizedInput
-                ref={refInputEmail}
+                ref={refInputPassword}
                 icon={'lock-closed'}
                 containerStyle={styles.container_password}
                 placeholder={'Password'}
@@ -49,8 +51,16 @@ const AuthSignIn = ({ navigation }) => {
             >
                 Signnn in
             </CustomizedButton>
+            {_renderTextError()}
         </CustomizedContainer>
     );
+
+    const _renderTextError = () =>
+        errorText ? (
+            <CustomizedText type={'error'} textStyle={styles.text_error}>
+                *{errorText}
+            </CustomizedText>
+        ) : null;
 
     const _renderTextOr = () => (
         <CustomizedText type={'subtitle_dark'} textStyle={styles.text_or}>
@@ -60,7 +70,12 @@ const AuthSignIn = ({ navigation }) => {
 
     const _renderSocial = () => (
         <CustomizedContainer type={'white_overlay'} containerStyle={styles.container_social}>
-            <SocialIcon raised={true} type="facebook" style={styles.icon_social} />
+            <SocialIcon
+                onPress={onPressFacebook}
+                raised={true}
+                type="facebook"
+                style={styles.icon_social}
+            />
             <SocialIcon raised={true} type="google" style={styles.icon_social} />
             <SocialIcon raised={true} type="twitter" style={styles.icon_social} />
         </CustomizedContainer>
