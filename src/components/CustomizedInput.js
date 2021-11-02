@@ -3,6 +3,7 @@ import { TextInput, StyleSheet, View, Platform } from 'react-native';
 import { DefaultSize, TextSize } from '@utils/Constants';
 import Colors from '@utils/Colors';
 import { Icon } from 'react-native-elements';
+import { useRef } from 'react';
 
 const CustomizedInput = forwardRef((props, ref) => {
     const {
@@ -17,6 +18,7 @@ const CustomizedInput = forwardRef((props, ref) => {
     } = props;
 
     const [value, setValue] = useState('');
+    const refInput = useRef(null);
 
     useLayoutEffect(() => {
         onChangeValue?.(value);
@@ -26,7 +28,12 @@ const CustomizedInput = forwardRef((props, ref) => {
         return value;
     };
 
+    const focus = () => {
+        refInput.current.focus();
+    };
+
     useImperativeHandle(ref, () => ({
+        focus,
         getValue,
     }));
 
@@ -36,6 +43,7 @@ const CustomizedInput = forwardRef((props, ref) => {
             <TextInput
                 editable
                 value={value}
+                ref={refInput}
                 onFocus={onFocus}
                 numberOfLines={1}
                 autoCorrect={false}

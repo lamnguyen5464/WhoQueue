@@ -6,7 +6,7 @@ import { DefaultSize } from '@utils/Constants';
 import CustomizedInput from '@components/CustomizedInput';
 
 const FindQueueScreen = props => {
-    const { animatedValue, onPressClose } = useFindQueueScreen(props);
+    const { animatedValue, onPressClose, inputSearchRef } = useFindQueueScreen(props);
 
     const inputTransformation = {
         transform: [
@@ -22,11 +22,10 @@ const FindQueueScreen = props => {
     const _renderInputHeader = () => (
         <Animated.View style={[styles.header, inputTransformation]}>
             <CustomizedInput
+                ref={inputSearchRef}
                 icon={'search'}
                 containerStyle={styles.search_bar}
-                onFocus={() => {
-                    console.log('harga');
-                }}
+                onFocus={() => {}}
                 placeholder={'Search your queue here'}
             />
             <TouchableOpacity activeOpacity={0.8} onPress={onPressClose}>
@@ -67,7 +66,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
     },
     search_bar: {
-        width: '90%',
+        width: '85%',
     },
 });
 

@@ -6,14 +6,10 @@ const DURATION = 300;
 const useFindQueueScreen = props => {
     const { requestClose = () => null } = props;
     const animatedRef = useRef(new Animated.Value(0));
+    const inputSearchRef = useRef(null);
 
     useEffect(() => {
         _show();
-
-        // setTimeout(() => {
-        //     _hide();
-        // }, 2000);
-
         return () => {
             _hide();
         };
@@ -24,7 +20,9 @@ const useFindQueueScreen = props => {
             toValue: 1,
             duration: DURATION,
             useNativeDriver: true,
-        }).start();
+        }).start(() => {
+            inputSearchRef.current?.focus();
+        });
     };
 
     const _hide = () => {
@@ -40,6 +38,7 @@ const useFindQueueScreen = props => {
     return {
         animatedValue: animatedRef.current,
         onPressClose: _hide,
+        inputSearchRef,
     };
 };
 

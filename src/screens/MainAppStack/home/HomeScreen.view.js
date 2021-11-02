@@ -4,10 +4,11 @@ import useHomeScreen from './useHomeScreen';
 import { CustomizedText, CustomizedContainer, CustomizedInput } from '@components';
 import { DefaultSize } from '@utils/Constants';
 import FindQueueScreen from '@screens/MainAppStack/findqueue';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { Icon } from 'react-native-elements';
 
 const HomeScreen = props => {
-    const { isSearching, startSearching, stopSearching } = useHomeScreen(props);
+    const { isSearching, refInputSearch, startSearching, stopSearching, onPressQr } =
+        useHomeScreen(props);
 
     const _renderSearchComponent = () =>
         isSearching ? (
@@ -22,15 +23,23 @@ const HomeScreen = props => {
 
     const _renderMain = () => (
         <SafeAreaView style={styles.main}>
-            <TouchableOpacity onPress={startSearching}>
-                <CustomizedText type={'header'}>onLineUp</CustomizedText>
-            </TouchableOpacity>
-            <CustomizedInput
-                icon={'search'}
-                containerStyle={styles.search_bar}
-                // onFocus={startSearching}
-                placeholder={'Search your queue here'}
-            />
+            <CustomizedText type={'header'}>onLineUp</CustomizedText>
+            <View style={styles.row_search}>
+                <CustomizedInput
+                    ref={refInputSearch}
+                    icon={'search'}
+                    containerStyle={styles.search_bar}
+                    onFocus={startSearching}
+                    placeholder={'Search your queue here'}
+                />
+                <Icon
+                    onPress={onPressQr}
+                    name={'qr-code'}
+                    type="ionicon"
+                    color={'black'}
+                    style={styles.icon_qr}
+                />
+            </View>
         </SafeAreaView>
     );
 
@@ -48,6 +57,12 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         flex: 1,
     },
+    row_search: {
+        marginTop: DefaultSize.XL,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+    },
     foreground: {},
     main: {
         position: 'absolute',
@@ -57,13 +72,14 @@ const styles = StyleSheet.create({
         paddingHorizontal: DefaultSize.L,
     },
     search_bar: {
-        marginTop: DefaultSize.XL,
+        width: '85%',
     },
     search_view: {
         position: 'absolute',
         width: '100%',
         height: '100%',
     },
+    icon_qr: {},
 });
 
 export default HomeScreen;
