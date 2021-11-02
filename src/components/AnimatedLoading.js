@@ -1,6 +1,5 @@
 import React, { memo } from 'react';
 import { StyleSheet, ActivityIndicator } from 'react-native';
-import LottieView from 'lottie-react-native';
 import assets from '@assets';
 import Colors from '@utils/Colors';
 

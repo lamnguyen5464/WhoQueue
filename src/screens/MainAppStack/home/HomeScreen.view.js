@@ -48,7 +48,7 @@ const HomeScreen = props => {
                     onPress={onPressQr}
                     name={'qr-code'}
                     type="ionicon"
-                    color={'black'}
+                    color={Colors.primary_1}
                     style={styles.icon_qr}
                 />
             </View>

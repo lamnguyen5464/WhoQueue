@@ -11,7 +11,7 @@ export default StyleSheet.create({
         },
         shadowRadius: DefaultSize.XXS,
         shadowOpacity: 0.3,
-        elevation: 2,
+        elevation: 1,
     },
     center: {
         justifyContent: 'center',

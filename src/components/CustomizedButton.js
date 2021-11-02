@@ -27,7 +27,7 @@ const CustomizedButton = ({
 
     return (
         <TouchableOpacity
-            style={[containerStyle, containerSyle.default]}
+            style={[containerSyle[type] || {}, containerStyle]}
             onPress={debounce(onPress, 300, { leading: true, trailing: false })}
             activeOpacity={0.9}
             disabled={!onPress || loading}
@@ -43,7 +43,10 @@ const CustomizedButton = ({
 };
 
 const containerSyle = StyleSheet.create({
-    default: {
+    primary: {
+        width: '100%',
+    },
+    secondary: {
         width: '100%',
     },
 });
