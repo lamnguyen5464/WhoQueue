@@ -8,12 +8,14 @@ import CustomizedInput from '@components/CustomizedInput';
 const FindQueueScreen = props => {
     const { animatedValue, onPressClose, inputSearchRef } = useFindQueueScreen(props);
 
+    const { posYTabSearch } = props;
+
     const inputTransformation = {
         transform: [
             {
                 translateY: animatedValue?.interpolate({
                     inputRange: [0, 1],
-                    outputRange: [50, 0],
+                    outputRange: [posYTabSearch || 0, DefaultSize.XL],
                 }),
             },
         ],
@@ -35,7 +37,9 @@ const FindQueueScreen = props => {
     );
 
     const _renderResultView = () => (
-        <Animated.View style={[styles.result_view]} opacity={animatedValue}></Animated.View>
+        <Animated.View style={[styles.result_view]} opacity={animatedValue}>
+            {/* <CustomizedText>loading...</CustomizedText> */}
+        </Animated.View>
     );
 
     return (
@@ -49,6 +53,7 @@ const FindQueueScreen = props => {
 const styles = StyleSheet.create({
     container: {
         backgroundColor: 'transparent',
+        // paddingTop: DefaultSize.XL,
         flex: 1,
     },
     result_view: {
@@ -59,8 +64,7 @@ const styles = StyleSheet.create({
     header: {
         position: 'absolute',
         width: '100%',
-        paddingHorizontal: DefaultSize.L,
-        paddingTop: DefaultSize.L,
+        paddingHorizontal: DefaultSize.XL,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',

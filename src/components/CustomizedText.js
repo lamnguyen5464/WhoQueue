@@ -15,6 +15,12 @@ const CustomizedText = ({ type = null, textStyle = {}, children, size = null }) 
 const styles = StyleSheet.create({
     header: {
         fontSize: TextSize.H1,
+        color: Colors.black,
+        fontWeight: 'bold',
+    },
+    content_header: {
+        fontSize: TextSize.H4,
+        color: Colors.black_12,
         fontWeight: 'bold',
     },
     title: {

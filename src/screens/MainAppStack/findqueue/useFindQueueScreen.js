@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { Animated } from 'react-native';
 
-const DURATION = 300;
+const DURATION = 200;
 
 const useFindQueueScreen = props => {
     const { requestClose = () => null } = props;

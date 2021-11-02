@@ -1,19 +1,25 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { SafeAreaView, View, StyleSheet } from 'react-native';
 import useHomeScreen from './useHomeScreen';
 import { CustomizedText, CustomizedContainer, CustomizedInput } from '@components';
 import { DefaultSize } from '@utils/Constants';
 import FindQueueScreen from '@screens/MainAppStack/findqueue';
 import { Icon } from 'react-native-elements';
+import Colors from '@utils/Colors';
 
 const HomeScreen = props => {
     const { isSearching, refInputSearch, startSearching, stopSearching, onPressQr } =
         useHomeScreen(props);
 
+    const posYTabSearch = useRef();
+
     const _renderSearchComponent = () =>
         isSearching ? (
             <View style={styles.search_view}>
-                <FindQueueScreen requestClose={stopSearching} />
+                <FindQueueScreen
+                    requestClose={stopSearching}
+                    posYTabSearch={posYTabSearch.current}
+                />
             </View>
         ) : null;
 
@@ -24,7 +30,13 @@ const HomeScreen = props => {
     const _renderMain = () => (
         <SafeAreaView style={styles.main}>
             <CustomizedText type={'header'}>onLineUp</CustomizedText>
-            <View style={styles.row_search}>
+            <CustomizedText type={'content_header'}>onLineUp</CustomizedText>
+            <View
+                style={styles.row_search}
+                onLayout={event => {
+                    posYTabSearch.current = event?.nativeEvent?.layout?.y;
+                }}
+            >
                 <CustomizedInput
                     ref={refInputSearch}
                     icon={'search'}
@@ -45,7 +57,7 @@ const HomeScreen = props => {
 
     return (
         <View style={styles.container}>
-            {_renderForeground()}
+            {/* {_renderForeground()} */}
             {_renderMain()}
             {_renderSearchComponent()}
         </View>
@@ -54,7 +66,7 @@ const HomeScreen = props => {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: 'white',
+        backgroundColor: Colors.black_05,
         flex: 1,
     },
     row_search: {
@@ -69,7 +81,7 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '100%',
         paddingTop: DefaultSize.L,
-        paddingHorizontal: DefaultSize.L,
+        paddingHorizontal: DefaultSize.XL,
     },
     search_bar: {
         width: '85%',
