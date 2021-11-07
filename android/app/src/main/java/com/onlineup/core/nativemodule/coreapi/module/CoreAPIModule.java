@@ -41,7 +41,6 @@ public class CoreAPIModule extends ReactContextBaseJavaModule {
     public static void emitEvent(String eventName, @Nullable WritableMap eventData) {
         if (eventData != null) eventData.putString("eventName", eventName);
 
-
         if (reactContext != null
                 && reactContext.hasActiveCatalystInstance()
                 && reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class) != null

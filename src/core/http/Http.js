@@ -40,7 +40,7 @@ module.exports = {
             requestId = new Date().getTime() + path,
             timeout = 30 * 1000, //in seconds
             retry = 0,
-            headers = {},
+            headers,
         } = props;
 
         return SingletonPromise(requestId, (resolve, reject) => {

@@ -67,4 +67,14 @@ module.exports = {
             path: '/login-facebook',
         });
     },
+
+    updateFcmToken({ fcmToken }) {
+        return Http.request({
+            method: Http.METHOD.POST,
+            data: {
+                fcmToken,
+            },
+            path: '/users/update-fcm-token',
+        });
+    },
 };
