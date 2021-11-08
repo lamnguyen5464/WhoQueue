@@ -1,11 +1,23 @@
-package com.onlineup.utility;
+package com.onlineup.core.storage;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import java.util.HashMap;
+import java.util.Map;
 
-public class StorageUtils {
+
+public class StorageInstance {
     private static String SHARED_STORAGE = "SHARED_STORAGE";
+    private static Map<String, String> oneShotInstance = new HashMap<>();
+
+    public static void setOneShotStorage(String key, String value){
+        oneShotInstance.put(key, value);
+    }
+
+    public static String getOneSotStorage(String key){
+       return oneShotInstance.remove(key);
+    }
 
     public static void setString(Context context, String key, String value) {
         if (context == null || value == null) {

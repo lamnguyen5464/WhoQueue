@@ -10,11 +10,13 @@ const AppSync = () => {
 
     useLayoutEffect(() => {
         initLocalization();
-        const notificationListener = syncNotification();
+        syncDeepLink();
 
-        return () => {
-            notificationListener?.remove?.();
-        };
+        // const nativeEmittingListener = subscribeListeners();
+
+        // return () => {
+        //     nativeEmittingListener?.remove?.();
+        // };
     }, []);
 
     useEffect(() => {
@@ -33,9 +35,15 @@ const AppSync = () => {
         }
     };
 
-    const syncNotification = () => {
-        return CoreAPI.listenNotificationEmitter(res => {
-            console.logg?.(JSON.parseSafe(res.data), 'green', '[FROM NOTI]');
+    const syncDeepLink = () => {
+        CoreAPI.getDataFromDeepLink().then(res => {
+            console.logg?.(JSON.parseSafe(res), 'green', '[syncDeepLink]');
+        });
+    };
+
+    const subscribeListeners = () => {
+        return CoreAPI.listenNativeEmitter(res => {
+            console.logg?.(JSON.parseSafe(res), 'green', '[listenNativeEmitter]');
         });
     };
 

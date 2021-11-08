@@ -3,7 +3,7 @@ package com.onlineup.core.service;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 import com.onlineup.core.notification.AppNotification;
-import com.onlineup.utility.StorageUtils;
+import com.onlineup.core.storage.StorageInstance;
 
 public class MessagingService extends FirebaseMessagingService {
     public static String FCM_TOKEN_KEY = "FCM_TOKEN_KEY";
@@ -20,6 +20,6 @@ public class MessagingService extends FirebaseMessagingService {
     }
 
     private void saveFcmToken(String token) {
-        StorageUtils.setString(getApplicationContext(), FCM_TOKEN_KEY, token);
+        StorageInstance.setString(getApplicationContext(), FCM_TOKEN_KEY, token);
     }
 }

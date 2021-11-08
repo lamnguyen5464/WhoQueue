@@ -1,4 +1,5 @@
 <resources>
+    <string name="app_id">com.onlineup</string>
     <string name="app_name">onLineUp</string>
     <string name="facebook_app_id">178666927735500</string>
     <string name="fb_login_protocol_scheme">fb178666927735500</string>

@@ -5,25 +5,24 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
+import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
-import com.onlineup.core.nativemodule.coreapi.constant.KeyEmitter;
-import com.onlineup.utility.StorageUtils;
+import com.onlineup.core.nativemodule.coreapi.constant.KeyCommonNative;
+import com.onlineup.core.storage.StorageInstance;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class CoreAPIModule extends ReactContextBaseJavaModule {
     public static String MODULE_NAME = "CoreAPIModule";
-    private static ReactApplicationContext reactContext;
 
     public CoreAPIModule(@Nullable ReactApplicationContext _reactContext) {
         super(_reactContext);
-        reactContext = _reactContext;
     }
 
     @NonNull
@@ -35,25 +34,41 @@ public class CoreAPIModule extends ReactContextBaseJavaModule {
     @Nullable
     @Override
     public Map<String, Object> getConstants() {
-        return KeyEmitter.getAllKeys();
+        return KeyCommonNative.getAllKeys();
     }
 
-    public static void emitEvent(String eventName, @Nullable WritableMap eventData) {
-        if (eventData != null) eventData.putString("eventName", eventName);
-
+    public static void emitEvent(ReactContext reactContext, String eventName, @Nullable WritableMap eventData) {
         if (reactContext != null
                 && reactContext.hasActiveCatalystInstance()
                 && reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class) != null
         ) {
+            WritableMap response = Arguments.createMap();
+            response.putString("eventName", eventName);
+            response.putMap("data", eventData);
+
             reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
-                    .emit(eventName, eventData);
+                    .emit(KeyCommonNative.COMMON_NATIVE_EMITTING, response);
         }
+    }
+
+    @ReactMethod
+    public void setOneShotStorage(String key, String value) {
+        StorageInstance.setOneShotStorage(key, value);
+    }
+
+    @ReactMethod
+    public void getOneShotStorage(String key, Promise promise) {
+        promise.resolve(StorageInstance.getOneSotStorage(key));
     }
 
     @ReactMethod
     public void setStorage(String key, String value, Promise promise) {
         try {
-            StorageUtils.setString(reactContext, key, value);
+            ReactApplicationContext reactContext = getReactApplicationContext();
+            if (reactContext == null) {
+                promise.reject(new RuntimeException());
+            }
+            StorageInstance.setString(reactContext, key, value);
             promise.resolve(null);
         } catch (Exception e) {
             promise.reject(e);
@@ -63,7 +78,11 @@ public class CoreAPIModule extends ReactContextBaseJavaModule {
     @ReactMethod
     public void getStorage(String key, Promise promise) {
         try {
-            String value = StorageUtils.getString(reactContext, key);
+            ReactApplicationContext reactContext = getReactApplicationContext();
+            if (reactContext == null) {
+                promise.reject(new RuntimeException());
+            }
+            String value = StorageInstance.getString(getReactApplicationContext(), key);
             promise.resolve(value);
         } catch (Exception e) {
             promise.reject(e);

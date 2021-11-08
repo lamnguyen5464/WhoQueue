@@ -5,24 +5,20 @@ import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
-import android.util.Log;
 
-import com.facebook.react.bridge.Arguments;
-import com.facebook.react.bridge.WritableMap;
+import com.facebook.react.bridge.ReactContext;
 import com.google.firebase.messaging.RemoteMessage;
-import com.onlineup.core.nativemodule.coreapi.constant.KeyEmitter;
-import com.onlineup.core.nativemodule.coreapi.module.CoreAPIModule;
+import com.onlineup.core.nativemodule.coreapi.constant.KeyCommonNative;
+import com.onlineup.core.storage.StorageInstance;
 
 public class AppNotification {
 
     public static void handleClickNotification(Intent intent) {
-        Log.d("@@@ [Noti data]", intent.getStringExtra(KeyNotification.extra) + "");
+//        Log.d("@@@ [Noti data]", intent.getStringExtra(KeyNotification.extra) + "");
         String data = intent.getStringExtra(KeyNotification.extra);
 
         if (data != null && !data.isEmpty()) {
-            WritableMap response = Arguments.createMap();
-            response.putString("data", data.isEmpty() ? "{}" : data);
-            CoreAPIModule.emitEvent(KeyEmitter.NOTIFICATION_EMITTER, response);
+            StorageInstance.setOneShotStorage(KeyCommonNative.DATA_FROM_NOTIFICATION, data);
         }
     }
 
