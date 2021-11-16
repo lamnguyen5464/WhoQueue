@@ -1,5 +1,71 @@
 {
     "test": "Tieng Viet",
     "signIn": "Đăng nhập",
-    "register": "Đăng kí"
+    "register": "Đăng kí",
+    "failedRequest": {
+        "heading": "Lỗi hệ thống",
+        "message": "Chúng tôi hiện không thể xử lý yêu cầu của bạn. Vui lòng thử lại sau. Thành thật xin lỗi về sự cố này.",
+        "contact": "Nếu vẫn gặp sự cố, hãy liên lạc với chúng tôi qua onLineUp@gmail.com."
+    },
+    "welcomeBanner": {
+        "heading": "Xin chào!",
+        "intro": "onLineUp giúp bạn xếp hàng từ bất kì đâu: tại nhà, ngoài phố, khắp mọi nơi!"
+    },
+
+    "welcomeScreen": {
+        "errorModal": {
+            "emptyField": {
+                "heading": "Đăng kí không thành công",
+                "message": "Vui lòng nhập địa chỉ mail để tiếp tục."
+            },
+            "invalidInputEmail": {
+                "heading": "Vui lòng nhập địa chỉ mail để tiếp tục.",
+                "message": "Vui lòng nhập địa chỉ mail theo quy tắc name@example.com."
+            }
+        },
+        "errorInline": {
+            "email": {
+                "emptyField": "Đây là thông tin bắt buộc.",
+                "invalidInputEmail": "Vui lòng nhập địa chỉ mail theo quy tắc yourname@example.com."
+            }
+        }
+    },
+    "otpScreen": {
+        "guide": "Bạn chỉ có 3 lần thử cho mỗi lần yêu cầu mã OTP.",
+        "errorModal": {
+            "invalidInputEmail": "Mã OTP không chính xác. Vui lòng nhập lại."
+        }
+    },
+    "registerScreen": {
+        "banner": {
+            "loginPrompt": "Bạn đã có tài khoản?"
+        },
+        "errorModal": {
+            "emptyField": {
+                "heading": "Đăng kí không thành công",
+                "message": "Vui lòng nhập những thông tin bắt buộc để tiếp tục."
+            },
+            "invalidInputEmail": {
+                "heading": "Đăng kí không thành công",
+                "message": "Vui lòng nhập địa chỉ mail theo quy tắc name@example.com."
+            }
+        }
+    },
+    "loginScreen": {
+        "banner": {
+            "signupPrompt": "Bạn là thành viên mới?"
+        },
+        "errorModal": {
+            "emptyField": {
+                "heading": "Đăng nhập không thành công",
+                "message": "Vui lòng nhập địa chỉ mail và mật khẩu để tiếp tục."
+            }
+        },
+        "errorInline": {
+            "incorrectPassword": {
+                "message": "Mật khẩu chưa đúng. Vui lòng nhập lại hoặc yêu cầu mật khẩu mới cho tài khoản của bạn.",
+                "changePwdPrompt": "yêu cầu mật khẩu mới"
+            }
+        }
+    }
 }

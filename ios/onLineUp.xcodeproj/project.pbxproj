@@ -16,6 +16,8 @@
 		2904D506786146D4BB7B1C34 /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA7C7F97695748449750B9B3 /* Feather.ttf */; };
 		39047AF4B2BA45A3A631431D /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 11FA229DF39A4D359C283C80 /* SimpleLineIcons.ttf */; };
 		43DC1AD108154760A1C72A95 /* FontAwesome5_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C1333D69A02D4DAC8F73255F /* FontAwesome5_Brands.ttf */; };
+		60F11FB92743C59A000305E3 /* FacebookSDKModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F11FB82743C59A000305E3 /* FacebookSDKModule.swift */; };
+		60F11FBA2743D297000305E3 /* FacebookSDKModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 60F11FB52743C4A8000305E3 /* FacebookSDKModule.m */; };
 		77079FEA516F4F10B009E247 /* AntDesign.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A0FE3F61266B46F08537D3D0 /* AntDesign.ttf */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		850579A883134D539CB6BF55 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6D1FC7CF701D4BC18E7433AF /* Octicons.ttf */; };
@@ -61,6 +63,9 @@
 		42CC9A7D456741EBBA9079AE /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
 		5A3654E6AE28E6CCDD7321D1 /* Pods-onLineUp-onLineUpTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-onLineUp-onLineUpTests.release.xcconfig"; path = "Target Support Files/Pods-onLineUp-onLineUpTests/Pods-onLineUp-onLineUpTests.release.xcconfig"; sourceTree = "<group>"; };
 		5A99AE5C468FE4F60FB56B25 /* Pods-onLineUp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-onLineUp.debug.xcconfig"; path = "Target Support Files/Pods-onLineUp/Pods-onLineUp.debug.xcconfig"; sourceTree = "<group>"; };
+		6041C8152743C33300839CBA /* onLineUp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "onLineUp-Bridging-Header.h"; sourceTree = "<group>"; };
+		60F11FB52743C4A8000305E3 /* FacebookSDKModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FacebookSDKModule.m; sourceTree = "<group>"; };
+		60F11FB82743C59A000305E3 /* FacebookSDKModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookSDKModule.swift; sourceTree = "<group>"; };
 		633E83A663F6431E95371A24 /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		6D1FC7CF701D4BC18E7433AF /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = onLineUp/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -118,12 +123,14 @@
 		13B07FAE1A68108700A75B9A /* onLineUp */ = {
 			isa = PBXGroup;
 			children = (
+				6041C8132743C29500839CBA /* Core */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				6041C8152743C33300839CBA /* onLineUp-Bridging-Header.h */,
 			);
 			name = onLineUp;
 			sourceTree = "<group>";
@@ -136,6 +143,31 @@
 				E4DFAA4E5A913B5217C41A96 /* libPods-onLineUp-onLineUpTests.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6041C8122743C28000839CBA /* NativeModules */ = {
+			isa = PBXGroup;
+			children = (
+				6041C8142743C2B700839CBA /* Facebook */,
+			);
+			name = NativeModules;
+			sourceTree = "<group>";
+		};
+		6041C8132743C29500839CBA /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				6041C8122743C28000839CBA /* NativeModules */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		6041C8142743C2B700839CBA /* Facebook */ = {
+			isa = PBXGroup;
+			children = (
+				60F11FB52743C4A8000305E3 /* FacebookSDKModule.m */,
+				60F11FB82743C59A000305E3 /* FacebookSDKModule.swift */,
+			);
+			name = Facebook;
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -261,7 +293,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						LastSwiftMigration = 1120;
+						LastSwiftMigration = 1300;
 					};
 				};
 			};
@@ -446,8 +478,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60F11FBA2743D297000305E3 /* FacebookSDKModule.m in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				60F11FB92743C59A000305E3 /* FacebookSDKModule.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -466,6 +500,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8A99037355046D14EB3CE867 /* Pods-onLineUp-onLineUpTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -493,6 +528,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5A3654E6AE28E6CCDD7321D1 /* Pods-onLineUp-onLineUpTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = onLineUpTests/Info.plist;
@@ -534,7 +570,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.onLineUp;
 				PRODUCT_NAME = onLineUp;
+				SWIFT_OBJC_BRIDGING_HEADER = "onLineUp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_PRECOMPILE_BRIDGING_HEADER = NO;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -559,6 +597,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.onLineUp;
 				PRODUCT_NAME = onLineUp;
+				SWIFT_OBJC_BRIDGING_HEADER = "onLineUp-Bridging-Header.h";
+				SWIFT_PRECOMPILE_BRIDGING_HEADER = NO;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};

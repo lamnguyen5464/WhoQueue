@@ -36,13 +36,13 @@ const AppSync = () => {
     };
 
     const syncDeepLink = () => {
-        CoreAPI.getDataFromDeepLink().then(res => {
+        CoreAPI?.getDataFromDeepLink()?.then(res => {
             console.logg?.(JSON.parseSafe(res), 'green', '[syncDeepLink]');
         });
     };
 
     const subscribeListeners = () => {
-        return CoreAPI.listenNativeEmitter(res => {
+        return CoreAPI?.listenNativeEmitter(res => {
             console.logg?.(JSON.parseSafe(res), 'green', '[listenNativeEmitter]');
         });
     };

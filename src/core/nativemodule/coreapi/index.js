@@ -4,11 +4,11 @@ const CoreAPIEmitter = new NativeEventEmitter(CoreAPIModule || {});
 
 export default {
     listenNativeEmitter: callback => {
-        return CoreAPIEmitter?.addListener(CoreAPIModule.COMMON_NATIVE_EMITTING, callback);
+        return CoreAPIEmitter?.addListener(CoreAPIModule?.COMMON_NATIVE_EMITTING, callback);
     },
 
     getDataFromDeepLink: () => {
-        return CoreAPIModule.getOneShotStorage(CoreAPIModule.DATA_FROM_DEEPLINK);
+        return CoreAPIModule?.getOneShotStorage(CoreAPIModule?.DATA_FROM_DEEPLINK);
     },
 
     getStorage: key => {

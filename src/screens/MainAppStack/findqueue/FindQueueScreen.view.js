@@ -43,17 +43,16 @@ const FindQueueScreen = props => {
     );
 
     return (
-        <SafeAreaView style={[styles.container]}>
+        <View style={[styles.container]}>
             {_renderResultView()}
             {_renderInputHeader()}
-        </SafeAreaView>
+        </View>
     );
 };
 
 const styles = StyleSheet.create({
     container: {
         backgroundColor: 'transparent',
-        // paddingTop: DefaultSize.XL,
         flex: 1,
     },
     result_view: {

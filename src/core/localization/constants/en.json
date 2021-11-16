@@ -1,5 +1,71 @@
 {
-    "test": "Tieng Anh",
+    "test": "English",
     "signIn": "Sign in",
-    "register": "Register"
+    "register": "Register",
+    "failedRequest": {
+        "heading": "Something went wrong",
+        "message": "We couldn’t process your request at the moment. Please try again later. Sorry for this inconvenience.",
+        "contact": "If it won’t work, please contact us at onLineUp@gmail.com."
+    },
+    "welcomeBanner": {
+        "heading": "Hi there!",
+        "intro": "onLineUp lets you to wait in queues from anywhere! (but an actual queue)"
+    },
+
+    "welcomeScreen": {
+        "errorModal": {
+            "emptyField": {
+                "heading": "Signup failed",
+                "message": "Please enter your email first before continuing."
+            },
+            "invalidInputEmail": {
+                "heading": "Signup failed",
+                "message": "Please enter an email in the format name@example.com."
+            }
+        },
+        "errorInline": {
+            "email": {
+                "emptyField": "Email is required.",
+                "invalidInputEmail": "Please enter your email address in format: yourname@example.com."
+            }
+        }
+    },
+    "otpScreen": {
+        "guide": "You only have 3 tries per OTP request",
+        "errorModal": {
+            "invalidInputEmail": "Incorrect OTP. Please enter again."
+        }
+    },
+    "registerScreen": {
+        "banner": {
+            "loginPrompt": "Already have an account?"
+        },
+        "errorModal": {
+            "emptyField": {
+                "heading": "Signup failed",
+                "message": "Please enter all required information to continue."
+            },
+            "invalidInputEmail": {
+                "heading": "Signup failed",
+                "message": "Please enter an email in the format name@example.com."
+            }
+        }
+    },
+    "loginScreen": {
+        "banner": {
+            "signupPrompt": "Don’t have an account?"
+        },
+        "errorModal": {
+            "emptyField": {
+                "heading": "Login failed",
+                "message": "Please enter your email and password to continue."
+            }
+        },
+        "errorInline": {
+            "incorrectPassword": {
+                "message": "Incorrect password. Please try again or you can reset your password.",
+                "changePwdPrompt": "reset your password"
+            }
+        }
+    }
 }

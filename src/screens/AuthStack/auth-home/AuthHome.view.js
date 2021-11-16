@@ -19,9 +19,11 @@ const AuthHome = ({ navigation }) => {
         return (
             <AnimatedFadeDown style={styles.pos_overlay}>
                 <CustomizedContainer type={'white_overlay'}>
-                    <CustomizedText type={'title_dark'}>Welcome bla bla bla</CustomizedText>
+                    <CustomizedText type={'title_dark'}>
+                        {LOCALIZED_CONTENT.welcomeBanner.heading}
+                    </CustomizedText>
                     <CustomizedText type={'subtitle_dark'}>
-                        Welcome bla aerfa fra ae rfgae fga era er aergae gaer bla bla
+                        {LOCALIZED_CONTENT.welcomeBanner.intro}
                     </CustomizedText>
 
                     <CustomizedButton

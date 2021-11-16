@@ -28,29 +28,31 @@ const HomeScreen = props => {
     );
 
     const _renderMain = () => (
-        <SafeAreaView style={styles.main}>
-            <CustomizedText type={'header'}>onLineUp</CustomizedText>
-            <CustomizedText type={'content_header'}>onLineUp</CustomizedText>
-            <View
-                style={styles.row_search}
-                onLayout={event => {
-                    posYTabSearch.current = event?.nativeEvent?.layout?.y;
-                }}
-            >
-                <CustomizedInput
-                    ref={refInputSearch}
-                    icon={'search'}
-                    containerStyle={styles.search_bar}
-                    onFocus={startSearching}
-                    placeholder={'Search your queue here'}
-                />
-                <Icon
-                    onPress={onPressQr}
-                    name={'qr-code'}
-                    type="ionicon"
-                    color={Colors.primary_1}
-                    style={styles.icon_qr}
-                />
+        <SafeAreaView>
+            <View style={styles.main}>
+                <CustomizedText type={'header'}>onLineUp</CustomizedText>
+                <CustomizedText type={'content_header'}>onLineUp</CustomizedText>
+                <View
+                    style={styles.row_search}
+                    onLayout={event => {
+                        posYTabSearch.current = event?.nativeEvent?.layout?.y;
+                    }}
+                >
+                    <CustomizedInput
+                        ref={refInputSearch}
+                        icon={'search'}
+                        containerStyle={styles.search_bar}
+                        onFocus={startSearching}
+                        placeholder={'Search your queue here'}
+                    />
+                    <Icon
+                        onPress={onPressQr}
+                        name={'qr-code'}
+                        type="ionicon"
+                        color={Colors.primary_1}
+                        style={styles.icon_qr}
+                    />
+                </View>
             </View>
         </SafeAreaView>
     );
@@ -77,7 +79,6 @@ const styles = StyleSheet.create({
     },
     foreground: {},
     main: {
-        position: 'absolute',
         width: '100%',
         height: '100%',
         paddingTop: DefaultSize.L,
