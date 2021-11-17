@@ -4,7 +4,7 @@ import { Animated } from 'react-native';
 const DURATION = 200;
 
 const useFindQueueScreen = props => {
-    const { requestClose = () => null } = props;
+    const { requestClose = () => null, headerHeight } = props;
     const animatedRef = useRef(new Animated.Value(0));
     const inputSearchRef = useRef(null);
 
@@ -39,6 +39,7 @@ const useFindQueueScreen = props => {
         animatedValue: animatedRef.current,
         onPressClose: _hide,
         inputSearchRef,
+        headerHeight,
     };
 };
 

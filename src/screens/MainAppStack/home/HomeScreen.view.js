@@ -6,12 +6,14 @@ import { DefaultSize } from '@utils/Constants';
 import FindQueueScreen from '@screens/MainAppStack/findqueue';
 import { Icon } from 'react-native-elements';
 import Colors from '@utils/Colors';
+import { useHeaderHeight } from '@react-navigation/stack';
 
 const HomeScreen = props => {
     const { isSearching, refInputSearch, startSearching, stopSearching, onPressQr } =
         useHomeScreen(props);
 
     const posYTabSearch = useRef();
+    const headerHeight = useRef(useHeaderHeight()).current;
 
     const _renderSearchComponent = () =>
         isSearching ? (
@@ -19,6 +21,7 @@ const HomeScreen = props => {
                 <FindQueueScreen
                     requestClose={stopSearching}
                     posYTabSearch={posYTabSearch.current}
+                    headerHeight={headerHeight}
                 />
             </View>
         ) : null;
