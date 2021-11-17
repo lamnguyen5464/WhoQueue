@@ -38,7 +38,8 @@ const HomeScreen = props => {
                 <View
                     style={styles.row_search}
                     onLayout={event => {
-                        posYTabSearch.current = event?.nativeEvent?.layout?.y;
+                        posYTabSearch.current =
+                            event?.nativeEvent?.layout?.y + event?.nativeEvent?.layout?.height;
                     }}
                 >
                     <CustomizedInput

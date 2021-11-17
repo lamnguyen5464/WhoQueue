@@ -16,6 +16,7 @@ const FindQueueScreen = props => {
     const { animatedValue, onPressClose, inputSearchRef, headerHeight } = useFindQueueScreen(props);
 
     const { posYTabSearch } = props;
+    console.log(posYTabSearch);
 
     const inputTransformation = {
         transform: [
@@ -28,9 +29,14 @@ const FindQueueScreen = props => {
         ],
     };
 
+    const opacityValue = animatedValue?.interpolate({
+        inputRange: [0, 0.5, 1],
+        outputRange: [0, 0.75, 1],
+    });
+
     const _renderInputHeader = () => (
-        <Animated.View style={[styles.container_header(headerHeight), inputTransformation]}>
-            <View style={styles.header}>
+        <View style={styles.header(headerHeight)}>
+            <View style={styles.container_input}>
                 <CustomizedInput
                     ref={inputSearchRef}
                     icon={'search'}
@@ -42,45 +48,45 @@ const FindQueueScreen = props => {
                     <CustomizedText type={'simple'}>Close</CustomizedText>
                 </TouchableOpacity>
             </View>
-        </Animated.View>
+        </View>
     );
 
     const _renderResultView = () => (
-        <Animated.View style={[styles.result_view]} opacity={animatedValue}>
+        <Animated.View style={[styles.result_view]}>
             <CustomizedText>loading...</CustomizedText>
         </Animated.View>
     );
 
     return (
-        <View style={[styles.container]}>
-            {_renderResultView()}
+        <Animated.View style={[styles.container, inputTransformation]} opacity={opacityValue}>
             {_renderInputHeader()}
-        </View>
+            {_renderResultView()}
+        </Animated.View>
     );
 };
 
 const styles = StyleSheet.create({
-    container: {
-        backgroundColor: 'transparent',
-        flex: 1,
-    },
     result_view: {
-        width: '100%',
-        height: '100%',
+        // flex: 1,
         backgroundColor: 'white',
     },
-    container_header: headerHeight => ({
-        position: 'absolute',
-        height: headerHeight,
+    container: {
+        flex: 1,
         width: '100%',
+        height: '100%',
+        position: 'absolute',
+        backgroundColor: 'white',
         paddingHorizontal: DefaultSize.XL,
-        justifyContent: 'flex-end',
-    }),
-    header: {
+    },
+    container_input: {
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
     },
+    header: headerHeight => ({
+        height: headerHeight,
+        justifyContent: 'flex-end',
+    }),
     search_bar: {
         width: '85%',
     },
