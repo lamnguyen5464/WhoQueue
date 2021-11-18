@@ -8,6 +8,8 @@
 
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 
+#import <onLineUp-Swift.h>
+
 
 @implementation AppDelegate
 
@@ -32,8 +34,8 @@
   
   //Config facebook
   [[FBSDKApplicationDelegate sharedInstance] application:application
-                             didFinishLaunchingWithOptions:launchOptions];
-
+                           didFinishLaunchingWithOptions:launchOptions];
+  
   return YES;
 }
 
@@ -44,6 +46,13 @@
 #else
   return [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
 #endif
+}
+
+
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options
+{
+  [AppLink handleDeepLinkWithUrl:url];
+  return YES;
 }
 
 @end

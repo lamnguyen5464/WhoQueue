@@ -18,6 +18,13 @@
 		43DC1AD108154760A1C72A95 /* FontAwesome5_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C1333D69A02D4DAC8F73255F /* FontAwesome5_Brands.ttf */; };
 		60F11FB92743C59A000305E3 /* FacebookSDKModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F11FB82743C59A000305E3 /* FacebookSDKModule.swift */; };
 		60F11FBA2743D297000305E3 /* FacebookSDKModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 60F11FB52743C4A8000305E3 /* FacebookSDKModule.m */; };
+		60F11FBD274652E7000305E3 /* AppLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F11FBC274652E7000305E3 /* AppLink.swift */; };
+		60F11FC0274656B4000305E3 /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F11FBF274656B4000305E3 /* URL+Extension.swift */; };
+		60F11FC22746592B000305E3 /* JSONSafeObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F11FC12746592B000305E3 /* JSONSafeObject.swift */; };
+		60F11FC527465D67000305E3 /* StorageInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F11FC427465D67000305E3 /* StorageInstance.swift */; };
+		60F11FC927465FB0000305E3 /* KeyCommonNative.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F11FC827465FB0000305E3 /* KeyCommonNative.swift */; };
+		60F11FCC2746609D000305E3 /* CoreAPIModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F11FCB2746609D000305E3 /* CoreAPIModule.swift */; };
+		60F11FCE274660C7000305E3 /* CoreAPIModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 60F11FCD274660C7000305E3 /* CoreAPIModule.m */; };
 		77079FEA516F4F10B009E247 /* AntDesign.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A0FE3F61266B46F08537D3D0 /* AntDesign.ttf */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		850579A883134D539CB6BF55 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6D1FC7CF701D4BC18E7433AF /* Octicons.ttf */; };
@@ -66,6 +73,13 @@
 		6041C8152743C33300839CBA /* onLineUp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "onLineUp-Bridging-Header.h"; sourceTree = "<group>"; };
 		60F11FB52743C4A8000305E3 /* FacebookSDKModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FacebookSDKModule.m; sourceTree = "<group>"; };
 		60F11FB82743C59A000305E3 /* FacebookSDKModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookSDKModule.swift; sourceTree = "<group>"; };
+		60F11FBC274652E7000305E3 /* AppLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLink.swift; sourceTree = "<group>"; };
+		60F11FBF274656B4000305E3 /* URL+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extension.swift"; sourceTree = "<group>"; };
+		60F11FC12746592B000305E3 /* JSONSafeObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONSafeObject.swift; sourceTree = "<group>"; };
+		60F11FC427465D67000305E3 /* StorageInstance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageInstance.swift; sourceTree = "<group>"; };
+		60F11FC827465FB0000305E3 /* KeyCommonNative.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyCommonNative.swift; sourceTree = "<group>"; };
+		60F11FCB2746609D000305E3 /* CoreAPIModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreAPIModule.swift; sourceTree = "<group>"; };
+		60F11FCD274660C7000305E3 /* CoreAPIModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoreAPIModule.m; sourceTree = "<group>"; };
 		633E83A663F6431E95371A24 /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		6D1FC7CF701D4BC18E7433AF /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = onLineUp/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -123,6 +137,7 @@
 		13B07FAE1A68108700A75B9A /* onLineUp */ = {
 			isa = PBXGroup;
 			children = (
+				60F11FBE2746569E000305E3 /* Utilities */,
 				6041C8132743C29500839CBA /* Core */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -148,6 +163,7 @@
 		6041C8122743C28000839CBA /* NativeModules */ = {
 			isa = PBXGroup;
 			children = (
+				60F11FC627465F53000305E3 /* CoreAPI */,
 				6041C8142743C2B700839CBA /* Facebook */,
 			);
 			name = NativeModules;
@@ -156,6 +172,8 @@
 		6041C8132743C29500839CBA /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				60F11FC327465D2F000305E3 /* Storage */,
+				60F11FBB274652D6000305E3 /* Deeplink */,
 				6041C8122743C28000839CBA /* NativeModules */,
 			);
 			name = Core;
@@ -168,6 +186,57 @@
 				60F11FB82743C59A000305E3 /* FacebookSDKModule.swift */,
 			);
 			name = Facebook;
+			sourceTree = "<group>";
+		};
+		60F11FBB274652D6000305E3 /* Deeplink */ = {
+			isa = PBXGroup;
+			children = (
+				60F11FBC274652E7000305E3 /* AppLink.swift */,
+			);
+			name = Deeplink;
+			sourceTree = "<group>";
+		};
+		60F11FBE2746569E000305E3 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				60F11FBF274656B4000305E3 /* URL+Extension.swift */,
+				60F11FC12746592B000305E3 /* JSONSafeObject.swift */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
+		60F11FC327465D2F000305E3 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				60F11FC427465D67000305E3 /* StorageInstance.swift */,
+			);
+			name = Storage;
+			sourceTree = "<group>";
+		};
+		60F11FC627465F53000305E3 /* CoreAPI */ = {
+			isa = PBXGroup;
+			children = (
+				60F11FCA27466087000305E3 /* Module */,
+				60F11FC727465F92000305E3 /* Constants */,
+			);
+			name = CoreAPI;
+			sourceTree = "<group>";
+		};
+		60F11FC727465F92000305E3 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				60F11FC827465FB0000305E3 /* KeyCommonNative.swift */,
+			);
+			name = Constants;
+			sourceTree = "<group>";
+		};
+		60F11FCA27466087000305E3 /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				60F11FCB2746609D000305E3 /* CoreAPIModule.swift */,
+				60F11FCD274660C7000305E3 /* CoreAPIModule.m */,
+			);
+			name = Module;
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -478,10 +547,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60F11FC927465FB0000305E3 /* KeyCommonNative.swift in Sources */,
+				60F11FC22746592B000305E3 /* JSONSafeObject.swift in Sources */,
+				60F11FBD274652E7000305E3 /* AppLink.swift in Sources */,
+				60F11FC527465D67000305E3 /* StorageInstance.swift in Sources */,
 				60F11FBA2743D297000305E3 /* FacebookSDKModule.m in Sources */,
+				60F11FCE274660C7000305E3 /* CoreAPIModule.m in Sources */,
+				60F11FCC2746609D000305E3 /* CoreAPIModule.swift in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 				60F11FB92743C59A000305E3 /* FacebookSDKModule.swift in Sources */,
+				60F11FC0274656B4000305E3 /* URL+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
