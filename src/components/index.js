@@ -6,6 +6,7 @@ import CustomizedButton from './CustomizedButton';
 import AnimatedLoading from './AnimatedLoading';
 import CustomizedInputOTP from './CustomizedInputOTP';
 import CustomizedContainer from './CustomizedContainer';
+import QueueItem from './QueueItem';
 
 export {
     AnimatedHeader,
@@ -16,4 +17,5 @@ export {
     AnimatedLoading,
     CustomizedInputOTP,
     CustomizedContainer,
+    QueueItem,
 };

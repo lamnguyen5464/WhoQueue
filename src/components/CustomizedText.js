@@ -62,6 +62,10 @@ const styles = StyleSheet.create({
         color: Colors.black,
         fontWeight: 'bold',
     },
+    light_content: {
+        fontSize: TextSize.Title,
+        color: Colors.black_12,
+    },
 });
 
 export default React.memo(CustomizedText);
