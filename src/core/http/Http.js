@@ -1,6 +1,6 @@
 import Environment from './Environment';
 import axios from 'axios';
-import SingletonPromise from '@utils/SingletonPromise';
+import useSingletonPromise from '@helpers/hook/useSingletonPromise';
 
 const DEFAULT_HEADERS = {
     Accept: 'application/json',
@@ -43,7 +43,7 @@ module.exports = {
             headers,
         } = props;
 
-        return SingletonPromise(requestId, (resolve, reject) => {
+        return useSingletonPromise(requestId, (resolve, reject) => {
             const options = {
                 method,
                 timeout,

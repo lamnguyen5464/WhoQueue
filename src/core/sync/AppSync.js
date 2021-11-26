@@ -2,7 +2,7 @@ import { useLayoutEffect, useEffect } from 'react';
 import useLocalization from '@core/localization';
 import CoreAPI from '@core/nativemodule/coreapi';
 import useNavigationStack from '@core/navigation/useNavigationStack';
-import ApiHelper from '@helpers/ApiHelper';
+import ApiHelper from '@helpers/api/ApiHelper';
 
 const AppSync = () => {
     const { initLocalization } = useLocalization();

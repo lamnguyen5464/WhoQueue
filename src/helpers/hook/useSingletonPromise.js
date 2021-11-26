@@ -7,9 +7,9 @@ let singletonPromises = {};
  * @returns {Promise?}
  */
 
-const ERROR = '[ERROR] Invalide params for SingletonPromise';
+const ERROR = '[ERROR] Invalide params for useSingletonPromise';
 
-const SingletonPromise = (key, executor) => {
+const useSingletonPromise = (key, executor) => {
     if (!key || !executor) return new Promise((_, reject) => reject(ERROR));
 
     if (!singletonPromises[key]) {
@@ -24,4 +24,4 @@ const SingletonPromise = (key, executor) => {
     return singletonPromises[key];
 };
 
-export default SingletonPromise;
+export default useSingletonPromise;

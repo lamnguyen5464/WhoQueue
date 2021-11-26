@@ -1,5 +1,5 @@
 import { useLayoutEffect } from 'react';
-import { useSelector, keySelector, useDispatch, actions } from '@context';
+import { useSelector, keySelector, useDispatch, actions } from '@core/context';
 import Http from '@core/http';
 import AppNavigator from '@core/navigation/AppNavigator';
 import debounce from 'lodash/debounce';

@@ -7,7 +7,7 @@
 
 const ERROR = '[ERROR] Invalide params for TimeoutPromise';
 
-const TimeoutPromise = (timeout, executor) => {
+const useTimeoutPromise = (timeout, executor) => {
     if (!timeout || !executor) return new Promise((_, reject) => reject(ERROR));
 
     return new Promise((resolve, reject) => {
@@ -16,4 +16,4 @@ const TimeoutPromise = (timeout, executor) => {
     });
 };
 
-export default TimeoutPromise;
+export default useTimeoutPromise;

@@ -1,4 +1,4 @@
-import { useSelector, keySelector, useDispatch, actions } from '@context';
+import { useSelector, keySelector, useDispatch, actions } from '@core/context';
 import { LOCALIZATION_ENUMS, CONTENT } from './constants';
 import { KEY_STORAGE, getItem, setItem } from '@utils/StorageUtils';
 

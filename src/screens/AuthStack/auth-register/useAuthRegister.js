@@ -1,7 +1,7 @@
 import { useRef, useLayoutEffect } from 'react';
-import { useSelector, keySelector, useDispatch, actions } from '@context';
+import { useSelector, keySelector, useDispatch, actions } from '@core/context';
 import AppNavigator from '@core/navigation/AppNavigator';
-import ApiHelper from '@helpers/ApiHelper';
+import ApiHelper from '@helpers/api/ApiHelper';
 
 const useAuthRegister = ({ navigation, route }) => {
     useLayoutEffect(() => {
@@ -25,6 +25,10 @@ const useAuthRegister = ({ navigation, route }) => {
             AppNavigator.showLoading();
 
             try {
+                if (refInputPassword.current?.getValue() === refInputPassword.current?.getValue()) {
+                    throw Error('password is not match');
+                }
+
                 const response = await ApiHelper.createNewAccount({
                     email,
                     fullname: refInputName.current?.getValue(),

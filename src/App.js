@@ -1,6 +1,6 @@
 import React from 'react';
 import { AppNavigation, AppOverlay, AppNavigator } from '@core/navigation';
-import { AppProvider } from '@context';
+import { AppProvider } from '@core/context';
 import { AppSync } from '@core/sync';
 
 const App = () => {

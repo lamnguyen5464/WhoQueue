@@ -1,4 +1,4 @@
-import { useSelector, keySelector, useDispatch, actions } from '@context';
+import { useSelector, keySelector, useDispatch, actions } from '@core/context';
 import { ROOT_STACKS_ENUM, STACKS } from './StackConstants';
 
 const useNavigationStack = () => {

@@ -1,7 +1,7 @@
 import { useLayoutEffect, useState, useRef, useEffect } from 'react';
-import { useSelector, keySelector, useDispatch, actions } from '@context';
+import { useSelector, keySelector, useDispatch, actions } from '@core/context';
 import AppNavigator from '@core/navigation/AppNavigator';
-import ApiHelper from '@helpers/ApiHelper';
+import ApiHelper from '@helpers/api/ApiHelper';
 import debounce from 'lodash/debounce';
 import FacebookSDK from '@core/nativemodule/facebooksdk';
 import { AUTH_STACKS_ENUMS } from '@screens/AuthStack';

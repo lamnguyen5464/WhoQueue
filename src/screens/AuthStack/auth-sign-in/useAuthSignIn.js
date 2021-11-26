@@ -1,7 +1,7 @@
 import { useLayoutEffect, useRef, useState } from 'react';
-import { useSelector, keySelector, useDispatch, actions } from '@context';
+import { useSelector, keySelector, useDispatch, actions } from '@core/context';
 import AppNavigator from '@core/navigation/AppNavigator';
-import ApiHelper from '@helpers/ApiHelper';
+import ApiHelper from '@helpers/api/ApiHelper';
 import FacebookSDK from '@core/nativemodule/facebooksdk';
 
 const useAuthSignIn = ({ navigation }) => {

@@ -5,7 +5,6 @@
             "@assets/*": ["src/assets/*"],
             "@helpers/*": ["src/helpers/*"],
             "@core/*": ["src/core/*"],
-            "@context/*": ["src/context/*"],
             "@utils/*": ["src/utils/*"],
             "@screens/*": ["src/screens/*"],
             "@components/*": ["src/components/*"]
