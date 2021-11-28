@@ -1,6 +1,4 @@
-package com.onlineup.core.nativemodule.coreapi.module;
-
-import android.util.Log;
+package com.onlineup.core.nativepackage.coreapi.module;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,7 +11,7 @@ import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
-import com.onlineup.core.nativemodule.coreapi.constant.KeyCommonNative;
+import com.onlineup.core.nativepackage.coreapi.constant.KeyCommonNative;
 import com.onlineup.core.storage.StorageInstance;
 
 import java.util.Map;

@@ -7,8 +7,9 @@ import com.facebook.react.ReactApplication;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.soloader.SoLoader;
-import com.onlineup.core.nativemodule.coreapi.module.CoreAPIPackage;
-import com.onlineup.core.nativemodule.facebook.FacebookSDKPackage;
+import com.onlineup.core.nativepackage.coreapi.module.CoreAPIPackage;
+import com.onlineup.core.nativepackage.facebook.FacebookSDKPackage;
+import com.onlineup.core.nativepackage.qrcode.QRCodePackage;
 
 import java.util.List;
 
@@ -28,6 +29,7 @@ public class MainApplication extends Application implements ReactApplication {
           // Packages that cannot be autolinked yet can be added manually here, for example:
            packages.add(new FacebookSDKPackage());
            packages.add(new CoreAPIPackage());
+           packages.add(new QRCodePackage());
           return packages;
         }
 

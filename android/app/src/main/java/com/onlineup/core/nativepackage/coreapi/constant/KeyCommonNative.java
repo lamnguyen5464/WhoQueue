@@ -1,4 +1,4 @@
-package com.onlineup.core.nativemodule.coreapi.constant;
+package com.onlineup.core.nativepackage.coreapi.constant;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -4,8 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.util.Log;
 
-import com.facebook.react.bridge.ReactContext;
-import com.onlineup.core.nativemodule.coreapi.constant.KeyCommonNative;
+import com.onlineup.core.nativepackage.coreapi.constant.KeyCommonNative;
 import com.onlineup.core.storage.StorageInstance;
 import com.onlineup.utility.JSONSafeObject;
 

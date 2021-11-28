@@ -6,9 +6,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 
-import com.facebook.react.bridge.ReactContext;
 import com.google.firebase.messaging.RemoteMessage;
-import com.onlineup.core.nativemodule.coreapi.constant.KeyCommonNative;
+import com.onlineup.core.nativepackage.coreapi.constant.KeyCommonNative;
 import com.onlineup.core.storage.StorageInstance;
 
 public class AppNotification {

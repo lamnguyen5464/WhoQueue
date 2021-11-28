@@ -1,4 +1,4 @@
-package com.onlineup.core.nativemodule.facebook;
+package com.onlineup.core.nativepackage.facebook;
 
 import androidx.annotation.NonNull;
 

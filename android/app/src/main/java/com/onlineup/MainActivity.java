@@ -2,12 +2,10 @@ package com.onlineup;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 
 import com.facebook.react.ReactActivity;
-import com.facebook.react.bridge.ReactContext;
 import com.onlineup.core.deeplink.AppLink;
-import com.onlineup.core.nativemodule.facebook.FacebookSDKModule;
+import com.onlineup.core.nativepackage.facebook.FacebookSDKModule;
 import com.onlineup.core.notification.AppNotification;
 
 public class MainActivity extends ReactActivity {
