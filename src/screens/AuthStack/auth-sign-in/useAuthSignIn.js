@@ -1,8 +1,9 @@
-import { useLayoutEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { useSelector, keySelector, useDispatch, actions } from '@core/context';
 import AppNavigator from '@core/navigation/AppNavigator';
-import ApiHelper from '@helpers/api/ApiHelper';
+import AuthApiHelper from '@helpers/api/AuthApiHelper';
 import FacebookSDK from '@core/nativemodule/facebooksdk';
+import useUserData from '@core/data/userprofile/useUserData';
 
 const useAuthSignIn = ({ navigation }) => {
     useLayoutEffect(() => {
@@ -14,6 +15,11 @@ const useAuthSignIn = ({ navigation }) => {
     const refInputEmail = useRef(null);
     const refInputPassword = useRef(null);
     const [errorText, setErrorText] = useState('');
+    const profileData = useUserData();
+
+    useEffect(() => {
+        refInputEmail.current.setValue(profileData?.get()?.email || '');
+    }, []);
 
     return {
         refInputEmail,
@@ -23,7 +29,7 @@ const useAuthSignIn = ({ navigation }) => {
         onPressSignIn: async () => {
             AppNavigator.showLoading();
             try {
-                const response = await ApiHelper.signInByEmail({
+                const response = await AuthApiHelper.signInByEmail({
                     email: refInputEmail.current?.getValue(),
                     password: refInputPassword.current?.getValue(),
                 });
@@ -40,7 +46,7 @@ const useAuthSignIn = ({ navigation }) => {
             try {
                 const { token } = await FacebookSDK.getToken?.();
                 AppNavigator.showLoading();
-                const res = await ApiHelper.signInByFacebook({ facebookToken: token });
+                const res = await AuthApiHelper.signInByFacebook({ facebookToken: token });
                 AppNavigator.activateMainApp();
             } catch (e) {
                 setErrorText(e.description);

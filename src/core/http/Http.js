@@ -1,6 +1,7 @@
 import Environment from './Environment';
 import axios from 'axios';
 import useSingletonPromise from '@helpers/hook/useSingletonPromise';
+import UserData from '@core/data/userprofile/UserData';
 
 const DEFAULT_HEADERS = {
     Accept: 'application/json',
@@ -21,7 +22,7 @@ module.exports = {
     },
 
     getAccessToken() {
-        return this.token;
+        return UserData.getAccessToken();
     },
 
     _getHeader(headers) {
@@ -55,9 +56,6 @@ module.exports = {
             const _successHandler = ({ data }) => {
                 if (__DEV__) {
                     console.logg?.(data, 'green', '[RESPONSE from API]' + path);
-                }
-                if (data?.data?.accessToken) {
-                    this.setAccessToken(data?.data?.accessToken);
                 }
                 resolve(data);
             };

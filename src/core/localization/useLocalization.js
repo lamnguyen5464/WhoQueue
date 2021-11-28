@@ -7,7 +7,7 @@ const useLocalization = () => {
     const dispatch = useDispatch();
 
     const initLocalization = () => {
-        getItem(KEY_STORAGE.LOCALIZATION, key => {
+        getItem(KEY_STORAGE.LOCALIZATION).then(key => {
             setLocalization(key ?? LOCALIZATION_ENUMS.en);
         });
     };

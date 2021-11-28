@@ -1,7 +1,7 @@
 import { useLayoutEffect, useState, useRef, useEffect } from 'react';
 import { useSelector, keySelector, useDispatch, actions } from '@core/context';
 import AppNavigator from '@core/navigation/AppNavigator';
-import ApiHelper from '@helpers/api/ApiHelper';
+import AuthApiHelper from '@helpers/api/AuthApiHelper';
 import debounce from 'lodash/debounce';
 import FacebookSDK from '@core/nativemodule/facebooksdk';
 import { AUTH_STACKS_ENUMS } from '@screens/AuthStack';
@@ -77,7 +77,7 @@ const useAuthEmailVerify = ({ navigation }) => {
             const email = refInputEmail.current?.getValue();
             setPageStatus(PAGE_STATUS.SENDING_EMAIL);
             clearError();
-            ApiHelper.requestOTP({ email })
+            AuthApiHelper.requestOTP({ email })
                 .then(res => {
                     setPageStatus(PAGE_STATUS.TYPING_OTP);
                 })
@@ -93,7 +93,7 @@ const useAuthEmailVerify = ({ navigation }) => {
             const otp = refInputOTP.current?.getValue();
 
             setPageStatus(PAGE_STATUS.VERYFYING_OTP);
-            ApiHelper.verifyOTP({ email, otp })
+            AuthApiHelper.verifyOTP({ email, otp })
                 .then(res => {
                     onRecieveVerification(res?.data);
                 })
@@ -109,7 +109,7 @@ const useAuthEmailVerify = ({ navigation }) => {
             try {
                 const { token } = await FacebookSDK.getToken?.();
                 AppNavigator.showLoading();
-                const res = await ApiHelper.verifyFBToken({ facebookToken: token });
+                const res = await AuthApiHelper.verifyFBToken({ facebookToken: token });
                 onRecieveVerification(res?.data);
             } catch (e) {
                 setErrorText(e.description);

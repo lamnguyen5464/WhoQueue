@@ -2,11 +2,13 @@ import { useLayoutEffect, useEffect } from 'react';
 import useLocalization from '@core/localization';
 import CoreAPI from '@core/nativemodule/coreapi';
 import useNavigationStack from '@core/navigation/useNavigationStack';
-import ApiHelper from '@helpers/api/ApiHelper';
+import AuthApiHelper from '@helpers/api/AuthApiHelper';
+import useUserData from '@core/data/userprofile/useUserData';
 
 const AppSync = () => {
     const { initLocalization } = useLocalization();
     const { isLoginSuccess, navigationStack } = useNavigationStack();
+    const userProfile = useUserData(true);
 
     useLayoutEffect(() => {
         initLocalization();
@@ -20,6 +22,10 @@ const AppSync = () => {
     }, []);
 
     useEffect(() => {
+        console.logg?.(userProfile.get(), 'red', 'profile');
+    }, [userProfile.get()]);
+
+    useEffect(() => {
         if (isLoginSuccess()) {
             syncFCMToken();
         }
@@ -29,9 +35,9 @@ const AppSync = () => {
         try {
             const fcmToken = await CoreAPI.getStorage('FCM_TOKEN_KEY');
             console.log('FCM_TOKEN_KEY: ', fcmToken);
-            const response = await ApiHelper.updateFcmToken({ fcmToken });
+            const response = await AuthApiHelper.updateFcmToken({ fcmToken });
         } catch (e) {
-            console.log('eee', e);
+            // console.log('eee', e);
         }
     };
 

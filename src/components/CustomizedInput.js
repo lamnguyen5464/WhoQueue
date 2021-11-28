@@ -17,15 +17,19 @@ const CustomizedInput = forwardRef((props, ref) => {
         onFocus = () => null,
     } = props;
 
-    const [value, setValue] = useState('');
+    const [textValue, setTextValue] = useState('');
     const refInput = useRef(null);
 
     useLayoutEffect(() => {
-        onChangeValue?.(value);
-    }, [value]);
+        onChangeValue?.(textValue);
+    }, [textValue]);
 
     const getValue = () => {
-        return value;
+        return textValue;
+    };
+
+    const setValue = text => {
+        refInput.current.setNativeProps({ text });
     };
 
     const focus = () => {
@@ -35,6 +39,7 @@ const CustomizedInput = forwardRef((props, ref) => {
     useImperativeHandle(ref, () => ({
         focus,
         getValue,
+        setValue,
     }));
 
     return (
@@ -42,7 +47,7 @@ const CustomizedInput = forwardRef((props, ref) => {
             <Icon name={icon} type="ionicon" color={tintIconColor} style={styles.icon} />
             <TextInput
                 editable
-                value={value}
+                textValue={textValue}
                 ref={refInput}
                 onFocus={onFocus}
                 numberOfLines={1}
@@ -51,7 +56,7 @@ const CustomizedInput = forwardRef((props, ref) => {
                 secureTextEntry={isPassword}
                 style={styles.container_input}
                 autoCapitalize={autoCapitalize}
-                onChangeText={text => setValue(text)}
+                onChangeText={text => setTextValue(text)}
                 placeholderTextColor={Colors.black_10}
             />
         </View>

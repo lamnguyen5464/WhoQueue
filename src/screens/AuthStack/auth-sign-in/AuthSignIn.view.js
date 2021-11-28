@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { View, TextInput } from 'react-native';
+import { View } from 'react-native';
 import {
     CustomizedContainer,
     CustomizedButton,

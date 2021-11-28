@@ -7,6 +7,8 @@ const reducer = (state, action) => {
             return { ...state, localization: payload };
         case types.SET_NAVIGATION_STACK:
             return { ...state, navigationStack: payload };
+        case types.SET_USER_PROFILE:
+            return { ...state, userProfile: payload };
         default:
             return state;
     }

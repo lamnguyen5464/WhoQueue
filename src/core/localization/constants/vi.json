@@ -67,5 +67,9 @@
                 "changePwdPrompt": "yêu cầu mật khẩu mới"
             }
         }
+    },
+    "errorAPI": {
+        "facebook_fail": "Ban dakaeg aeg aegr aegar",
+        "otp_not_found": "Ma OTP ban nhap khong hopj lejegaerga erg"
     }
 }

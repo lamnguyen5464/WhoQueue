@@ -1,4 +1,5 @@
 import Http from '@core/http';
+import UserData from '@core/data/userprofile/UserData';
 
 module.exports = {
     requestOTP({ email = '' }) {
@@ -44,7 +45,7 @@ module.exports = {
             headers: {
                 token_otp: Http.getAccessToken(),
             },
-        });
+        }).then(updateUserProfileData);
     },
 
     signInByEmail({ email, password }) {
@@ -55,7 +56,7 @@ module.exports = {
                 password,
             },
             path: '/login',
-        });
+        }).then(updateUserProfileData);
     },
 
     signInByFacebook({ facebookToken }) {
@@ -65,7 +66,7 @@ module.exports = {
                 facebookToken,
             },
             path: '/login-facebook',
-        });
+        }).then(updateUserProfileData);
     },
 
     updateFcmToken({ fcmToken }) {
@@ -77,4 +78,15 @@ module.exports = {
             path: '/users/update-fcm-token',
         });
     },
+};
+
+const updateUserProfileData = ({ data = {} }) => {
+    if (!data?.jwtResponse || !data?.userInfo) {
+        return;
+    }
+    const profile = {
+        ...data?.jwtResponse,
+        ...data?.userInfo,
+    };
+    UserData.setToStorage(profile);
 };

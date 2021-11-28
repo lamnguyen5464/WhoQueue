@@ -1,23 +1,15 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const KEY_STORAGE = {
+    USER_PROFILE: 'USER_PROFILE',
     ONBOARDING_SHOW: 'ONBOARDING_SHOW',
     LOCALIZATION: 'LOCALIZATION',
 };
 
 export const setItem = async (key, value) => {
-    try {
-        await AsyncStorage.setItem(key, value);
-    } catch (error) {
-        console.log('@error setItem', error);
-    }
+    return AsyncStorage.setItem(key, value);
 };
 
-export const getItem = async (key, callback) => {
-    try {
-        const value = await AsyncStorage.getItem(key);
-        callback?.(value);
-    } catch (error) {
-        callback?.(null);
-    }
+export const getItem = key => {
+    return AsyncStorage.getItem(key);
 };
