@@ -2,6 +2,7 @@ package com.onlineup.core.nativepackage.qrcode.view.scanner
 
 import android.annotation.SuppressLint
 import android.media.Image
+import android.util.Log
 import androidx.camera.core.*
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.view.PreviewView

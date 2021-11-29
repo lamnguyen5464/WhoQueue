@@ -60,7 +60,7 @@ object PermissionHelper {
         permissionAwareActivity.requestPermissions(
             arrayOf(permission),
             1
-        ) { requestCode, permissions, grantResults ->
+        ) { _, _, grantResults ->
             val result = if (grantResults.isNotEmpty()) grantResults[0] else -1
             promise.resolve(getOnResultStatus(result))
             false

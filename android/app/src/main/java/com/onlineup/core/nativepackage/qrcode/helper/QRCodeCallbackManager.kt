@@ -11,8 +11,12 @@ object QRCodeCallbackManager {
     }
 
     @JvmStatic
-    fun onScanningResult(result: Any) {
-        scanningPromiseInstance?.resolve(result)
+    fun onScanningResult(result: Any?) {
+        if (result != null){
+            scanningPromiseInstance?.resolve(result)
+        }else{
+            scanningPromiseInstance?.reject("","")
+        }
         scanningPromiseInstance = null
     }
 

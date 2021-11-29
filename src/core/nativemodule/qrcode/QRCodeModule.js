@@ -1,10 +1,28 @@
-import { NativeModules, NativeEventEmitter } from 'react-native';
+import { NativeModules } from 'react-native';
 const { QRCodeModule = {} } = NativeModules;
 
-// setTimeout(() => {
-//     QRCodeModule?.startScanning?.().then(res => {
-//         console.log(res);
-//     });
-// }, 2000);
+export default {
+    startScanning() {
+        return new Promise((resolve, reject) => {
+            QRCodeModule?.checkCameraPermission()
+                .then(() => {
+                    QRCodeModule?.startScanning?.().then(resolve).catch(reject);
+                })
+                .catch(reject);
+        });
+    },
 
-export default {};
+    isGrantedPermission() {
+        return new Promise((resolve, reject) => {
+            QRCodeModule?.checkCameraPermission()
+                .then(res => {
+                    if (res === 'granted') {
+                        resolve(res);
+                    } else {
+                        reject(res);
+                    }
+                })
+                .catch(reject);
+        });
+    },
+};

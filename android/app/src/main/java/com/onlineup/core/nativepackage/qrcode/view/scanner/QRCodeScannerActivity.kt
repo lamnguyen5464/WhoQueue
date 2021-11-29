@@ -1,7 +1,7 @@
 package com.onlineup.core.nativepackage.qrcode.view.scanner
 
 import android.os.Bundle
-import android.util.Log
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.view.PreviewView
@@ -21,11 +21,15 @@ class QRCodeScannerActivity : AppCompatActivity() {
                 findViewById<PreviewView>(R.id.camera_view),
                 ContextCompat.getMainExecutor(this),
         ) { rawValue ->
-            Log.d("@@@ rawvalue", rawValue)
             QRCodeCallbackManager.onScanningResult(rawValue)
             finish()
         }
 
         qrCodeCamera.start(this)
+
+        findViewById<Button>(R.id.bt_back).setOnClickListener {
+            QRCodeCallbackManager.onScanningResult(null)
+            finish()
+        }
     }
 }

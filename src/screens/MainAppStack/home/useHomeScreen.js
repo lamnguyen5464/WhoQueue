@@ -3,6 +3,7 @@ import { Keyboard } from 'react-native';
 import AppNavigator from '@core/navigation/AppNavigator';
 import { APP_STACKS_ENUMS } from '@screens/MainAppStack';
 import useUserData from '@core/data/userprofile/useUserData';
+import QRCodeModule from '@core/nativemodule/qrcode/QRCodeModule';
 
 const useHomeScreen = props => {
     const { navigation } = props;
@@ -39,7 +40,14 @@ const useHomeScreen = props => {
             setSearching(false);
         },
 
-        onPressQr: () => {},
+        onPressQr: async () => {
+            try {
+                const res = await QRCodeModule.startScanning();
+                console.log(res);
+            } catch (e) {
+                console.log('e', e);
+            }
+        },
     };
 };
 

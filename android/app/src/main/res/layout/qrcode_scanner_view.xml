@@ -1,29 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/PRIMARY_02"
+    android:orientation="vertical"
     tools:context=".core.nativepackage.qrcode.view.scanner.QRCodeScannerActivity">
-    <androidx.camera.view.PreviewView
-        android:id="@+id/camera_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    </androidx.camera.view.PreviewView>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:background="#aa000000"
-        android:layout_alignParentBottom="true"
-        >
-        <TextView
-            android:id="@+id/test"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginTop="12dp"
+        android:layout_weight="1"
+        android:background="@drawable/camera_view_style">
+
+        <androidx.camera.view.PreviewView
+            android:id="@+id/camera_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:textColor="#fff"
-            android:text="no value"
-            />
+            android:layout_height="match_parent" />
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:src="@drawable/frame_scan_qrcode" />
+
     </RelativeLayout>
 
-</RelativeLayout>
+    <Button
+        android:id="@+id/bt_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="12dp"
+        android:layout_marginStart="12dp"
+        android:background="@drawable/bt_back_style"
+        android:text="@string/back"
+        android:textColor="@color/WHITE" />
+
+
+</LinearLayout>

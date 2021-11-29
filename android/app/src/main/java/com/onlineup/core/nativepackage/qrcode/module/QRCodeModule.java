@@ -1,5 +1,6 @@
 package com.onlineup.core.nativepackage.qrcode.module;
 
+import android.Manifest;
 import android.content.Intent;
 
 import androidx.annotation.NonNull;
@@ -10,6 +11,7 @@ import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.onlineup.core.nativepackage.qrcode.helper.QRCodeCallbackManager;
 import com.onlineup.core.nativepackage.qrcode.view.scanner.QRCodeScannerActivity;
+import com.onlineup.core.permission.PermissionHelper;
 
 public class QRCodeModule extends ReactContextBaseJavaModule {
     private static final String MODULE_NAME = "QRCodeModule";
@@ -28,5 +30,10 @@ public class QRCodeModule extends ReactContextBaseJavaModule {
     public void startScanning(Promise promise){
         QRCodeCallbackManager.setScanningPromise(promise);
         getCurrentActivity().startActivity(new Intent(getCurrentActivity(), QRCodeScannerActivity.class));
+    }
+
+    @ReactMethod
+    public void checkCameraPermission(Promise promise){
+        PermissionHelper.checkPermission(getCurrentActivity(), Manifest.permission.CAMERA, promise);
     }
 }

@@ -33,9 +33,6 @@ public class MainActivity extends ReactActivity {
         super.onCreate(savedInstanceState);
 
         handleExternalFlow(getIntent());
-
-//        PermissionHelper(this, Manifest.permission.CAMERA);
-
     }
 
     @Override
