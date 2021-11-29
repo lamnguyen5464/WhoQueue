@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
         borderBottomRightRadius: DefaultSize.XL,
     },
     pos_overlay: {
-        height: '80%',
+        height: '100%',
         width: '100%',
         justifyContent: 'center',
         alignItems: 'center',

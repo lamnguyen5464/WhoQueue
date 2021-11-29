@@ -26,7 +26,10 @@ module.exports = {
     },
 
     _getHeader(headers) {
-        headers = headers ? headers : { Authorization: `Bearer ${this.getAccessToken()}` };
+        headers =
+            headers || !this.getAccessToken()
+                ? headers
+                : { Authorization: `Bearer ${this.getAccessToken()}` };
         return {
             ...DEFAULT_HEADERS,
             ...headers,

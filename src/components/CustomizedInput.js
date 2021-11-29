@@ -29,6 +29,7 @@ const CustomizedInput = forwardRef((props, ref) => {
     };
 
     const setValue = text => {
+        setTextValue(text);
         refInput.current.setNativeProps({ text });
     };
 

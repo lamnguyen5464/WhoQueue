@@ -41,7 +41,7 @@ module.exports = {
     ),
 
     showLoading() {
-        this.overlayRef.current.show({
+        this.overlayRef.current?.show({
             component: <AnimatedLoading />,
             cancelHandler: () => null,
             disableCancel: true,
@@ -49,6 +49,6 @@ module.exports = {
     },
 
     hideLoading() {
-        this.overlayRef.current.hide();
+        this.overlayRef.current?.hide();
     },
 };

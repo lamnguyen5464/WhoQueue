@@ -7,7 +7,7 @@ import useUserData from '@core/data/userprofile/useUserData';
 
 const AppSync = () => {
     const { initLocalization } = useLocalization();
-    const { isLoginSuccess, navigationStack } = useNavigationStack();
+    const { isLoginSuccess, navigationStack, activateMainApp } = useNavigationStack();
     const userProfile = useUserData(true);
 
     useLayoutEffect(() => {
@@ -22,7 +22,12 @@ const AppSync = () => {
     }, []);
 
     useEffect(() => {
-        console.logg?.(userProfile.get(), 'red', 'profile');
+        console.logg?.(userProfile.get(), 'yellow', 'profile');
+        const { accessToken } = userProfile.get() || {};
+
+        if (!!accessToken) {
+            activateMainApp();
+        }
     }, [userProfile.get()]);
 
     useEffect(() => {

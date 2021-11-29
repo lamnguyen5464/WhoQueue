@@ -202,8 +202,6 @@ dependencies {
 
     implementation 'com.google.firebase:firebase-core:+'
     implementation 'com.google.firebase:firebase-messaging:+'
-    implementation 'androidx.appcompat:appcompat:1.4.0'
-    implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.1'//push noti
 
     //native activity
