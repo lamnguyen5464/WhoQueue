@@ -3,6 +3,7 @@ package com.onlineup;
 import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,6 +13,7 @@ import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.WritableMap;
 import com.onlineup.core.deeplink.AppLink;
 import com.onlineup.core.nativepackage.facebook.FacebookSDKModule;
+import com.onlineup.core.nativepackage.qrcode.view.scanner.QRCodeScannerActivity;
 import com.onlineup.core.notification.AppNotification;
 import com.onlineup.core.permission.PermissionHelper;
 
@@ -32,65 +34,7 @@ public class MainActivity extends ReactActivity {
 
         handleExternalFlow(getIntent());
 
-
-        Promise promise = new Promise() {
-            @Override
-            public void resolve(@Nullable Object value) {
-                startActivity(new Intent(MainActivity.this, QRCodeScannerView.class));
-            }
-
-            @Override
-            public void reject(String code, String message) {
-
-            }
-
-            @Override
-            public void reject(String code, Throwable throwable) {
-
-            }
-
-            @Override
-            public void reject(String code, String message, Throwable throwable) {
-
-            }
-
-            @Override
-            public void reject(Throwable throwable) {
-
-            }
-
-            @Override
-            public void reject(Throwable throwable, WritableMap userInfo) {
-
-            }
-
-            @Override
-            public void reject(String code, @NonNull WritableMap userInfo) {
-
-            }
-
-            @Override
-            public void reject(String code, Throwable throwable, WritableMap userInfo) {
-
-            }
-
-            @Override
-            public void reject(String code, String message, @NonNull WritableMap userInfo) {
-
-            }
-
-            @Override
-            public void reject(String code, String message, Throwable throwable, WritableMap userInfo) {
-
-            }
-
-            @Override
-            public void reject(String message) {
-
-            }
-
-        };
-        PermissionHelper.requestPermission(this, Manifest.permission.CAMERA, promise);
+//        PermissionHelper(this, Manifest.permission.CAMERA);
 
     }
 

@@ -9,6 +9,7 @@ import {
 import useLocalization from '@core/localization';
 import styles from './AuthHome.styles';
 import useAuthHome from './useAuthHome';
+import QRCodeModule from '@core/nativemodule/qrcode/QRCodeModule';
 
 const AuthHome = ({ navigation }) => {
     const { LOCALIZATION_ENUMS, LOCALIZED_CONTENT, setLocalization, getLocalization } =

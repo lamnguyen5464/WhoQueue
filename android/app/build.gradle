@@ -82,7 +82,7 @@ import com.android.build.OutputFile
  */
 
 project.ext.react = [
-    enableHermes: false,  // clean and rebuild if changing
+        enableHermes: false,  // clean and rebuild if changing
 ]
 
 apply from: "../../node_modules/react-native/react.gradle"
@@ -214,6 +214,9 @@ dependencies {
     implementation "androidx.camera:camera-lifecycle:$camerax_version"
     // CameraX View class
     implementation "androidx.camera:camera-view:1.0.0-alpha27"
+
+
+    implementation 'com.google.mlkit:barcode-scanning:17.0.0'   // scan QRCode
 
 
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"

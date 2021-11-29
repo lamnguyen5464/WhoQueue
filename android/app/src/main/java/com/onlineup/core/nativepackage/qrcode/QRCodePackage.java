@@ -7,7 +7,7 @@ import com.facebook.react.bridge.NativeModule;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.uimanager.ViewManager;
 import com.onlineup.core.nativepackage.qrcode.module.QRCodeModule;
-import com.onlineup.core.nativepackage.qrcode.view.QRCodeViewManager;
+import com.onlineup.core.nativepackage.qrcode.view.display.QRCodeViewManager;
 
 import java.util.Arrays;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.onlineup.core.nativepackage.qrcode.view;
+package com.onlineup.core.nativepackage.qrcode.view.display;
 
 import android.content.Context;
 import android.util.AttributeSet;
