@@ -26,6 +26,7 @@
     <color name="BLACK_18">#242424</color>
     <color name="BLACK_19">#18191a</color>
     <color name="BLACK_20">#000000</color>
+    <color name="BLACK_SHADOW">#aa000000</color>
     <color name="BLACK_TWO">#252525</color>
     <color name="BLUE_01">#002766</color>
     <color name="BLUE_02">#003a8c</color>
