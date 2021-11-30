@@ -69,7 +69,8 @@ const QueueDetail = props => {
         </View>
     );
 
-    const _renderQRCode = () => <QRCodeView value={userId} style={styles.qrcode_view} />;
+    const _renderQRCode = () =>
+        haveJoined ? <QRCodeView value={userId} style={styles.qrcode_view} /> : null;
 
     const _renderForeground = () => (
         <CustomizedContainer
@@ -101,7 +102,13 @@ const QueueDetail = props => {
 
     return (
         <View style={styles.container}>
-            <AnimatedHeader navigation={navigation} />
+            <AnimatedHeader
+                navigation={navigation}
+                iconRight={'share-outline'}
+                onPressHeaderRight={() => {
+                    console.log('share');
+                }}
+            />
             {_renderForeground()}
             {_renderMainOverlay()}
         </View>

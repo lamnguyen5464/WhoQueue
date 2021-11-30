@@ -9,7 +9,7 @@ import { CustomizedText } from '@components';
 import { Icon } from 'react-native-elements';
 
 const AnimatedHeader = forwardRef((props, ref) => {
-    const { navigation, title = '' } = props;
+    const { navigation, title = '', iconRight = '', onPressHeaderRight = () => null } = props;
     const headerHeight = useRef(useHeaderHeight()).current;
     const opacityAnimated = useRef(new Animated.Value(0)).current;
 
@@ -37,9 +37,9 @@ const AnimatedHeader = forwardRef((props, ref) => {
         </TouchableOpacity>
     );
 
-    const _renderIconRight = () => (
-        <TouchableOpacity onPress={onPressBack}>
-            <Image source={null} style={styles.ic_right} />
+    const _renderIconRight = (color = 'black') => (
+        <TouchableOpacity onPress={onPressHeaderRight} style={styles.ic_right}>
+            <Icon name={iconRight} type="ionicon" color={color} />
         </TouchableOpacity>
     );
 
@@ -49,7 +49,7 @@ const AnimatedHeader = forwardRef((props, ref) => {
         <>
             <View style={[styles.transparent_container, { height: headerHeight || 0 }]}>
                 {_renderIconLeft('white')}
-                {_renderIconRight()}
+                {_renderIconRight('white')}
             </View>
             <Animated.View
                 style={[styles.container, { height: headerHeight || 0, opacity: opacityAnimated }]}
@@ -90,8 +90,6 @@ const styles = StyleSheet.create({
         marginLeft: DefaultSize.XL,
     },
     ic_right: {
-        width: DefaultSize.L,
-        height: DefaultSize.L,
         marginRight: DefaultSize.XL,
     },
 });
