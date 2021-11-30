@@ -37,7 +37,7 @@ module.exports = {
     },
 
     isExpiredToken(error) {
-        return error.response.status === 401;
+        return error?.response?.status === 401;
     },
 
     request(props) {
