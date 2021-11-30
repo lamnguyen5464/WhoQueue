@@ -13,7 +13,7 @@ module.exports = {
         return new Promise((resolve, reject) => {
             getItem(KEY_STORAGE.USER_PROFILE)
                 .then(_userProfile => {
-                    const parsedData = JSON.parseSafe(_userProfile);
+                    const parsedData = JSON.parseSafe(_userProfile) || {};
                     this.setDataInstance(parsedData);
                     resolve(parsedData);
                 })

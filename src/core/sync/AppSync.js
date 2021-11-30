@@ -23,7 +23,8 @@ const AppSync = () => {
 
     useEffect(() => {
         console.logg?.(userProfile.get(), 'yellow', 'profile');
-        const { accessToken } = userProfile.get() || {};
+        const data = userProfile.get() || {};
+        const { accessToken } = data;
 
         if (!!accessToken) {
             activateMainApp();

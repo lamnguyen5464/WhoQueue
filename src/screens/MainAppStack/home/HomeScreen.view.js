@@ -78,6 +78,7 @@ const HomeScreen = props => {
                 keyExtractor={(item, index) => `list_joined_at_home_${index}`}
                 data={joinedQueue || []}
                 renderItem={(item, index) => <QueueItem data={item} />}
+                showsVerticalScrollIndicator={false}
             />
         </View>
     );
