@@ -3,7 +3,7 @@ import { useSelector, keySelector, useDispatch, actions } from '@core/context';
 import Http from '@core/http';
 import AppNavigator from '@core/navigation/AppNavigator';
 import debounce from 'lodash/debounce';
-import { AUTH_STACKS_ENUMS } from '@screens/AuthStack';
+import AUTH_STACKS_ENUMS from '@screens/AuthStack/enums';
 
 const useAuthHome = ({ navigation }) => {
     useLayoutEffect(() => {

@@ -9,8 +9,15 @@ import Colors from '@utils/Colors';
 import { useHeaderHeight } from '@react-navigation/stack';
 
 const HomeScreen = props => {
-    const { joinedQueue, isSearching, refInputSearch, startSearching, stopSearching, onPressQr } =
-        useHomeScreen(props);
+    const {
+        joinedQueue,
+        isSearching,
+        refInputSearch,
+        startSearching,
+        stopSearching,
+        onPressQr,
+        goToQueueDetail,
+    } = useHomeScreen(props);
 
     const posYTabSearch = useRef();
     const headerHeight = useRef(useHeaderHeight()).current;
@@ -77,7 +84,9 @@ const HomeScreen = props => {
             <FlatList
                 keyExtractor={({ _, index }) => `list_joined_at_home_${index}`}
                 data={joinedQueue || []}
-                renderItem={({ item, index }) => <QueueItem data={item} />}
+                renderItem={({ item, index }) => (
+                    <QueueItem data={item} goToQueueDetail={goToQueueDetail} />
+                )}
                 showsVerticalScrollIndicator={false}
             />
         </View>
@@ -112,6 +121,7 @@ const styles = StyleSheet.create({
     },
     search_bar: {
         width: '85%',
+        backgroundColor: 'white',
     },
     search_view: {
         position: 'absolute',

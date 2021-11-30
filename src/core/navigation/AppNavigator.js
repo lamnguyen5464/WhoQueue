@@ -33,8 +33,8 @@ module.exports = {
     },
 
     pushScreen: debounce(
-        (navigation, screen, options = {}, params = {}) => {
-            navigation?.push(screen, options, params);
+        (navigation, screen, params = {}) => {
+            navigation?.push(screen, params);
         },
         500,
         { leading: true, trailing: false }

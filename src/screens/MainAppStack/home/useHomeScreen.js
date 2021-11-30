@@ -1,10 +1,10 @@
-import { useRef, useLayoutEffect, useState, useEffect } from 'react';
+import { useRef, useLayoutEffect, useState, useEffect, useCallback } from 'react';
 import { Keyboard } from 'react-native';
 import AppNavigator from '@core/navigation/AppNavigator';
-import { APP_STACKS_ENUMS } from '@screens/MainAppStack';
 import useUserData from '@core/data/userprofile/useUserData';
 import QRCodeModule from '@core/nativemodule/qrcode/QRCodeModule';
 import QueueApiHelper from '@helpers/api/QueueApiHelper';
+import APP_STACKS_ENUMS from '@screens/MainAppStack/enums';
 
 const useHomeScreen = props => {
     const { navigation } = props;
@@ -23,15 +23,23 @@ const useHomeScreen = props => {
     }, []);
 
     const getJoinedQueue = () => {
-        QueueApiHelper.getJoinedQueue().then(({ data = [] }) => {
-            setJoinedQueue(data);
-        });
+        QueueApiHelper.getJoinedQueue()
+            .then(({ data = [] }) => {
+                setJoinedQueue(data);
+            })
+            .catch(e => {});
     };
+
+    const goToQueueDetail = useCallback(queueData => {
+        AppNavigator.pushScreen(navigation, APP_STACKS_ENUMS.QueueDetail, queueData);
+    }, []);
 
     return {
         joinedQueue,
         isSearching,
         refInputSearch,
+
+        goToQueueDetail,
 
         startSearching: () => {
             setSearching(true);

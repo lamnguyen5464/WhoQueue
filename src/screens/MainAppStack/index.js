@@ -3,6 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './home';
 import FindQueueScreen from './findqueue';
 import MainScreen from './main';
+import QueueDetail from './queue-detail';
 
 const Stack = createStackNavigator();
 
@@ -10,6 +11,7 @@ const SCREENS = {
     MainScreen,
     HomeScreen,
     FindQueueScreen,
+    QueueDetail,
 };
 
 const StackNavigator = () => {

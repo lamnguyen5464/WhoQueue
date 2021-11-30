@@ -7,7 +7,7 @@ import Colors from '@utils/Colors';
 import { Icon } from 'react-native-elements';
 import { formatBasicDate } from '@utils/DateUtils';
 
-const QueueItem = ({ data = {} }) => {
+const QueueItem = ({ data = {}, goToQueueDetail = () => null }) => {
     const { name, theme, address, hostName, status, startDate, endDate } = data;
 
     const _renderLine = () => <View style={styles.line} />;
@@ -32,8 +32,12 @@ const QueueItem = ({ data = {} }) => {
 
     const _renderTag = () => <View style={styles.tag(theme)} />;
 
+    const onPressItem = () => {
+        goToQueueDetail(data);
+    };
+
     return (
-        <TouchableOpacity style={styles.container} activeOpacity={0.7}>
+        <TouchableOpacity onPress={onPressItem} style={styles.container} activeOpacity={0.7}>
             {_renderHeader()}
             {_renderContent('people-outline', hostName)}
             {_renderLine()}

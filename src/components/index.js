@@ -7,6 +7,7 @@ import AnimatedLoading from './AnimatedLoading';
 import CustomizedInputOTP from './CustomizedInputOTP';
 import CustomizedContainer from './CustomizedContainer';
 import QueueItem from './QueueItem';
+import QRCodeView from '@core/nativemodule/qrcode/QRCodeView.js';
 
 export {
     AnimatedHeader,
@@ -18,4 +19,5 @@ export {
     CustomizedInputOTP,
     CustomizedContainer,
     QueueItem,
+    QRCodeView,
 };

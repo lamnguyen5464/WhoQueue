@@ -27,11 +27,4 @@ const StackNavigator = () => {
     );
 };
 
-export const AUTH_STACKS_ENUMS = Object.keys(SCREENS).reduce((previousValue = {}, currentValue) => {
-    return {
-        ...previousValue,
-        [currentValue]: currentValue,
-    };
-}, {});
-
 export default StackNavigator;

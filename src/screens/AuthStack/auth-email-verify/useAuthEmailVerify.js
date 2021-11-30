@@ -4,7 +4,7 @@ import AppNavigator from '@core/navigation/AppNavigator';
 import AuthApiHelper from '@helpers/api/AuthApiHelper';
 import debounce from 'lodash/debounce';
 import FacebookSDK from '@core/nativemodule/facebooksdk';
-import { AUTH_STACKS_ENUMS } from '@screens/AuthStack';
+import AUTH_STACKS_ENUMS from '@screens/AuthStack/enums';
 
 const useAuthEmailVerify = ({ navigation }) => {
     const PAGE_STATUS = {
