@@ -23,10 +23,8 @@ const useHomeScreen = props => {
     }, []);
 
     const getJoinedQueue = () => {
-        //call api here
-        setJoinedQueue(DUMMY_QUEUE);
-        QueueApiHelper.getJoinedQueue().then(res => {
-            console.log(JSON.stringify(res, null, 2));
+        QueueApiHelper.getJoinedQueue().then(({ data = [] }) => {
+            setJoinedQueue(data);
         });
     };
 

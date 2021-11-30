@@ -75,9 +75,9 @@ const HomeScreen = props => {
     const _renderJoinedList = () => (
         <View style={styles.container_list}>
             <FlatList
-                keyExtractor={(item, index) => `list_joined_at_home_${index}`}
+                keyExtractor={({ _, index }) => `list_joined_at_home_${index}`}
                 data={joinedQueue || []}
-                renderItem={(item, index) => <QueueItem data={item} />}
+                renderItem={({ item, index }) => <QueueItem data={item} />}
                 showsVerticalScrollIndicator={false}
             />
         </View>

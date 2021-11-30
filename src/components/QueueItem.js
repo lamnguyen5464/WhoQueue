@@ -5,42 +5,45 @@ import { DefaultSize, TextSize } from '@utils/Constants';
 import { CustomizedText } from '.';
 import Colors from '@utils/Colors';
 import { Icon } from 'react-native-elements';
+import { formatBasicDate } from '@utils/DateUtils';
 
-const QueueItem = (data = {}) => {
+const QueueItem = ({ data = {} }) => {
+    const { name, theme, address, hostName, status, startDate, endDate } = data;
+
     const _renderLine = () => <View style={styles.line} />;
 
     const _renderHeader = () => (
         <CustomizedText type="title_dark" textStyle={styles.title}>
-            Room name
+            {name}
         </CustomizedText>
     );
 
-    const _renderContent = () => (
-        <CustomizedText type="light_content">Thong tin gi do</CustomizedText>
+    const _renderContent = content => (
+        <CustomizedText type="light_content">{content}</CustomizedText>
     );
 
-    const _renderDate = isStartDate => (
+    const _renderDate = timestamp => (
         <View style={styles.container_date}>
             <Icon
                 name={'calendar-outline'}
                 type="ionicon"
-                color={isStartDate ? Colors.black_09 : Colors.black_20}
+                color={Colors.black_09}
                 style={styles.iconDate}
             />
-            <CustomizedText type="light_content">{`${new Date(
-                '2015-03-25T12:00:00Z'
-            )}`}</CustomizedText>
+            <CustomizedText type="light_content">{formatBasicDate(timestamp)}</CustomizedText>
         </View>
     );
 
-    const _renderTag = () => <View style={styles.tag()} />;
+    const _renderTag = () => <View style={styles.tag(theme)} />;
 
     return (
         <TouchableOpacity style={styles.container} activeOpacity={0.7}>
             {_renderHeader()}
-            {_renderContent()}
+            {_renderContent(hostName)}
             {_renderLine()}
-            {_renderDate(true)}
+            {_renderContent(address)}
+            {_renderDate(startDate)}
+            {_renderDate(endDate)}
             {_renderTag()}
         </TouchableOpacity>
     );
@@ -62,7 +65,9 @@ const styles = StyleSheet.create({
         marginTop: DefaultSize.S,
         backgroundColor: Colors.black_07,
     },
-    iconDate: {},
+    iconDate: {
+        marginRight: DefaultSize.S,
+    },
     container_date: {
         flexDirection: 'row',
         alignItems: 'center',
@@ -71,7 +76,7 @@ const styles = StyleSheet.create({
         position: 'absolute',
         backgroundColor: theme,
         top: 0,
-        right: '0%',
+        right: '10%',
         width: '30%',
         height: DefaultSize.S,
         borderRadius: DefaultSize.S,
