@@ -46,7 +46,7 @@ class QRCodeScannerActivity : AppCompatActivity() {
         val SCREEN_WIDTH = metrics?.widthPixels ?: 0
         val SCREEN_HEIGHT = metrics?.heightPixels ?: 0
 
-        val PADDDING = SCREEN_WIDTH * 1 / 5
+        val PADDDING = SCREEN_WIDTH * 1 / 7
         val EDGE_LENGTH = SCREEN_WIDTH - 2 * PADDDING
 
 

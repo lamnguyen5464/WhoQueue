@@ -104,7 +104,7 @@ const QueueDetail = props => {
         <View style={styles.container}>
             <AnimatedHeader
                 navigation={navigation}
-                iconRight={'share-outline'}
+                iconRight={'share-social'}
                 onPressHeaderRight={() => {
                     console.log('share');
                 }}
