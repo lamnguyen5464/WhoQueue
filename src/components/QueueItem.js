@@ -18,19 +18,15 @@ const QueueItem = ({ data = {} }) => {
         </CustomizedText>
     );
 
-    const _renderContent = content => (
-        <CustomizedText type="light_content">{content}</CustomizedText>
-    );
-
-    const _renderDate = timestamp => (
+    const _renderContent = (icon = '', content = '') => (
         <View style={styles.container_date}>
             <Icon
-                name={'calendar-outline'}
+                name={icon || ''}
                 type="ionicon"
                 color={Colors.black_09}
                 style={styles.iconDate}
             />
-            <CustomizedText type="light_content">{formatBasicDate(timestamp)}</CustomizedText>
+            <CustomizedText type="light_content">{content}</CustomizedText>
         </View>
     );
 
@@ -39,11 +35,11 @@ const QueueItem = ({ data = {} }) => {
     return (
         <TouchableOpacity style={styles.container} activeOpacity={0.7}>
             {_renderHeader()}
-            {_renderContent(hostName)}
+            {_renderContent('people-outline', hostName)}
             {_renderLine()}
-            {_renderContent(address)}
-            {_renderDate(startDate)}
-            {_renderDate(endDate)}
+            {_renderContent('location-outline', address)}
+            {_renderContent('calendar-outline', formatBasicDate(startDate))}
+            {_renderContent('calendar-outline', formatBasicDate(endDate))}
             {_renderTag()}
         </TouchableOpacity>
     );
@@ -62,7 +58,7 @@ const styles = StyleSheet.create({
     line: {
         height: 1,
         width: '100%',
-        marginTop: DefaultSize.S,
+        marginVertical: DefaultSize.S,
         backgroundColor: Colors.black_07,
     },
     iconDate: {
