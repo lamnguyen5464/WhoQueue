@@ -7,7 +7,7 @@ const KEYS = {
 
 module.exports = {
     dataInstance: createRef(),
-    reloadInstance: createRef(),
+    reloadInstanceRef: createRef(),
 
     getFromStorage() {
         return new Promise((resolve, reject) => {
@@ -36,17 +36,21 @@ module.exports = {
         this.setToStorage(data);
     },
 
+    clearAccessToken() {
+        this.setAccessToken(null);
+    },
+
     getAccessToken() {
-        this.dataInstance.current?.[KEYS.accessToken] || '';
+        return this.dataInstance.current?.[KEYS.accessToken] || '';
     },
 
     setReloadInstance(reloadFunc) {
-        this.reloadInstance.current = reloadFunc;
+        this.reloadInstanceRef.current = reloadFunc;
     },
 
     reloadInstance() {
-        if (typeof this.reloadInstance.current === 'function') {
-            this.reloadInstance.current();
+        if (typeof this.reloadInstanceRef.current === 'function') {
+            this.reloadInstanceRef.current();
         }
     },
 

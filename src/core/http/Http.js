@@ -36,6 +36,10 @@ module.exports = {
         };
     },
 
+    isExpiredToken(error) {
+        return error.response.status === 401;
+    },
+
     request(props) {
         const {
             path = '',
@@ -64,6 +68,12 @@ module.exports = {
             };
 
             const _failHandler = e => {
+                if (this.isExpiredToken(e)) {
+                    UserData.clearAccessToken();
+                    reject();
+                    return;
+                }
+
                 if (retry < 1) {
                     reject(e?.response?.data);
                     return;

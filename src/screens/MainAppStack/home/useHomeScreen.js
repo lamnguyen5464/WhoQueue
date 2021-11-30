@@ -4,6 +4,7 @@ import AppNavigator from '@core/navigation/AppNavigator';
 import { APP_STACKS_ENUMS } from '@screens/MainAppStack';
 import useUserData from '@core/data/userprofile/useUserData';
 import QRCodeModule from '@core/nativemodule/qrcode/QRCodeModule';
+import QueueApiHelper from '@helpers/api/QueueApiHelper';
 
 const useHomeScreen = props => {
     const { navigation } = props;
@@ -24,6 +25,9 @@ const useHomeScreen = props => {
     const getJoinedQueue = () => {
         //call api here
         setJoinedQueue(DUMMY_QUEUE);
+        QueueApiHelper.getJoinedQueue().then(res => {
+            console.log(JSON.stringify(res, null, 2));
+        });
     };
 
     return {

@@ -11,8 +11,8 @@ const useUserData = forceReload => {
             reload();
         }
 
-        if (!UserData.reloadInstance) {
-            UserData.reloadInstance = () => reload();
+        if (!UserData.reloadInstanceRef.current) {
+            UserData.setReloadInstance(() => reload());
         }
     }, []);
 

@@ -31,9 +31,9 @@ const useAuthSignIn = ({ navigation }) => {
             try {
                 const response = await AuthApiHelper.signInByEmail({
                     email: refInputEmail.current?.getValue(),
-                    password: refInputPassword.current?.getValue(),
+                    password: refInputPassword.current?.getValue() || '123456',
                 });
-                AppNavigator.activateMainApp();
+                // AppNavigator.activateMainApp();
             } catch (e) {
                 console.log(e);
                 setErrorText(e.description);
@@ -47,7 +47,7 @@ const useAuthSignIn = ({ navigation }) => {
                 const { token } = await FacebookSDK.getToken?.();
                 AppNavigator.showLoading();
                 const res = await AuthApiHelper.signInByFacebook({ facebookToken: token });
-                AppNavigator.activateMainApp();
+                // AppNavigator.activateMainApp();
             } catch (e) {
                 setErrorText(e.description);
             } finally {

@@ -7,7 +7,8 @@ import useUserData from '@core/data/userprofile/useUserData';
 
 const AppSync = () => {
     const { initLocalization } = useLocalization();
-    const { isLoginSuccess, navigationStack, activateMainApp } = useNavigationStack();
+    const { isLoginSuccess, navigationStack, activateMainApp, deactivateMainAppStack } =
+        useNavigationStack();
     const userProfile = useUserData(true);
 
     useLayoutEffect(() => {
@@ -28,6 +29,8 @@ const AppSync = () => {
 
         if (!!accessToken) {
             activateMainApp();
+        } else {
+            deactivateMainAppStack();
         }
     }, [userProfile.get()]);
 
@@ -40,7 +43,7 @@ const AppSync = () => {
     const syncFCMToken = async () => {
         try {
             const fcmToken = await CoreAPI.getStorage('FCM_TOKEN_KEY');
-            console.log('FCM_TOKEN_KEY: ', fcmToken);
+            // console.log('FCM_TOKEN_KEY: ', fcmToken);
             const response = await AuthApiHelper.updateFcmToken({ fcmToken });
         } catch (e) {
             // console.log('eee', e);
