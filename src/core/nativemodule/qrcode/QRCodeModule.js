@@ -2,11 +2,11 @@ import { NativeModules } from 'react-native';
 const { QRCodeModule = {} } = NativeModules;
 
 export default {
-    startScanning() {
+    startScanning(desc = '') {
         return new Promise((resolve, reject) => {
             QRCodeModule?.checkCameraPermission()
                 .then(() => {
-                    QRCodeModule?.startScanning?.().then(resolve).catch(reject);
+                    QRCodeModule?.startScanning?.(desc).then(resolve).catch(reject);
                 })
                 .catch(reject);
         });

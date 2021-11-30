@@ -52,7 +52,9 @@ const useHomeScreen = props => {
 
         onPressQr: async () => {
             try {
-                const res = await QRCodeModule.startScanning();
+                const res = await QRCodeModule.startScanning(
+                    'Day la mo ta Day la mo ta Day la mo ta Day la mo ta Day la mo taDay la mo taDay la mo taDay la mo taDay la mo taDay la mo ta'
+                );
                 console.log(res);
             } catch (e) {
                 console.log('e', e);

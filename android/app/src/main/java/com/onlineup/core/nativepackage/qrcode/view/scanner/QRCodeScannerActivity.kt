@@ -14,6 +14,7 @@ import androidx.camera.view.PreviewView
 import androidx.core.content.ContextCompat
 import com.onlineup.R
 import com.onlineup.core.nativepackage.qrcode.helper.QRCodeCallbackManager
+import kotlinx.android.synthetic.main.qrcode_scanner_view.*
 
 
 class QRCodeScannerActivity : AppCompatActivity() {
@@ -41,24 +42,25 @@ class QRCodeScannerActivity : AppCompatActivity() {
         }
     }
 
-    fun drawSquareFrame() {
+    private fun drawSquareFrame() {
         val metrics: DisplayMetrics? = resources?.displayMetrics
         val SCREEN_WIDTH = metrics?.widthPixels ?: 0
         val SCREEN_HEIGHT = metrics?.heightPixels ?: 0
 
-        val PADDDING = SCREEN_WIDTH * 1 / 7
+        val PADDDING = SCREEN_WIDTH * 1 / 5
         val EDGE_LENGTH = SCREEN_WIDTH - 2 * PADDDING
 
 
         val backgroundLayout: RelativeLayout = findViewById(R.id.camera_layout)
 
 
-        //text title
+//        container_text
         var layout = RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT)
         layout.setMargins(0, EDGE_LENGTH / 2, 0, 0)
         layout.addRule(RelativeLayout.CENTER_HORIZONTAL)
-        findViewById<TextView>(R.id.text_title).layoutParams = layout
-        findViewById<TextView>(R.id.text_title).bringToFront()
+        findViewById<RelativeLayout>(R.id.container_text).layoutParams = layout
+
+        findViewById<TextView>(R.id.text_desc).text = intent?.extras?.get("desc")?.toString() ?: ""
 
         var view = View(this)
         layout = RelativeLayout.LayoutParams(PADDDING, SCREEN_HEIGHT)

@@ -27,9 +27,11 @@ public class QRCodeModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void startScanning(Promise promise){
+    public void startScanning(String desc, Promise promise){
         QRCodeCallbackManager.setScanningPromise(promise);
-        getCurrentActivity().startActivity(new Intent(getCurrentActivity(), QRCodeScannerActivity.class));
+        Intent intent = new Intent(getCurrentActivity(), QRCodeScannerActivity.class);
+        intent.putExtra("desc", desc);
+        getCurrentActivity().startActivity(intent);
     }
 
     @ReactMethod
