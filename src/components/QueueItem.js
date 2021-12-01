@@ -58,7 +58,9 @@ const styles = StyleSheet.create({
         marginBottom: DefaultSize.S,
         backgroundColor: 'white',
     },
-    title: {},
+    title: {
+        marginTop: DefaultSize.S,
+    },
     line: {
         height: 1,
         width: '100%',
@@ -75,7 +77,7 @@ const styles = StyleSheet.create({
     tag: (theme = Colors.primary_1) => ({
         position: 'absolute',
         backgroundColor: theme,
-        top: 0,
+        top: DefaultSize.XS,
         right: '10%',
         width: '30%',
         height: DefaultSize.S,

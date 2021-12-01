@@ -7,6 +7,8 @@ import FindQueueScreen from '@screens/MainAppStack/findqueue';
 import { Icon } from 'react-native-elements';
 import Colors from '@utils/Colors';
 import { useHeaderHeight } from '@react-navigation/stack';
+import LottieView from 'lottie-react-native';
+import assets from '@assets';
 
 const HomeScreen = props => {
     const {
@@ -37,12 +39,21 @@ const HomeScreen = props => {
         <CustomizedContainer type={'foreground'} containerStyle={styles.foreground} angle={180} />
     );
 
+    const _renderLoading = () => (
+        <LottieView
+            source={assets.bar_seeking}
+            style={styles.loading}
+            autoPlay={true}
+            loop={true}
+        />
+    );
+
     const _renderMain = () => (
         <SafeAreaView>
             <View style={styles.main}>
                 {_renderHeader()}
                 {_renderSearchBar()}
-                {_renderJoinedList()}
+                {joinedQueue?.length ? _renderJoinedList() : _renderLoading()}
             </View>
         </SafeAreaView>
     );
@@ -131,6 +142,11 @@ const styles = StyleSheet.create({
     icon_qr: {},
     container_list: {
         marginTop: DefaultSize.M,
+    },
+    loading: {
+        width: '80%',
+        height: 'auto',
+        alignSelf: 'center',
     },
 });
 
