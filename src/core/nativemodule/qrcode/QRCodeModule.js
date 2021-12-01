@@ -4,7 +4,7 @@ const { QRCodeModule = {} } = NativeModules;
 export default {
     startScanning(desc = '') {
         return new Promise((resolve, reject) => {
-            QRCodeModule?.checkCameraPermission()
+            this.isGrantedPermission()
                 .then(() => {
                     QRCodeModule?.startScanning?.(desc).then(resolve).catch(reject);
                 })

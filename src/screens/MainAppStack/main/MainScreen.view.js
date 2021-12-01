@@ -8,10 +8,11 @@ import { Icon } from 'react-native-elements';
 import Colors from '@utils/Colors';
 import SharedStyles from '@utils/SharedStyles';
 import DeviceConfigs from '@utils/DeviceConfigs';
-const ScrollableTabView = require('react-native-scrollable-tab-view');
+import ScrollableTabView from 'react-native-scrollable-tab-view';
 
 const MainScreen = props => {
     const { navigation, onPressCreate } = useMainScreen(props);
+    const refTab = useRef();
 
     const _renderButtonCreate = () => {
         return (
@@ -48,7 +49,12 @@ const MainScreen = props => {
 
     return (
         <View style={styles.container}>
-            <ScrollableTabView tabBarPosition="bottom" renderTabBar={_renderTabBar}>
+            <ScrollableTabView
+                ref={refTab}
+                tabBarPosition="bottom"
+                renderTabBar={_renderTabBar}
+                initialPage={0}
+            >
                 <HomeScreen tabLabel="home" key={`tab_view_00`} navigation={navigation} />
                 <HomeScreen tabLabel="reader" key={`tab_view_01`} navigation={navigation} />
             </ScrollableTabView>

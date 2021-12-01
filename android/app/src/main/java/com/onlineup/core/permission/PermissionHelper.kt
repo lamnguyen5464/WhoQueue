@@ -2,6 +2,7 @@ package com.onlineup.core.permission
 
 import android.Manifest
 import android.app.Activity
+import android.content.Context
 import android.os.Build
 import android.content.pm.PackageManager
 import com.facebook.react.bridge.Promise
@@ -54,6 +55,7 @@ object PermissionHelper {
         val permissionAwareActivity = activity as PermissionAwareActivity
         if (permissionAwareActivity.shouldShowRequestPermissionRationale(permission)) {
             //when user clicked "do not show again"
+            activity.applicationContext?.let { this.openSettings(it) }
             promise.resolve(PermissionConstants.BLOCKED)
             return
         }
@@ -68,13 +70,14 @@ object PermissionHelper {
     }
 
     @JvmStatic
-    fun openSettings(reactContext: ReactApplicationContext) {
+    fun openSettings(context: Context) {
         try {
             val intent = Intent()
-            val packageName = reactContext.packageName
+            val packageName = context.packageName
             intent.action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
             intent.data = Uri.fromParts("package", packageName, null)
-            reactContext.startActivity(intent)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            context.startActivity(intent)
         } catch (e: Exception) {
             e.printStackTrace()
         }

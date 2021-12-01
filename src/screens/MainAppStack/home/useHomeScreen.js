@@ -9,7 +9,7 @@ import APP_STACKS_ENUMS from '@screens/MainAppStack/enums';
 const useHomeScreen = props => {
     const { navigation } = props;
     const [isSearching, setSearching] = useState(false);
-    const [joinedQueue, setJoinedQueue] = useState(null);
+    const [joinedQueue, setJoinedQueue] = useState([]);
     const refInputSearch = useRef(null);
 
     useLayoutEffect(() => {
