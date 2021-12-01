@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, ScrollView } from 'react-native';
 import {
     CustomizedContainer,
     CustomizedButton,
@@ -35,28 +35,30 @@ const QueueDetail = props => {
         userId,
         haveJoined,
 
-        onPressSignIn,
-        onPressFacebook,
+        onPressJoin,
         errorText,
     } = useQueueDetail(props);
 
     const _renderMainOverlay = () => {
         return (
             <AnimatedFadeDown style={[styles.pos_overlay, { top: headerHeight }]}>
-                {_renderTitle()}
-                <CustomizedContainer type={'white_overlay'}>
-                    <View style={styles.row}>
-                        {_renderInfo()}
-                        {_renderQRCode()}
-                    </View>
-                    <CustomizedButton
-                        type={'primary'}
-                        onPress={onPressSignIn}
-                        componentStyle={styles.cta_confirm(theme)}
-                    >
-                        join?
-                    </CustomizedButton>
-                </CustomizedContainer>
+                <ScrollView style={styles.container_scroll} showsVerticalScrollIndicator={false}>
+                    {_renderTitle()}
+                    <CustomizedContainer type={'white_overlay'}>
+                        <View style={styles.row}>
+                            {_renderInfo()}
+                            {_renderQRCode()}
+                        </View>
+
+                        <CustomizedButton
+                            type={'primary'}
+                            onPress={onPressJoin}
+                            componentStyle={styles.cta_confirm(theme)}
+                        >
+                            join?
+                        </CustomizedButton>
+                    </CustomizedContainer>
+                </ScrollView>
             </AnimatedFadeDown>
         );
     };
@@ -126,6 +128,9 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         width: '100%',
     },
+    container_scroll: {
+        width: '100%',
+    },
     qrcode_view: {
         height: 'auto',
         width: '50%',
@@ -141,6 +146,7 @@ const styles = StyleSheet.create({
     pos_overlay: {
         position: 'absolute',
         width: '100%',
+        height: '100%',
         justifyContent: 'flex-start',
         alignItems: 'center',
     },

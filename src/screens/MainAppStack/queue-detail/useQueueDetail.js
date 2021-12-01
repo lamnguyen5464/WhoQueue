@@ -37,34 +37,7 @@ const useQueueDetail = ({ navigation, route }) => {
         userId: profileData?.get()?.id,
         haveJoined: true,
 
-        onPressSignIn: async () => {
-            AppNavigator.showLoading();
-            try {
-                const response = await AuthApiHelper.signInByEmail({
-                    email: refInputEmail.current?.getValue(),
-                    password: refInputPassword.current?.getValue() || '123456',
-                });
-                // AppNavigator.activateMainApp();
-            } catch (e) {
-                console.log(e);
-                setErrorText(e.description);
-            } finally {
-                AppNavigator.hideLoading();
-            }
-        },
-
-        onPressFacebook: async () => {
-            try {
-                const { token } = await FacebookSDK.getToken?.();
-                AppNavigator.showLoading();
-                const res = await AuthApiHelper.signInByFacebook({ facebookToken: token });
-                // AppNavigator.activateMainApp();
-            } catch (e) {
-                setErrorText(e.description);
-            } finally {
-                AppNavigator.hideLoading();
-            }
-        },
+        onPressJoin: async () => {},
 
         onBack: () => {
             navigation.pop();

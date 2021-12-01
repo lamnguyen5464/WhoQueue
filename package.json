@@ -9,7 +9,7 @@
         "adb": "adb reverse tcp:8081 tcp:8081",
         "test": "jest",
         "lint": "eslint .",
-        "all": "watchman watch-del-all && rm -rf package-lock.json && rm -rf node_modules/ && rm -fr $TMPDIR/metro* && npm install && cd ios && rm -rf Pods && rm -rf Podfile.lock && pod install && cd .. && yarn start --reset-cache && rm -fr $TMPDIR/metro*",
+        "all": "watchman watch-del-all && rm -rf package-lock.json && rm -rf node_modules/ && rm -fr $TMPDIR/metro* && npm install && yarn add @react-native-community/viewpager && cd ios && rm -rf Pods && rm -rf Podfile.lock && pod install && cd .. && yarn start --reset-cache && rm -fr $TMPDIR/metro*",
         "start": "react-native start --port=8081"
     },
     "dependencies": {
