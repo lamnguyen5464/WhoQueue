@@ -99,7 +99,7 @@ class QRCodeScannerActivity : AppCompatActivity() {
 
         //view scan cursor
         val viewCursor = View(this)
-        val layoutCursor = RelativeLayout.LayoutParams(EDGE_LENGTH, 10)
+        val layoutCursor = RelativeLayout.LayoutParams(EDGE_LENGTH, 5)
         layoutCursor.setMargins(0, EDGE_LENGTH, 0, 0)
         layoutCursor.addRule(RelativeLayout.CENTER_HORIZONTAL)
         viewCursor.layoutParams = layoutCursor
