@@ -50,7 +50,7 @@ class QRCodeCamera(
                         cameraSelector,
                         preview,
                         imageCapture,
-                        imageAnalyzer
+//                        imageAnalyzer
                 )
             } catch (e: Exception) {
                 e.printStackTrace()

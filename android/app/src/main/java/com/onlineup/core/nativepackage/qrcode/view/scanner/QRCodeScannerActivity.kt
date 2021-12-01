@@ -3,8 +3,6 @@ package com.onlineup.core.nativepackage.qrcode.view.scanner
 import android.os.Bundle
 import android.util.DisplayMetrics
 import android.view.View
-import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
@@ -14,7 +12,10 @@ import androidx.camera.view.PreviewView
 import androidx.core.content.ContextCompat
 import com.onlineup.R
 import com.onlineup.core.nativepackage.qrcode.helper.QRCodeCallbackManager
-import kotlinx.android.synthetic.main.qrcode_scanner_view.*
+
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
+import android.view.animation.TranslateAnimation
 
 
 class QRCodeScannerActivity : AppCompatActivity() {
@@ -26,9 +27,9 @@ class QRCodeScannerActivity : AppCompatActivity() {
         drawSquareFrame()
 
         val qrCodeCamera = QRCodeCamera(
-                ProcessCameraProvider.getInstance(this),
-                findViewById<PreviewView>(R.id.camera_view),
-                ContextCompat.getMainExecutor(this),
+            ProcessCameraProvider.getInstance(this),
+            findViewById<PreviewView>(R.id.camera_view),
+            ContextCompat.getMainExecutor(this),
         ) { rawValue ->
             QRCodeCallbackManager.onScanningResult(rawValue)
             finish()
@@ -53,43 +54,69 @@ class QRCodeScannerActivity : AppCompatActivity() {
 
         val backgroundLayout: RelativeLayout = findViewById(R.id.camera_layout)
 
-
 //        container_text
-        var layout = RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT)
-        layout.setMargins(0, EDGE_LENGTH / 2, 0, 0)
-        layout.addRule(RelativeLayout.CENTER_HORIZONTAL)
-        findViewById<RelativeLayout>(R.id.container_text).layoutParams = layout
-
+        val layoutText = RelativeLayout.LayoutParams(
+            RelativeLayout.LayoutParams.WRAP_CONTENT,
+            RelativeLayout.LayoutParams.WRAP_CONTENT
+        )
+        layoutText.setMargins(0, EDGE_LENGTH / 2, 0, 0)
+        layoutText.addRule(RelativeLayout.CENTER_HORIZONTAL)
+        findViewById<RelativeLayout>(R.id.container_text).layoutParams = layoutText
         findViewById<TextView>(R.id.text_desc).text = intent?.extras?.get("desc")?.toString() ?: ""
 
-        var view = View(this)
-        layout = RelativeLayout.LayoutParams(PADDDING, SCREEN_HEIGHT)
-        layout.addRule(RelativeLayout.ALIGN_PARENT_RIGHT)
-        view.layoutParams = layout
-        view.setBackgroundColor(ContextCompat.getColor(this, R.color.BLACK_SHADOW))
-        backgroundLayout.addView(view)
+        //right
+        val viewPaddingRight = View(this)
+        val layoutPaddingRight = RelativeLayout.LayoutParams(PADDDING, SCREEN_HEIGHT)
+        layoutPaddingRight.addRule(RelativeLayout.ALIGN_PARENT_RIGHT)
+        viewPaddingRight.layoutParams = layoutPaddingRight
+        viewPaddingRight.setBackgroundColor(ContextCompat.getColor(this, R.color.BLACK_SHADOW))
+        backgroundLayout.addView(viewPaddingRight)
 
-        view = View(this)
-        layout = RelativeLayout.LayoutParams(PADDDING, SCREEN_HEIGHT)
-        layout.addRule(RelativeLayout.ALIGN_PARENT_LEFT)
-        view.layoutParams = layout
-        view.setBackgroundColor(ContextCompat.getColor(this, R.color.BLACK_SHADOW))
-        backgroundLayout.addView(view)
+        //left
+        val viewPaddingLeft = View(this)
+        val layoutPaddingLeft = RelativeLayout.LayoutParams(PADDDING, SCREEN_HEIGHT)
+        layoutPaddingLeft.addRule(RelativeLayout.ALIGN_PARENT_LEFT)
+        viewPaddingLeft.layoutParams = layoutPaddingLeft
+        viewPaddingLeft.setBackgroundColor(ContextCompat.getColor(this, R.color.BLACK_SHADOW))
+        backgroundLayout.addView(viewPaddingLeft)
 
-        view = View(this)
-        layout = RelativeLayout.LayoutParams(EDGE_LENGTH, EDGE_LENGTH)
-        layout.addRule(RelativeLayout.CENTER_HORIZONTAL)
-        view.layoutParams = layout
-        view.setBackgroundColor(ContextCompat.getColor(this, R.color.BLACK_SHADOW))
-        backgroundLayout.addView(view)
+        //top
+        val viewPaddingTop = View(this)
+        val layoutPaddingTop = RelativeLayout.LayoutParams(EDGE_LENGTH, EDGE_LENGTH)
+        layoutPaddingTop.addRule(RelativeLayout.CENTER_HORIZONTAL)
+        viewPaddingTop.layoutParams = layoutPaddingTop
+        viewPaddingTop.setBackgroundColor(ContextCompat.getColor(this, R.color.BLACK_SHADOW))
+        backgroundLayout.addView(viewPaddingTop)
 
-        view = View(this)
-        layout = RelativeLayout.LayoutParams(EDGE_LENGTH, SCREEN_HEIGHT)
-        layout.setMargins(0, EDGE_LENGTH * 2, 0, 0)
-        layout.addRule(RelativeLayout.CENTER_HORIZONTAL)
-        view.layoutParams = layout
-        view.setBackgroundColor(ContextCompat.getColor(this, R.color.BLACK_SHADOW))
-        backgroundLayout.addView(view)
+        //bottom
+        val viewPaddingBottom = View(this)
+        val layoutPaddingBottom = RelativeLayout.LayoutParams(EDGE_LENGTH, SCREEN_HEIGHT)
+        layoutPaddingBottom.setMargins(0, EDGE_LENGTH * 2, 0, 0)
+        layoutPaddingBottom.addRule(RelativeLayout.CENTER_HORIZONTAL)
+        viewPaddingBottom.layoutParams = layoutPaddingBottom
+        viewPaddingBottom.setBackgroundColor(ContextCompat.getColor(this, R.color.BLACK_SHADOW))
+        backgroundLayout.addView(viewPaddingBottom)
+
+        //view scan cursor
+        val viewCursor = View(this)
+        val layoutCursor = RelativeLayout.LayoutParams(EDGE_LENGTH, 10)
+        layoutCursor.setMargins(0, EDGE_LENGTH, 0, 0)
+        layoutCursor.addRule(RelativeLayout.CENTER_HORIZONTAL)
+        viewCursor.layoutParams = layoutCursor
+        viewCursor.setBackgroundColor(ContextCompat.getColor(this, R.color.BLUE_FUND))
+        backgroundLayout.addView(viewCursor)
+
+        val translateCursorAnimation: Animation = TranslateAnimation(
+            0F,
+            0F,
+            0F,
+            EDGE_LENGTH.toFloat()
+        )
+        translateCursorAnimation.repeatMode = Animation.REVERSE
+        translateCursorAnimation.repeatCount = Animation.INFINITE
+        translateCursorAnimation.duration = 2000
+
+        viewCursor.startAnimation(translateCursorAnimation)
 
     }
 }
